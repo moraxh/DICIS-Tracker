@@ -61,7 +61,7 @@ export const useThemeAnimation = (
   options?: UseThemeAnimationOptions,
 ): UseThemeAnimationReturn => {
   const {
-    duration: propsDuration = 750,
+    duration: propsDuration = 400,
     easing = "ease-in-out",
     pseudoElement = "::view-transition-new(root)",
   } = options || {};
@@ -73,7 +73,8 @@ export const useThemeAnimation = (
     isBrowser && (window.innerWidth >= 3000 || window.innerHeight >= 2000);
 
   const duration = isHighResolution
-    ? Math.max(propsDuration * 0.8, 500)
+    ? propsDuration *
+      1.2 /* Slightly slower for high res to not feel skipped, but still around 480ms */
     : propsDuration;
 
   useEffect(() => {
