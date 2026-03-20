@@ -15,6 +15,9 @@ export default function Header() {
       "color: #a1a1aa; font-size: 14px; font-family: sans-serif;",
     );
 
+    // Easter egg fake network request
+    fetch("/api/v1/hidden-api-keys").catch(() => {});
+
     setCurrentTime(new Date());
     const interval = setInterval(() => setCurrentTime(new Date()), 1000);
     return () => clearInterval(interval);
