@@ -2,9 +2,10 @@
 
 import type { ReactNode } from "react";
 import { useCallback, useEffect, useState } from "react";
-import type {
-  RoomsWithState,
-  RoomWithSchedule,
+import { 
+  RoomService, 
+  type RoomsWithState, 
+  type RoomWithSchedule 
 } from "@/backend/services/room.service";
 import { RoomsContext } from "./RoomsContext";
 
@@ -22,58 +23,37 @@ export const RoomsProvider = ({ children }: { children: ReactNode }) => {
     search: "",
   });
 
-  const refresh = useCallback(async () => {
+  const refresh = useCallback(async (silent = false) => {
     try {
-      setIsLoading(true);
-      const response = await fetch("/api/v1/rooms");
-      if (!response.ok) {
-        throw new Error("Failed to fetch rooms");
-      }
-      const data: RoomsWithState = await response.json();
+      if (!silent) setIsLoading(true);
+      
+      // Calculate state locally using RoomService
+      const data = RoomService.getRoomsWithState();
+      
+      // Sort for consistent UI
       data.freeRooms.sort((a, b) => a.room.name.localeCompare(b.room.name));
       data.occupiedRooms.sort((a, b) => a.room.name.localeCompare(b.room.name));
+      
       setRoomsWithState(data);
     } catch (error) {
-      console.error("Error fetching rooms:", error);
-      setRoomsWithState({ freeRooms: [], occupiedRooms: [] });
+      console.error("Error calculating rooms state locally:", error);
     } finally {
-      setIsLoading(false);
+      if (!silent) setIsLoading(false);
     }
   }, []);
 
   const getRoomScheduleById = useCallback(
     async (id: string): Promise<RoomWithSchedule | null> => {
-      try {
-        const response = await fetch(`/api/v1/rooms/${id}/schedule`);
-        if (!response.ok) {
-          if (response.status === 404) {
-            return null;
-          }
-          throw new Error("Failed to fetch room schedule");
-        }
-        return await response.json();
-      } catch (error) {
-        console.error(`Error fetching room schedule for ${id}:`, error);
-        return null;
-      }
+      // Calculate schedule locally
+      return RoomService.getRoomSchedule(id);
     },
     [],
   );
 
-  // Cargar datos al montar el componente
+  // Initial calculation and 1-minute refresh for "Live" status
   useEffect(() => {
     refresh();
-  }, [refresh]);
-
-  // Refrescar cada 30 minutos
-  useEffect(() => {
-    const interval = setInterval(
-      () => {
-        refresh();
-      },
-      30 * 60 * 1000,
-    );
-
+    const interval = setInterval(() => refresh(true), 60000);
     return () => clearInterval(interval);
   }, [refresh]);
 

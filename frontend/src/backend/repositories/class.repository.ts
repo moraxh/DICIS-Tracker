@@ -30,7 +30,12 @@ export class ClassRepository {
     return classes;
   }
 
-  private static buildLookupMaps(): LookupMaps {
+  static getClassesBySubjectId(subjectId: string): Class[] {
+    const classes = db.classes.filter((cls) => cls.subjectId === subjectId);
+    return classes;
+  }
+
+  public static buildLookupMaps(): LookupMaps {
     return {
       subjects: Object.fromEntries(db.subjects.map((s) => [s.id, s])),
       professors: Object.fromEntries(db.professors.map((p) => [p.id, p])),
@@ -38,8 +43,11 @@ export class ClassRepository {
     };
   }
 
-  static hydrateClasses(classes: Class[]): ClassWithDetails[] {
-    const maps = ClassRepository.buildLookupMaps();
+  static hydrateClasses(
+    classes: Class[],
+    existingMaps?: LookupMaps,
+  ): ClassWithDetails[] {
+    const maps = existingMaps || ClassRepository.buildLookupMaps();
     return classes.flatMap((cls) => {
       const result = ClassRepository.hydrateClassWithMaps(cls, maps);
       if (!result.success) {

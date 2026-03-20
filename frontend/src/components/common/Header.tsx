@@ -1,9 +1,10 @@
 "use client";
 
-import { Clock } from "lucide-react";
+import { Clock, Activity } from "lucide-react";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import ThemeToggle from "./ThemeToggle";
+import Badge from "./Badge";
 
 export default function Header() {
   const [currentTime, setCurrentTime] = useState<Date | null>(null);
@@ -53,28 +54,20 @@ export default function Header() {
             profesor está disponible.
           </p>
           <div className="flex flex-wrap items-center gap-3">
-            <div className="flex items-center gap-2 text-zinc-500 dark:text-zinc-400">
+            <Badge variant="neutral" icon={
               <motion.div
                 animate={{ opacity: [1, 0.4, 1] }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                 className="w-2 h-2 rounded-full bg-red-500"
               />
-              <span className="text-sm font-medium">En tiempo real</span>
-            </div>
+            } className="text-zinc-500 dark:text-zinc-400">
+              En tiempo real
+            </Badge>
 
             {isOutOfHours && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 text-xs font-medium border border-blue-200 dark:border-blue-500/30"
-              >
-                <Clock className="w-3.5 h-3.5" />
-                <span>Fuera de horario (Lun-Sáb 8AM-6PM)</span>
-              </motion.div>
+              <Badge variant="info" icon={<Clock className="w-3.5 h-3.5" />}>
+                Fuera de horario (Lun-Sáb 8AM-6PM)
+              </Badge>
             )}
           </div>
         </div>

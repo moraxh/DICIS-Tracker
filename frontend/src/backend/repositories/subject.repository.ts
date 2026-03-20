@@ -13,4 +13,10 @@ export class SubjectRepository {
       data: new Subject(id, subject.course_name, subject.subject),
     };
   }
+
+  static getAllSubjects(): Subject[] {
+    return db.subjects.map(
+      (s) => new Subject(s.id, s.course_name, s.subject),
+    );
+  }
 }

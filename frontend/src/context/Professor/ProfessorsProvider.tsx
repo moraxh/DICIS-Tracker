@@ -2,18 +2,18 @@
 
 import type { ReactNode } from "react";
 import { useCallback, useEffect, useState } from "react";
-import type {
-  ProfessorsWithState,
-  ProfessorWithSchedule,
+import { 
+  ProfessorService, 
+  type ProfessorsWithState, 
+  type ProfessorWithSchedule 
 } from "@/backend/services/professor.service";
 import { ProfessorsContext } from "./ProfessorsContext";
 
 export const ProfessorsProvider = ({ children }: { children: ReactNode }) => {
-  const [professorsWithState, setProfessorsWithState] =
-    useState<ProfessorsWithState>({
-      freeProfessors: [],
-      occupiedProfessors: [],
-    });
+  const [professorsWithState, setProfessorsWithState] = useState<ProfessorsWithState>({
+    freeProfessors: [],
+    occupiedProfessors: [],
+  });
   const [isLoading, setIsLoading] = useState(true);
   const [filterRules, setFilterRules] = useState<{
     state: "all" | "free" | "occupied";
@@ -23,62 +23,37 @@ export const ProfessorsProvider = ({ children }: { children: ReactNode }) => {
     search: "",
   });
 
-  const refresh = useCallback(async () => {
+  const refresh = useCallback(async (silent = false) => {
     try {
-      setIsLoading(true);
-      const response = await fetch("/api/v1/professors");
-      if (!response.ok) {
-        throw new Error("Failed to fetch professors");
-      }
-      const data: ProfessorsWithState = await response.json();
-      data.freeProfessors.sort((a, b) =>
-        a.professor.name.localeCompare(b.professor.name),
-      );
-      data.occupiedProfessors.sort((a, b) =>
-        a.professor.name.localeCompare(b.professor.name),
-      );
+      if (!silent) setIsLoading(true);
+      
+      // Calculate state locally using ProfessorService
+      const data = ProfessorService.getProfessorsWithState();
+      
+      // Sort for consistent UI
+      data.freeProfessors.sort((a, b) => a.professor.name.localeCompare(b.professor.name));
+      data.occupiedProfessors.sort((a, b) => a.professor.name.localeCompare(b.professor.name));
+      
       setProfessorsWithState(data);
     } catch (error) {
-      console.error("Error fetching professors:", error);
-      setProfessorsWithState({ freeProfessors: [], occupiedProfessors: [] });
+      console.error("Error calculating professors state locally:", error);
     } finally {
-      setIsLoading(false);
+      if (!silent) setIsLoading(false);
     }
   }, []);
 
   const getProfessorScheduleById = useCallback(
     async (id: string): Promise<ProfessorWithSchedule | null> => {
-      try {
-        const response = await fetch(`/api/v1/professors/${id}/schedule`);
-        if (!response.ok) {
-          if (response.status === 404) {
-            return null;
-          }
-          throw new Error("Failed to fetch professor schedule");
-        }
-        return await response.json();
-      } catch (error) {
-        console.error(`Error fetching professor schedule for ${id}:`, error);
-        return null;
-      }
+      // Calculate schedule locally
+      return ProfessorService.getProfessorSchedule(id);
     },
     [],
   );
 
-  // Cargar datos al montar el componente
+  // Initial calculation and 1-minute refresh for "Live" status
   useEffect(() => {
     refresh();
-  }, [refresh]);
-
-  // Refrescar cada 30 minutos
-  useEffect(() => {
-    const interval = setInterval(
-      () => {
-        refresh();
-      },
-      30 * 60 * 1000,
-    );
-
+    const interval = setInterval(() => refresh(true), 60000);
     return () => clearInterval(interval);
   }, [refresh]);
 

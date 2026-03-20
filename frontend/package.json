@@ -10,6 +10,8 @@
     "format": "biome format --write"
   },
   "dependencies": {
+    "@tanstack/react-pacer": "^0.20.0",
+    "@tanstack/react-virtual": "^3.13.23",
     "@vercel/analytics": "^2.0.1",
     "lucide-react": "^0.577.0",
     "motion": "^12.38.0",

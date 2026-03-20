@@ -3,8 +3,10 @@ import { useState, useEffect } from "react";
 export type ScheduleModalItem = {
   id: string;
   name: string;
-  type: "room" | "professor";
+  type: "room" | "professor" | "subject";
   location?: string;
+  subTitle?: string;
+  openedFrom?: "room" | "professor" | "subject";
 };
 
 let currentItem: ScheduleModalItem | null = null;

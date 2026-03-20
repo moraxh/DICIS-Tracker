@@ -3,6 +3,8 @@ import type { Professor } from "./models/professor.model";
 import type { Room } from "./models/room.model";
 import type { Subject } from "./models/subject.model";
 
+export type { Class, Professor, Room, Subject };
+
 export type Result<T> =
   | { success: true; data: T }
   | { success: false; error: string };
@@ -49,4 +51,9 @@ export interface ProfessorWithOccupancyInfo {
   timeUntilOccupancy: number | null; // minutes
   timeUntilFree: number | null; // minutes
   occupiedUntilEnd?: boolean;
+}
+
+export interface SubjectWithSchedule {
+  subject: Subject;
+  classes: ClassWithDetails[];
 }

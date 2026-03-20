@@ -10,6 +10,7 @@ import ScheduleModal from "@/components/common/ScheduleModal";
 import TopBanner from "@/components/common/TopBanner";
 import { ProfessorsProvider } from "@/context/Professor/ProfessorsProvider";
 import { RoomsProvider } from "@/context/Rooms/RoomsProvider";
+import { SubjectsProvider } from "@/context/Subject/SubjectsProvider";
 import { ThemeProvider } from "@/context/ThemeProvider";
 
 const interSans = Inter({
@@ -64,16 +65,18 @@ export default function RootLayout({
         <ThemeProvider>
           <RoomsProvider>
             <ProfessorsProvider>
-              <div className="min-h-screen flex flex-col">
-                <TopBanner />
-                <Header />
-                <main className="max-w-6xl w-full mx-auto px-6 flex-1">
-                  <AnimatePresence mode="wait">{children}</AnimatePresence>
-                </main>
-                <Footer />
-                <NavBar />
-                <ScheduleModal />
-              </div>
+              <SubjectsProvider>
+                <div className="min-h-screen flex flex-col">
+                  <TopBanner />
+                  <Header />
+                  <main className="max-w-6xl w-full mx-auto px-6 flex-1">
+                    <AnimatePresence mode="wait">{children}</AnimatePresence>
+                  </main>
+                  <Footer />
+                  <NavBar />
+                  <ScheduleModal />
+                </div>
+              </SubjectsProvider>
             </ProfessorsProvider>
           </RoomsProvider>
         </ThemeProvider>
