@@ -1,6 +1,6 @@
-import { db } from "@/db";
-import { Subject } from "@/models/subject.model";
-import { Result } from "@/types";
+import { db } from "@/backend/db";
+import { Subject } from "@/backend/models/subject.model";
+import type { Result } from "@/backend/types";
 
 export class SubjectRepository {
   static getSubjectById(id: string): Result<Subject> {

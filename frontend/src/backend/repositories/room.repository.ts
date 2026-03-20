@@ -1,6 +1,6 @@
-import { db } from "@/db";
-import { Room } from "@/models/room.model";
-import { Result } from "@/types";
+import { db } from "@/backend/db";
+import { Room } from "@/backend/models/room.model";
+import type { Result } from "@/backend/types";
 
 export class RoomRepository {
   static getRoomById(id: string): Result<Room> {
@@ -15,8 +15,6 @@ export class RoomRepository {
   }
 
   static getAllRooms(): Room[] {
-    return Object.entries(db.rooms).map(
-      ([id, room]) => new Room(id, room.name),
-    );
+    return db.rooms.map((room) => new Room(room.id, room.name));
   }
 }

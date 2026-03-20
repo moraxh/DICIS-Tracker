@@ -1,5 +1,5 @@
-import { ProfessorService } from "@/services/professor.service";
 import { NextResponse } from "next/server";
+import { ProfessorService } from "@/backend/services/professor.service";
 
 export function GET() {
   try {

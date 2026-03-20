@@ -1,6 +1,6 @@
-import { RoomService } from "@/services/room.service";
-import { secondsUntilNextHalfHour } from "@/utils";
 import { NextResponse } from "next/server";
+import { RoomService } from "@/backend/services/room.service";
+import { secondsUntilNextHalfHour } from "@/backend/utils";
 
 export function GET() {
   try {

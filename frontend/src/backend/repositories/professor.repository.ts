@@ -1,6 +1,6 @@
-import { db } from "@/db";
-import { Professor } from "@/models/professor.model";
-import { Result } from "@/types";
+import { db } from "@/backend/db";
+import { Professor } from "@/backend/models/professor.model";
+import type { Result } from "@/backend/types";
 
 export class ProfessorRepository {
   static getProfessorById(id: string): Result<Professor> {
@@ -15,8 +15,8 @@ export class ProfessorRepository {
   }
 
   static getAllProfessors(): Professor[] {
-    return Object.entries(db.professors).map(
-      ([id, prof]) => new Professor(id, prof.name, prof.honorific),
+    return db.professors.map(
+      (prof) => new Professor(prof.id, prof.name, prof.honorific),
     );
   }
 }

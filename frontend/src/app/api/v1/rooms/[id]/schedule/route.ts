@@ -1,10 +1,14 @@
-import { RoomService } from "@/services/room.service";
-import { secondsUntilNextHalfHour } from "@/utils";
 import { NextResponse } from "next/server";
+import { RoomService } from "@/backend/services/room.service";
+import { secondsUntilNextHalfHour } from "@/backend/utils";
 
-export function GET(_req: Request, { params }: { params: { id: string } }) {
+export async function GET(
+  _req: Request,
+  { params }: { params: Promise<{ id: string }> },
+) {
   try {
-    const response = RoomService.getRoomSchedule(params.id);
+    const { id } = await params;
+    const response = RoomService.getRoomSchedule(id);
 
     if (!response) {
       return NextResponse.json({ error: "Room not found" }, { status: 404 });

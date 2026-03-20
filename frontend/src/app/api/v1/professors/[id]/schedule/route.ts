@@ -1,9 +1,13 @@
-import { ProfessorService } from "@/services/professor.service";
 import { NextResponse } from "next/server";
+import { ProfessorService } from "@/backend/services/professor.service";
 
-export function GET(_req: Request, { params }: { params: { id: string } }) {
+export async function GET(
+  _req: Request,
+  { params }: { params: Promise<{ id: string }> },
+) {
   try {
-    const response = ProfessorService.getProfessorSchedule(params.id);
+    const { id } = await params;
+    const response = ProfessorService.getProfessorSchedule(id);
 
     if (!response) {
       return NextResponse.json(
