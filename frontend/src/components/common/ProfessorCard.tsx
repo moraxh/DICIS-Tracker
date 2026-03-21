@@ -10,7 +10,7 @@ import GlowCard from "./GlowCard";
 
 interface ProfessorCardProps {
   professor: Professor;
-  status: "available" | "occupied";
+  status?: "available" | "occupied";
   isOutsideHours: boolean;
   timeUntilFree?: number | null;
   timeUntilOccupancy?: number | null;
@@ -19,11 +19,12 @@ interface ProfessorCardProps {
   isFavorite: boolean;
   onToggleFavorite: () => void;
   onClick: () => void;
+  delay?: number;
 }
 
 const ProfessorCard = memo(function ProfessorCard({
   professor,
-  status,
+  status = "available",
   isOutsideHours,
   timeUntilFree,
   timeUntilOccupancy,
@@ -31,12 +32,14 @@ const ProfessorCard = memo(function ProfessorCard({
   isFavorite,
   onToggleFavorite,
   onClick,
+  delay = 0,
 }: ProfessorCardProps) {
   const isOccupied = status === "occupied";
 
   return (
     <GlowCard
       onClick={onClick}
+      delay={delay}
       className="p-5 rounded-xl bg-white dark:bg-[#0A0A0A] border border-zinc-200 dark:border-white/5 hover:border-zinc-300 dark:hover:border-white/10 shadow-sm transition-colors cursor-pointer flex flex-col h-full"
     >
       <div className="flex justify-between items-start mb-4 gap-3">

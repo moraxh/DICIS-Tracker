@@ -1,14 +1,17 @@
 "use client";
 
+import type { LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
 import CardGrid from "@/components/common/CardGrid";
 import EmptyState from "@/components/common/EmptyState";
 import LayoutSection from "@/components/common/LayoutSection";
+import PageHeader from "@/components/common/PageHeader";
 
 type HomeTableVariant = "main" | "side";
 
 type HomeTableSectionProps = {
   title: string;
+  icon: LucideIcon;
   count?: number;
   countLabel?: string;
   variant?: HomeTableVariant;
@@ -41,6 +44,7 @@ const variantConfig = {
 
 export default function HomeTableSection({
   title,
+  icon,
   count,
   countLabel = "elementos",
   variant = "main",
@@ -61,16 +65,12 @@ export default function HomeTableSection({
 
   return (
     <LayoutSection className={`space-y-4 ${className}`}>
-      <div className="flex items-center justify-between border-b border-zinc-200 dark:border-white/10 pb-4">
-        <h2 className="text-lg font-medium text-zinc-900 dark:text-white">
-          {title}
-        </h2>
-        {showCount && count !== undefined && (
-          <span className="text-sm text-zinc-500 dark:text-zinc-400">
-            {count} {countLabel}
-          </span>
-        )}
-      </div>
+      <PageHeader
+        title={title}
+        icon={icon}
+        count={showCount ? count : undefined}
+        countLabel={countLabel}
+      />
 
       {isLoading ? (
         contentLayout === "grid" ? (
