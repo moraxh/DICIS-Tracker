@@ -1,23 +1,19 @@
 "use client";
 
-import { DoorOpen } from "lucide-react";
 import { useEffect, useState } from "react";
 import { isOutsideSchoolHours } from "@/backend/utils";
-import CardGrid from "@/components/common/CardGrid";
-import EmptyState from "@/components/common/EmptyState";
-import LayoutSection from "@/components/common/LayoutSection";
-import PageHeader from "@/components/common/PageHeader";
+import HomeTableSection from "@/components/common/HomeTableSection";
 import RoomCard from "@/components/common/RoomCard";
 import { useRooms } from "@/context/Rooms/useRooms";
 import { useFavorites } from "@/hooks/useFavorites";
 import { useScheduleModal } from "@/hooks/useScheduleModal";
 
 type OccupiedRoomsProps = {
-  hideTitle?: boolean;
+  title?: string;
 };
 
 export default function OccupiedRoomsSection({
-  hideTitle = false,
+  title = "Salones ocupados",
 }: OccupiedRoomsProps) {
   const { roomsWithState, isLoading } = useRooms();
   const { isFavorite, toggleFavorite } = useFavorites();
@@ -30,77 +26,37 @@ export default function OccupiedRoomsSection({
     setIsOutsideHours(isOutsideSchoolHours());
   }, []);
 
-  if (isLoading) {
-    return (
-      <LayoutSection className="space-y-4">
-        {!hideTitle && <PageHeader title="Salones ocupados" icon={DoorOpen} />}
-        <CardGrid columns={2} className="min-h-[104px]">
-          {Array.from(
-            { length: 4 },
-            (_, index) => `occupied-room-skeleton-${index}`,
-          ).map((key) => (
-            <div
-              key={key}
-              className="w-full h-[152px] bg-zinc-100 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-800 rounded-xl animate-pulse"
-            />
-          ))}
-        </CardGrid>
-      </LayoutSection>
-    );
-  }
-
-  if (occupiedRooms.length === 0) {
-    return (
-      <LayoutSection className="space-y-4">
-        {!hideTitle && (
-          <PageHeader
-            title="Salones ocupados"
-            icon={DoorOpen}
-            count={occupiedRooms.length}
-            countLabel="espacios"
-          />
-        )}
-        <EmptyState message="No hay salones ocupados en este momento" />
-      </LayoutSection>
-    );
-  }
-
   return (
-    <LayoutSection className="space-y-4">
-      {!hideTitle && (
-        <PageHeader
-          title="Salones ocupados"
-          icon={DoorOpen}
-          count={occupiedRooms.length}
-          countLabel="espacios"
+    <HomeTableSection
+      title={title}
+      count={occupiedRooms.length}
+      countLabel="espacios"
+      variant="side"
+      isLoading={isLoading}
+      isEmpty={occupiedRooms.length === 0}
+      emptyMessage="No hay salones ocupados en este momento"
+      contentClassName="max-h-[420px] overflow-y-auto pr-2 scroll-custom min-h-[104px]"
+    >
+      {occupiedRooms.map((roomInfo) => (
+        <RoomCard
+          key={roomInfo.room.id}
+          room={roomInfo.room}
+          status="occupied"
+          isOutsideHours={isOutsideHours}
+          timeUntilFree={roomInfo.timeUntilFree}
+          currentOccupancy={roomInfo.currentOccupancy}
+          occupiedUntilEnd={roomInfo.occupiedUntilEnd}
+          isFavorite={isFavorite(roomInfo.room.id)}
+          onToggleFavorite={() => toggleFavorite(roomInfo.room.id)}
+          onClick={() =>
+            openScheduleModal({
+              id: roomInfo.room.id,
+              name: roomInfo.room.name,
+              type: "room",
+            })
+          }
         />
-      )}
-
-      <CardGrid
-        columns={2}
-        className="max-h-[1000px] overflow-y-auto pr-2 scroll-custom min-h-[104px]"
-      >
-        {occupiedRooms.map((roomInfo) => (
-          <RoomCard
-            key={roomInfo.room.id}
-            room={roomInfo.room}
-            status="occupied"
-            isOutsideHours={isOutsideHours}
-            timeUntilFree={roomInfo.timeUntilFree}
-            currentOccupancy={roomInfo.currentOccupancy}
-            occupiedUntilEnd={roomInfo.occupiedUntilEnd}
-            isFavorite={isFavorite(roomInfo.room.id)}
-            onToggleFavorite={() => toggleFavorite(roomInfo.room.id)}
-            onClick={() =>
-              openScheduleModal({
-                id: roomInfo.room.id,
-                name: roomInfo.room.name,
-                type: "room",
-              })
-            }
-          />
-        ))}
-      </CardGrid>
-    </LayoutSection>
+      ))}
+    </HomeTableSection>
   );
 }
