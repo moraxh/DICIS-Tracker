@@ -2,6 +2,19 @@
 
 ¡Hola! Muchas gracias por tu interés en aportar al proyecto. Toda la ayuda es súper bienvenida. Para que tu Pull Request (PR) se revise y apruebe rápidamente, te compartimos los lineamientos principales del proyecto.
 
+## 0. Agregar tu perfil a los Contribuidores
+Si realizaste un PR que ha aportado valor al proyecto (corrección de bugs, mejoras, etc.), ¡nos encantaría darte crédito!
+Simplemente agrega tu perfil a la lista en el archivo de datos:
+* Edita el archivo `frontend/src/data/contributors.json`
+* Agrega tu nombre de usuario de Github a la lista:
+  ```json
+  [
+    "usuario-existente",
+    "tu-usuario-de-github"
+  ]
+  ```
+Esto automáticamente levantará tu foto de perfil desde GitHub y te agregará al pie de página del proyecto. Puedes hacer esto como parte de tu PR de contribución o en uno nuevo después.
+
 ## 1. Alcance del Proyecto
 DICIS-Tracker está diseñado para ser una herramienta de consulta rápida para estudiantes. 
 * **Mantén el enfoque:** Evita proponer funcionalidades que lo conviertan en una herramienta de gestión personal (como paneles de usuario o registro histórico de materias). Por cuestiones de términos legales y enfoque, queremos evitar replicar los sistemas y plataformas oficiales de la universidad.

@@ -1,8 +1,11 @@
+import Image from "next/image";
+import contributorsData from "@/data/contributors.json";
+
 export default function Footer() {
   return (
     <footer className="w-full border-t border-zinc-200 dark:border-white/10 mt-12 bg-zinc-50/50 dark:bg-[#050505]">
-      <div className="max-w-6xl mx-auto px-6 pt-12 pb-32">
-        <div className="flex flex-col items-center sm:items-start gap-3">
+      <div className="max-w-6xl mx-auto px-6 pt-12 pb-32 flex flex-col sm:flex-row gap-12 justify-between">
+        <div className="flex flex-col items-center sm:items-start gap-3 max-w-2xl">
           <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
             Aviso Legal y de Uso
           </h3>
@@ -17,6 +20,33 @@ export default function Footer() {
             tiempo muy amplios con el único fin de evitar cualquier tipo de
             saturación en los sistemas de la universidad.
           </p>
+        </div>
+
+        <div className="flex flex-col items-center sm:items-start gap-4">
+          <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+            Contribuidores del Proyecto
+          </h3>
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 max-w-[280px]">
+            {contributorsData.map((username) => (
+              <a
+                key={username}
+                href={`https://github.com/${username}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={username}
+                className="group relative w-10 h-10 rounded-full overflow-hidden border-2 border-transparent hover:border-zinc-400 dark:hover:border-zinc-500 transition-all hover:scale-110 shadow-sm"
+              >
+                <Image
+                  src={`https://github.com/${username}.png`}
+                  alt={username}
+                  fill
+                  className="object-cover"
+                  sizes="40px"
+                  unoptimized
+                />
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </footer>
