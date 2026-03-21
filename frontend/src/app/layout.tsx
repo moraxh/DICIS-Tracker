@@ -59,6 +59,10 @@ export default function RootLayout({
       className={`${interSans} h-full antialiased`}
       suppressHydrationWarning
     >
+      <head>
+        <link rel="preconnect" href="https://avatars.githubusercontent.com" />
+        <link rel="preconnect" href="https://github.com" />
+      </head>
       <body className={`antialiased font-sans`}>
         <Analytics />
         <ThemeProvider>

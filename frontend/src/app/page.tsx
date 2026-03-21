@@ -3,21 +3,27 @@
 import { motion } from "motion/react";
 import dynamic from "next/dynamic";
 
+const sectionLoading = (height: string) => (
+  <div
+    className={`w-full ${height} bg-zinc-100 dark:bg-zinc-800/20 animate-pulse rounded-2xl border border-zinc-200 dark:border-white/5`}
+  />
+);
+
 const FavoritesSection = dynamic(
   () => import("@/components/pages/home/Favorites"),
-  { ssr: false },
+  { ssr: false, loading: () => sectionLoading("h-[150px]") },
 );
 const AvailableRoomsSection = dynamic(
   () => import("@/components/pages/home/AvailableRooms"),
-  { ssr: false },
+  { ssr: false, loading: () => sectionLoading("h-[400px]") },
 );
 const OccupiedRoomsSection = dynamic(
   () => import("@/components/pages/home/OccupiedRooms"),
-  { ssr: false },
+  { ssr: false, loading: () => sectionLoading("h-[300px]") },
 );
 const ProfessorsSection = dynamic(
   () => import("@/components/pages/home/Professors"),
-  { ssr: false },
+  { ssr: false, loading: () => sectionLoading("h-[300px]") },
 );
 
 export default function Home() {
