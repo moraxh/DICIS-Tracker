@@ -1,6 +1,6 @@
 # DICIS Tracker
 
-¡Hola! Bienvenido a DICIS-Tracker. Esta es una herramienta rápida y ligera pensada exclusivamente para que los estudiantes puedan buscar de forma ágil aulas o profesores que estén libres en este momento.
+¡Hola! Bienvenido a DICIS-Tracker. Esta es una herramienta rápida y ligera pensada exclusivamente para que los estudiantes de la DICIS (División de Ingenierías Campus Irapuato Salamanca de la Universidad de Guanajuato) puedan buscar de forma ágil aulas o profesores que estén libres en este momento.
 
 ## ¿Qué es y qué NO es este proyecto?
 El proyecto nació con una meta muy sencilla: **ayudar a encontrar un salón vacío o saber si un profe está disponible**. 

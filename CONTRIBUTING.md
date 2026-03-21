@@ -26,3 +26,16 @@ El propósito a largo plazo del proyecto es mantenerlo **100% gratuito** apoyán
 * **PRs Atómicos:** Mantén tus PRs enfocados en una sola cosa. Si deseas realizar mejoras de UI/componentes y a la vez modificar lógica profunda de los servicios, es mejor separarlos en PRs distintos. Esto facilita mucho su revisión e integración.
 
 ¡Gracias de nuevo por tu tiempo y tus aportes! Estamos emocionados de colaborar contigo.
+
+## 7. Formato de Código (Linting automático)
+Para mantener nuestro código limpio y ordenado de forma automática, hemos implementado herramientas de autorresolución de formato tanto para el frontend como para los scripts.
+
+**1. Acción Automática (Pre-commit)**
+El proyecto cuenta con un sistema de Git Hooks administrado por **Husky** y **lint-staged**. Esto significa que **cada vez que ejecutes un `git commit`**, el proyecto va a interceptar tus archivos modificados y automáticamente ejecutará:
+* `biome check --write` para archivos de Next.
+* `ruff check --fix` y `ruff format` para archivos de Python. 
+
+Para que esto funcione correctamente en tu entorno local, asegúrate de correr al menos una vez `pnpm install` desde tu subdirectorio **frontend**.
+
+**2. Validación en la Nube (GitHub Actions)**
+Si por alguna razón el hook no se ejecutó, el repositorio tiene configurada una acción de GitHub que revisa la sintaxis y el formato del código cada que abres un Pull Request o haces un Push a la rama principal. ¡Asegúrate de que no haya errores marcados en rojo en tu PR para que podamos aprobarlo fácilmente!
