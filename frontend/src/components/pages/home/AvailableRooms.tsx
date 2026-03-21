@@ -32,9 +32,9 @@ export default function AvailableRoomsSection() {
           </h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 min-h-[104px]">
-          {Array.from({ length: 4 }).map((_, i) => (
+          {Array.from({ length: 4 }).map((_, _i) => (
             <div
-              key={i}
+              key={crypto.randomUUID()}
               className="w-full h-[104px] bg-zinc-100 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-800 rounded-xl animate-pulse"
             />
           ))}

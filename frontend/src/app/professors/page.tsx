@@ -90,18 +90,21 @@ export default function ProfessorsPage() {
           </div>
           <div className="flex gap-2 overflow-x-auto sm:flex-wrap sm:overflow-visible pb-2 sm:pb-0 scroll-custom">
             <button
+              type="button"
               onClick={() => setFilter("all")}
               className={`shrink-0 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${filter === "all" ? "bg-zinc-900 text-white dark:bg-white dark:text-black" : "bg-white text-zinc-600 border border-zinc-200 hover:bg-zinc-50 dark:bg-[#0A0A0A] dark:text-zinc-400 dark:border-white/10 dark:hover:bg-white/5"}`}
             >
               Todos
             </button>
             <button
+              type="button"
               onClick={() => setFilter("available")}
               className={`shrink-0 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${filter === "available" ? "bg-emerald-500 text-white" : "bg-white text-zinc-600 border border-zinc-200 hover:bg-zinc-50 dark:bg-[#0A0A0A] dark:text-zinc-400 dark:border-white/10 dark:hover:bg-white/5"}`}
             >
               Disponibles
             </button>
             <button
+              type="button"
               onClick={() => setFilter("occupied")}
               className={`shrink-0 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${filter === "occupied" ? "bg-rose-500 text-white" : "bg-white text-zinc-600 border border-zinc-200 hover:bg-zinc-50 dark:bg-[#0A0A0A] dark:text-zinc-400 dark:border-white/10 dark:hover:bg-white/5"}`}
             >
@@ -113,9 +116,9 @@ export default function ProfessorsPage() {
 
       {isLoading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {Array.from({ length: 9 }).map((_, i) => (
+          {Array.from({ length: 9 }).map((_, _i) => (
             <div
-              key={i}
+              key={crypto.randomUUID()}
               className="w-full h-[152px] bg-zinc-100 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-800 rounded-xl animate-pulse"
             />
           ))}

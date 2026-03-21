@@ -2,6 +2,16 @@ import { useCallback, useEffect, useState } from "react";
 
 const FAVORITES_KEY = "dicis_tracker_favorites";
 
+const getLatestFavorites = () => {
+  const stored = localStorage.getItem(FAVORITES_KEY);
+  if (!stored) return new Set<string>();
+  try {
+    return new Set<string>(JSON.parse(stored));
+  } catch {
+    return new Set<string>();
+  }
+};
+
 export function useFavorites() {
   const [favorites, setFavorites] = useState<Set<string>>(new Set());
   const [isLoaded, setIsLoaded] = useState(false);
@@ -43,16 +53,6 @@ export function useFavorites() {
       window.removeEventListener("favorites-updated", handleCustomEvent);
     };
   }, [loadFavorites]);
-
-  const getLatestFavorites = () => {
-    const stored = localStorage.getItem(FAVORITES_KEY);
-    if (!stored) return new Set<string>();
-    try {
-      return new Set<string>(JSON.parse(stored));
-    } catch {
-      return new Set<string>();
-    }
-  };
 
   const addFavorite = useCallback((id: string) => {
     const current = getLatestFavorites();
