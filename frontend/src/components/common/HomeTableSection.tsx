@@ -12,6 +12,7 @@ type HomeTableSectionProps = {
   count?: number;
   countLabel?: string;
   variant?: HomeTableVariant;
+  showCount?: boolean;
   isLoading?: boolean;
   isEmpty?: boolean;
   emptyMessage?: string;
@@ -19,6 +20,7 @@ type HomeTableSectionProps = {
   skeletonClassName?: string;
   className?: string;
   contentClassName?: string;
+  contentLayout?: "grid" | "stack";
   children?: ReactNode;
 };
 
@@ -42,6 +44,7 @@ export default function HomeTableSection({
   count,
   countLabel = "elementos",
   variant = "main",
+  showCount = true,
   isLoading = false,
   isEmpty = false,
   emptyMessage = "No hay elementos para mostrar",
@@ -49,6 +52,7 @@ export default function HomeTableSection({
   skeletonClassName,
   className = "",
   contentClassName = "",
+  contentLayout = "grid",
   children,
 }: HomeTableSectionProps) {
   const config = variantConfig[variant];
@@ -61,7 +65,7 @@ export default function HomeTableSection({
         <h2 className="text-lg font-medium text-zinc-900 dark:text-white">
           {title}
         </h2>
-        {count !== undefined && (
+        {showCount && count !== undefined && (
           <span className="text-sm text-zinc-500 dark:text-zinc-400">
             {count} {countLabel}
           </span>
@@ -69,20 +73,33 @@ export default function HomeTableSection({
       </div>
 
       {isLoading ? (
-        <CardGrid columns={config.columns} className={contentClassName}>
-          {Array.from(
-            { length: totalSkeletons },
-            (_, index) => `${title}-skeleton-${index}`,
-          ).map((key) => (
-            <div key={key} className={skeletonStyles} />
-          ))}
-        </CardGrid>
+        contentLayout === "grid" ? (
+          <CardGrid columns={config.columns} className={contentClassName}>
+            {Array.from(
+              { length: totalSkeletons },
+              (_, index) => `${title}-skeleton-${index}`,
+            ).map((key) => (
+              <div key={key} className={skeletonStyles} />
+            ))}
+          </CardGrid>
+        ) : (
+          <div className={contentClassName}>
+            {Array.from(
+              { length: totalSkeletons },
+              (_, index) => `${title}-skeleton-${index}`,
+            ).map((key) => (
+              <div key={key} className={skeletonStyles} />
+            ))}
+          </div>
+        )
       ) : isEmpty ? (
         <EmptyState message={emptyMessage} />
-      ) : (
+      ) : contentLayout === "grid" ? (
         <CardGrid columns={config.columns} className={contentClassName}>
           {children}
         </CardGrid>
+      ) : (
+        <div className={contentClassName}>{children}</div>
       )}
     </LayoutSection>
   );

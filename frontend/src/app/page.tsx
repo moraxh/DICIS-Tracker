@@ -36,7 +36,7 @@ export default function Home() {
 
       <motion.div layout className="space-y-6 lg:col-span-4">
         <OccupiedRoomsSection />
-        <ProfessorsSection state="occupied" variant="side" />
+        <ProfessorsSection />
       </motion.div>
     </motion.div>
   );
