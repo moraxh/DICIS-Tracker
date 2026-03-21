@@ -30,9 +30,9 @@ export default function OccupiedRoomsSection() {
           </h2>
         </div>
         <div className="space-y-3 min-h-[88px]">
-          {Array.from({ length: 3 }).map((_, i) => (
+          {Array.from({ length: 3 }).map((_, _i) => (
             <div
-              key={i}
+              key={crypto.randomUUID()}
               className="w-full h-[88px] bg-zinc-100 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-800 rounded-xl animate-pulse"
             />
           ))}

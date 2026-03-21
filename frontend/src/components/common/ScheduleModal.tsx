@@ -200,7 +200,7 @@ export default function ScheduleModal() {
                               {/* Render Events for this day */}
                               {classes
                                 .filter((cls) => cls.day === day)
-                                .map((cls, i) => {
+                                .map((cls) => {
                                   const startDecimal =
                                     timeToMinutes(cls.start) / 60;
                                   const endDecimal =
@@ -221,7 +221,7 @@ export default function ScheduleModal() {
 
                                   return (
                                     <div
-                                      key={`${cls.day}-${cls.start}-${i}`}
+                                      key={`${cls.day}-${cls.start}-${cls.end}-${cls.subject.subject}-${cls.professor.name}`}
                                       className="absolute left-1 right-1 rounded-md p-1.5 px-2 text-xs leading-tight overflow-hidden bg-blue-50 border border-blue-200 text-blue-700 dark:bg-blue-500/10 dark:border-blue-500/20 dark:text-blue-300 transition-colors hover:bg-blue-100 dark:hover:bg-blue-500/20 shadow-sm z-10 flex flex-col group cursor-default"
                                       style={{
                                         top: `${top}px`,

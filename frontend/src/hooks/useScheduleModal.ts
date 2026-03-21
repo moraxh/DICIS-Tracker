@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export type ScheduleModalItem = {
   id: string;
@@ -27,7 +27,9 @@ export function closeScheduleModal() {
 }
 
 export function useScheduleModal() {
-  const [selectedItem, setSelectedItem] = useState<ScheduleModalItem | null>(currentItem);
+  const [selectedItem, setSelectedItem] = useState<ScheduleModalItem | null>(
+    currentItem,
+  );
 
   useEffect(() => {
     const listener = () => setSelectedItem(currentItem);
