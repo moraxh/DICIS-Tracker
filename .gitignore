@@ -48,7 +48,9 @@ pnpm-debug.log*
 .Trashes
 ehthumbs.db
 Thumbs.db
-.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
 .idea/
 *.suo
 *.ntvs*

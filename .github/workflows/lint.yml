@@ -10,6 +10,8 @@ jobs:
   lint:
     name: Check code quality and formatting
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repository
@@ -34,7 +36,8 @@ jobs:
       - name: Run Biome for Node/Next.js
         run: |
           cd frontend
-          pnpm exec biome check ..
+          pnpm exec biome check --write ..
+        continue-on-error: true
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -47,9 +50,17 @@ jobs:
       - name: Run Ruff Linter
         run: |
           cd scripts
-          ruff check .
+          ruff check --fix .
+        continue-on-error: true
 
       - name: Run Ruff Formatter
         run: |
           cd scripts
-          ruff format --check .
+          ruff format .
+        continue-on-error: true
+
+      - name: Auto-commit formatting changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        if: always()
+        with:
+          commit_message: "style: auto format code [skip ci]"

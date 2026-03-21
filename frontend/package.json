@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepare": "cd .. && husky",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -31,10 +32,10 @@
     "typescript": "^5"
   },
   "lint-staged": {
-    "../*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc,css}": [
+    "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc,css}": [
       "biome check --write --no-errors-on-unmatched"
     ],
-    "../scripts/*.py": [
+    "../scripts/**/*.py": [
       "bash -c 'if [ -x ../scripts/.venv/bin/ruff ]; then ../scripts/.venv/bin/ruff check --fix \"$@\"; else echo \"Ruff not found in venv, skipping check\"; fi' _",
       "bash -c 'if [ -x ../scripts/.venv/bin/ruff ]; then ../scripts/.venv/bin/ruff format \"$@\"; else echo \"Ruff not found in venv, skipping format\"; fi' _"
     ]
