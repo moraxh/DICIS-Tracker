@@ -1,8 +1,35 @@
 import { type ClassWithDetails, DaysOfWeek } from "./types";
 
 export function getMexicoCityDate(date: Date = new Date()): Date {
+  const options: Intl.DateTimeFormatOptions = {
+    timeZone: "America/Mexico_City",
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+    hour12: false,
+  };
+
+  const formatter = new Intl.DateTimeFormat("en-US", options);
+  const parts = formatter.formatToParts(date);
+  const partMap: Record<string, number> = {};
+
+  for (const part of parts) {
+    if (part.type !== "literal") {
+      partMap[part.type] = Number.parseInt(part.value, 10);
+    }
+  }
+
+  // Month is 0-indexed in JS Date
   return new Date(
-    date.toLocaleString("en-US", { timeZone: "America/Mexico_City" }),
+    partMap.year,
+    partMap.month - 1,
+    partMap.day,
+    partMap.hour === 24 ? 0 : partMap.hour,
+    partMap.minute,
+    partMap.second,
   );
 }
 
@@ -34,6 +61,18 @@ export function formatTimeRemaining(minutes: number): string {
   const hours = Math.floor(minutes / 60);
   const mins = minutes % 60;
   return mins > 0 ? `en ${hours}h ${mins}m` : `en ${hours}h`;
+}
+
+export function formatAvailabilityStatus(minutes: number): string {
+  if (minutes <= 0) return "Ocupado";
+
+  const hours = Math.floor(minutes / 60);
+  const mins = minutes % 60;
+
+  if (hours > 0) {
+    return `Disponible por ${hours}:${String(mins).padStart(2, "0")}`;
+  }
+  return `Disponible por ${mins}m`;
 }
 
 export function timeToMinutes(time: string): number {

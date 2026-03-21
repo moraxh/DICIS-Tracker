@@ -3,20 +3,16 @@
 import { motion } from "motion/react";
 import dynamic from "next/dynamic";
 
-const AvailableRoomsSection = dynamic(
-  () => import("@/components/pages/home/AvailableRooms"),
-  { ssr: false },
-);
 const FavoritesSection = dynamic(
   () => import("@/components/pages/home/Favorites"),
   { ssr: false },
 );
-const OccupiedRoomsSection = dynamic(
-  () => import("@/components/pages/home/OccupiedRooms"),
+const UnifiedRoomsSection = dynamic(
+  () => import("@/components/pages/home/UnifiedRoomsSection"),
   { ssr: false },
 );
-const ProfessorsSection = dynamic(
-  () => import("@/components/pages/home/Professors"),
+const UnifiedProfessorsSection = dynamic(
+  () => import("@/components/pages/home/UnifiedProfessorsSection"),
   { ssr: false },
 );
 
@@ -27,16 +23,15 @@ export default function Home() {
       animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       exit={{ opacity: 0, y: -10, filter: "blur(4px)" }}
       transition={{ duration: 0.3 }}
-      className="grid grid-cols-1 lg:grid-cols-12 gap-6"
+      className="grid grid-cols-1 lg:grid-cols-2 gap-12"
     >
-      <motion.div layout className="lg:col-span-8 space-y-8">
+      <motion.div layout className="space-y-12">
         <FavoritesSection />
-        <AvailableRoomsSection />
+        <UnifiedRoomsSection />
       </motion.div>
 
-      <motion.div layout className="lg:col-span-4 space-y-6">
-        <OccupiedRoomsSection />
-        <ProfessorsSection />
+      <motion.div layout className="space-y-12">
+        <UnifiedProfessorsSection />
       </motion.div>
     </motion.div>
   );

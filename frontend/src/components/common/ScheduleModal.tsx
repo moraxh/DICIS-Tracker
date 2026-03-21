@@ -1,10 +1,16 @@
 "use client";
 
-import { Loader2, X } from "lucide-react";
+import { Clock, Loader2, MapPin, User, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 import type { ClassWithDetails } from "@/backend/types";
-import { timeToMinutes } from "@/backend/utils";
+import {
+  getMexicoCityDate,
+  getTodayOfWeek,
+  timeToMinutes,
+} from "@/backend/utils";
+import Badge from "@/components/common/Badge";
+import BaseButton from "@/components/common/BaseButton";
 import { useProfessors } from "@/context/Professor/useProfessors";
 import { useRooms } from "@/context/Rooms/useRooms";
 import { useScheduleModal } from "@/hooks/useScheduleModal";
@@ -22,13 +28,18 @@ const DAYS = Object.keys(DAY_MAP);
 const HOURS = Array.from({ length: 11 }, (_, i) => i + 8);
 
 export default function ScheduleModal() {
-  const { selectedItem, closeScheduleModal } = useScheduleModal();
+  const { selectedItem, closeScheduleModal, openScheduleModal } =
+    useScheduleModal();
   const [classes, setClasses] = useState<ClassWithDetails[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [currentTime, setCurrentTime] = useState(new Date());
+  const [currentTime, setCurrentTime] = useState(() => getMexicoCityDate());
+  const [hoveredSubjectId, setHoveredSubjectId] = useState<string | null>(null);
+  const [selectedClass, setSelectedClass] = useState<ClassWithDetails | null>(
+    null,
+  );
 
   useEffect(() => {
-    const timer = setInterval(() => setCurrentTime(new Date()), 60000);
+    const timer = setInterval(() => setCurrentTime(getMexicoCityDate()), 60000);
     return () => clearInterval(timer);
   }, []);
 
@@ -38,6 +49,7 @@ export default function ScheduleModal() {
   const isCurrentTimeVisible =
     decimalCurrentTime >= 8 && decimalCurrentTime <= 18;
   const currentTimeTop = (decimalCurrentTime - 8) * 60;
+  const currentDay = getTodayOfWeek();
 
   const { getRoomScheduleById } = useRooms();
   const { getProfessorScheduleById } = useProfessors();
@@ -45,6 +57,7 @@ export default function ScheduleModal() {
   useEffect(() => {
     if (!selectedItem) {
       setClasses([]);
+      setSelectedClass(null);
       return;
     }
 
@@ -82,7 +95,7 @@ export default function ScheduleModal() {
   }, [selectedItem, closeScheduleModal]);
 
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       {selectedItem && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
           <motion.div
@@ -100,25 +113,37 @@ export default function ScheduleModal() {
           >
             <div className="flex items-center justify-between p-6 border-b border-zinc-200 dark:border-white/10 shrink-0">
               <div>
-                <h2 className="text-xl font-semibold text-zinc-900 dark:text-white">
+                <h2 className="text-xl font-bold text-zinc-900 dark:text-white uppercase tracking-tight">
                   {selectedItem.type === "room"
                     ? selectedItem.name.toUpperCase()
                     : selectedItem.name}
                 </h2>
-                <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1">
-                  {selectedItem.type === "room"
-                    ? "Salón de clases"
-                    : `Ubicación actual: ${selectedItem.location || "Desconocida"}`}
-                </p>
+                <div className="flex items-center gap-2 mt-1">
+                  <Badge
+                    variant="neutral"
+                    icon={
+                      selectedItem.type === "room" ? (
+                        <MapPin className="w-3 h-3" />
+                      ) : (
+                        <User className="w-3 h-3" />
+                      )
+                    }
+                    className="text-[10px] uppercase font-bold tracking-wider"
+                  >
+                    {selectedItem.type === "room"
+                      ? "Salón de clases"
+                      : `Ubicación: ${selectedItem.location || "Desconocida"}`}
+                  </Badge>
+                </div>
               </div>
-              <button
+              <BaseButton
+                variant="ghost"
+                size="icon"
                 onClick={closeScheduleModal}
-                className="p-2 rounded-full hover:bg-zinc-100 dark:hover:bg-white/10 text-zinc-500 transition-colors"
-                title="Cerrar"
-                type="button"
+                className="rounded-full"
               >
                 <X className="w-5 h-5" />
-              </button>
+              </BaseButton>
             </div>
 
             <div className="p-6 overflow-y-auto bg-zinc-50/50 dark:bg-[#0A0A0A]">
@@ -148,7 +173,11 @@ export default function ScheduleModal() {
                         {DAYS.map((day) => (
                           <div
                             key={day}
-                            className="flex-1 text-center py-3 text-sm font-medium text-zinc-600 dark:text-zinc-300 border-l border-zinc-200 dark:border-white/10 first:border-l-0"
+                            className={`flex-1 text-center py-3 text-sm font-bold border-l border-zinc-200 dark:border-white/10 first:border-l-0 uppercase tracking-tight ${
+                              day === currentDay
+                                ? "text-blue-700 dark:text-blue-300 bg-blue-500/5"
+                                : "text-zinc-600 dark:text-zinc-300"
+                            }`}
                           >
                             {DAY_MAP[day]}
                           </div>
@@ -195,12 +224,14 @@ export default function ScheduleModal() {
                           {DAYS.map((day) => (
                             <div
                               key={day}
-                              className="flex-1 relative border-l border-zinc-100 dark:border-white/5 first:border-l-0"
+                              className={`flex-1 relative border-l border-zinc-100 dark:border-white/5 first:border-l-0 ${
+                                day === currentDay ? "bg-blue-500/[0.03]" : ""
+                              }`}
                             >
                               {/* Render Events for this day */}
                               {classes
                                 .filter((cls) => cls.day === day)
-                                .map((cls, i) => {
+                                .map((cls) => {
                                   const startDecimal =
                                     timeToMinutes(cls.start) / 60;
                                   const endDecimal =
@@ -209,10 +240,7 @@ export default function ScheduleModal() {
                                   const height =
                                     (endDecimal - startDecimal) * 60;
 
-                                  const title =
-                                    selectedItem.type === "room"
-                                      ? cls.subject.subject
-                                      : cls.subject.subject;
+                                  const title = cls.subject.subject;
 
                                   const subtitle =
                                     selectedItem.type === "room"
@@ -220,9 +248,24 @@ export default function ScheduleModal() {
                                       : cls.room.name.toUpperCase();
 
                                   return (
-                                    <div
-                                      key={`${cls.day}-${cls.start}-${i}`}
-                                      className="absolute left-1 right-1 rounded-md p-1.5 px-2 text-xs leading-tight overflow-hidden bg-blue-50 border border-blue-200 text-blue-700 dark:bg-blue-500/10 dark:border-blue-500/20 dark:text-blue-300 transition-colors hover:bg-blue-100 dark:hover:bg-blue-500/20 shadow-sm z-10 flex flex-col group cursor-default"
+                                    <button
+                                      type="button"
+                                      key={`${cls.day}-${cls.start}-${cls.end}-${cls.room.id}-${cls.professor.id}-${cls.subject.id}`}
+                                      onMouseEnter={() =>
+                                        setHoveredSubjectId(cls.subject.id)
+                                      }
+                                      onMouseLeave={() =>
+                                        setHoveredSubjectId(null)
+                                      }
+                                      onClick={(e) => {
+                                        e.stopPropagation();
+                                        setSelectedClass(cls);
+                                      }}
+                                      className={`absolute text-start left-1 right-1 rounded-md p-1.5 px-2 text-xs leading-tight overflow-hidden transition-all duration-200 z-10 flex flex-col group cursor-pointer border shadow-sm ${
+                                        hoveredSubjectId === cls.subject.id
+                                          ? "bg-blue-100 border-blue-400 dark:bg-blue-500/30 dark:border-blue-400 text-blue-900 dark:text-blue-100 scale-[1.02] z-20 shadow-md"
+                                          : "bg-blue-50 border-blue-200 text-blue-700 dark:bg-blue-500/10 dark:border-blue-500/20 dark:text-blue-300"
+                                      }`}
                                       style={{
                                         top: `${top}px`,
                                         height: `${height - 2}px`,
@@ -230,13 +273,13 @@ export default function ScheduleModal() {
                                       }}
                                     >
                                       <div
-                                        className="font-semibold line-clamp-2"
+                                        className="font-bold line-clamp-2 uppercase text-[10px]"
                                         title={title}
                                       >
                                         {title}
                                       </div>
                                       <div
-                                        className="line-clamp-2 opacity-90 hidden sm:block"
+                                        className="line-clamp-2 opacity-90 hidden sm:block mt-0.5 text-[10px] font-medium"
                                         title={subtitle}
                                       >
                                         {subtitle}
@@ -244,7 +287,7 @@ export default function ScheduleModal() {
                                       <div className="opacity-80 mt-auto text-[9px] font-medium hidden group-hover:block transition-all">
                                         {cls.start} - {cls.end}
                                       </div>
-                                    </div>
+                                    </button>
                                   );
                                 })}
                             </div>
@@ -256,6 +299,132 @@ export default function ScheduleModal() {
                 </>
               )}
             </div>
+
+            {/* Selection Menu (Quick View) */}
+            <AnimatePresence>
+              {selectedClass && (
+                <div className="absolute inset-0 z-[110] flex items-center justify-center p-4">
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    onClick={() => setSelectedClass(null)}
+                    className="absolute inset-0 bg-black/20 dark:bg-black/40 backdrop-blur-[2px]"
+                  />
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9, y: 10 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.9, y: 10 }}
+                    className="relative w-full max-w-sm bg-white dark:bg-[#0A0A0A] rounded-2xl p-6 shadow-2xl border border-zinc-200 dark:border-white/10 overflow-hidden"
+                  >
+                    <div className="text-center space-y-1 mb-6">
+                      <h4 className="font-bold text-zinc-900 dark:text-white line-clamp-2 text-base tracking-tight leading-snug">
+                        {selectedClass.subject.subject}
+                      </h4>
+                      <p className="text-sm text-zinc-500">
+                        {selectedClass.professor.name}
+                      </p>
+                    </div>
+
+                    <div className="space-y-4 py-4 border-y border-zinc-100 dark:border-white/5 mb-6">
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-lg bg-zinc-50 dark:bg-white/5 flex items-center justify-center text-zinc-400">
+                          <MapPin className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <p className="text-[10px] text-zinc-400 font-bold uppercase tracking-wider">
+                            Aula
+                          </p>
+                          <p className="text-sm font-semibold text-zinc-900 dark:text-white uppercase">
+                            {selectedClass.room.name}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-3">
+                        <div className="w-8 h-8 rounded-lg bg-zinc-50 dark:bg-white/5 flex items-center justify-center text-zinc-400">
+                          <Clock className="w-4 h-4" />
+                        </div>
+                        <div className="flex-1">
+                          <p className="text-[10px] text-zinc-400 font-bold uppercase tracking-wider mb-1">
+                            Horario Completo
+                          </p>
+                          <div className="space-y-1">
+                            {/* Find all sessions for this specific subject across the current schedule */}
+                            {(() => {
+                              const subjectSessions = classes.filter(
+                                (c) =>
+                                  c.subject.id === selectedClass.subject.id,
+                              );
+                              return subjectSessions.map((session) => (
+                                <div
+                                  key={`${session.day}-${session.start}-${session.end}-${session.room.id}`}
+                                  className="flex justify-between text-xs text-zinc-600 dark:text-zinc-300"
+                                >
+                                  <span className="font-semibold">
+                                    {DAY_MAP[session.day]}
+                                  </span>
+                                  <span>
+                                    {session.start} - {session.end}
+                                  </span>
+                                </div>
+                              ));
+                            })()}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="space-y-3">
+                      {selectedItem.type !== "professor" && (
+                        <BaseButton
+                          variant="secondary"
+                          onClick={() => {
+                            openScheduleModal({
+                              id: selectedClass.professor.id,
+                              name: selectedClass.professor.name,
+                              type: "professor",
+                              location: selectedClass.room.name,
+                            });
+                            setSelectedClass(null);
+                          }}
+                          className="w-full h-12"
+                        >
+                          <User className="w-4 h-4 mr-2" />
+                          VER PROFESOR
+                        </BaseButton>
+                      )}
+
+                      {selectedItem.type !== "room" && (
+                        <BaseButton
+                          variant="secondary"
+                          onClick={() => {
+                            openScheduleModal({
+                              id: selectedClass.room.id,
+                              name: selectedClass.room.name,
+                              type: "room",
+                            });
+                            setSelectedClass(null);
+                          }}
+                          className="w-full h-12"
+                        >
+                          <MapPin className="w-4 h-4 mr-2" />
+                          VER AULA
+                        </BaseButton>
+                      )}
+
+                      <BaseButton
+                        variant="ghost"
+                        onClick={() => setSelectedClass(null)}
+                        className="w-full mt-2 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200"
+                      >
+                        CERRAR DETALLE
+                      </BaseButton>
+                    </div>
+                  </motion.div>
+                </div>
+              )}
+            </AnimatePresence>
           </motion.div>
         </div>
       )}

@@ -24,10 +24,8 @@ export interface DBObject {
   classes: Class[];
 }
 
-export interface ClassWithDetails extends Omit<
-  Class,
-  "subjectId" | "professorId" | "roomId"
-> {
+export interface ClassWithDetails
+  extends Omit<Class, "subjectId" | "professorId" | "roomId"> {
   subject: Subject;
   professor: Professor;
   room: Room;
