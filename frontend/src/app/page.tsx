@@ -7,12 +7,16 @@ const FavoritesSection = dynamic(
   () => import("@/components/pages/home/Favorites"),
   { ssr: false },
 );
-const UnifiedRoomsSection = dynamic(
-  () => import("@/components/pages/home/UnifiedRoomsSection"),
+const AvailableRoomsSection = dynamic(
+  () => import("@/components/pages/home/AvailableRooms"),
   { ssr: false },
 );
-const UnifiedProfessorsSection = dynamic(
-  () => import("@/components/pages/home/UnifiedProfessorsSection"),
+const OccupiedRoomsSection = dynamic(
+  () => import("@/components/pages/home/OccupiedRooms"),
+  { ssr: false },
+);
+const ProfessorsSection = dynamic(
+  () => import("@/components/pages/home/Professors"),
   { ssr: false },
 );
 
@@ -23,15 +27,16 @@ export default function Home() {
       animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       exit={{ opacity: 0, y: -10, filter: "blur(4px)" }}
       transition={{ duration: 0.3 }}
-      className="grid grid-cols-1 lg:grid-cols-2 gap-12"
+      className="grid grid-cols-1 lg:grid-cols-12 gap-6"
     >
-      <motion.div layout className="space-y-12">
+      <motion.div layout className="space-y-8 lg:col-span-8">
         <FavoritesSection />
-        <UnifiedRoomsSection />
+        <AvailableRoomsSection />
       </motion.div>
 
-      <motion.div layout className="space-y-12">
-        <UnifiedProfessorsSection />
+      <motion.div layout className="space-y-6 lg:col-span-4">
+        <OccupiedRoomsSection />
+        <ProfessorsSection state="occupied" />
       </motion.div>
     </motion.div>
   );

@@ -1,23 +1,24 @@
 "use client";
 
 import { DoorOpen } from "lucide-react";
-import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { isOutsideSchoolHours } from "@/backend/utils";
+import CardGrid from "@/components/common/CardGrid";
 import EmptyState from "@/components/common/EmptyState";
+import LayoutSection from "@/components/common/LayoutSection";
+import PageHeader from "@/components/common/PageHeader";
+import RoomCard from "@/components/common/RoomCard";
 import { useRooms } from "@/context/Rooms/useRooms";
 import { useFavorites } from "@/hooks/useFavorites";
 import { useScheduleModal } from "@/hooks/useScheduleModal";
-import RoomCard from "@/components/common/RoomCard";
-import CardGrid from "@/components/common/CardGrid";
-import LayoutSection from "@/components/common/LayoutSection";
-import PageHeader from "@/components/common/PageHeader";
 
-interface OccupiedRoomsProps {
+type OccupiedRoomsProps = {
   hideTitle?: boolean;
-}
+};
 
-export default function OccupiedRoomsSection({ hideTitle = false }: OccupiedRoomsProps) {
+export default function OccupiedRoomsSection({
+  hideTitle = false,
+}: OccupiedRoomsProps) {
   const { roomsWithState, isLoading } = useRooms();
   const { isFavorite, toggleFavorite } = useFavorites();
   const { openScheduleModal } = useScheduleModal();
@@ -32,16 +33,14 @@ export default function OccupiedRoomsSection({ hideTitle = false }: OccupiedRoom
   if (isLoading) {
     return (
       <LayoutSection className="space-y-4">
-        {!hideTitle && (
-          <PageHeader 
-            title="Salones ocupados" 
-            icon={DoorOpen}
-          />
-        )}
+        {!hideTitle && <PageHeader title="Salones ocupados" icon={DoorOpen} />}
         <CardGrid columns={2} className="min-h-[104px]">
-          {Array.from({ length: 4 }).map((_, i) => (
+          {Array.from(
+            { length: 4 },
+            (_, index) => `occupied-room-skeleton-${index}`,
+          ).map((key) => (
             <div
-              key={i}
+              key={key}
               className="w-full h-[152px] bg-zinc-100 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-800 rounded-xl animate-pulse"
             />
           ))}
@@ -54,8 +53,8 @@ export default function OccupiedRoomsSection({ hideTitle = false }: OccupiedRoom
     return (
       <LayoutSection className="space-y-4">
         {!hideTitle && (
-          <PageHeader 
-            title="Salones ocupados" 
+          <PageHeader
+            title="Salones ocupados"
             icon={DoorOpen}
             count={occupiedRooms.length}
             countLabel="espacios"
@@ -69,15 +68,18 @@ export default function OccupiedRoomsSection({ hideTitle = false }: OccupiedRoom
   return (
     <LayoutSection className="space-y-4">
       {!hideTitle && (
-        <PageHeader 
-          title="Salones ocupados" 
+        <PageHeader
+          title="Salones ocupados"
           icon={DoorOpen}
           count={occupiedRooms.length}
           countLabel="espacios"
         />
       )}
 
-      <CardGrid columns={2} className="max-h-[1000px] overflow-y-auto pr-2 scroll-custom min-h-[104px]">
+      <CardGrid
+        columns={2}
+        className="max-h-[1000px] overflow-y-auto pr-2 scroll-custom min-h-[104px]"
+      >
         {occupiedRooms.map((roomInfo) => (
           <RoomCard
             key={roomInfo.room.id}
