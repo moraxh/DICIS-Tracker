@@ -16,6 +16,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   serverExternalPackages: ["better-sqlite3"],
   reactCompiler: true,
+  turbopack: {},
   images: {
     remotePatterns: [
       {

@@ -27,6 +27,68 @@ const DAY_MAP: Record<string, string> = {
 const DAYS = Object.keys(DAY_MAP);
 const HOURS = Array.from({ length: 11 }, (_, i) => i + 8);
 
+function getOverlappingClasses(
+  dayClasses: ClassWithDetails[],
+): (ClassWithDetails & { width: string; left: string })[] {
+  if (dayClasses.length === 0) return [];
+
+  const sorted = [...dayClasses].sort(
+    (a, b) => timeToMinutes(a.start) - timeToMinutes(b.start),
+  );
+
+  const positioned: (ClassWithDetails & { width: string; left: string })[] = [];
+  let columns: ClassWithDetails[][] = [];
+  let lastEventEnding: number | null = null;
+
+  const packEvents = (cols: ClassWithDetails[][]) => {
+    const numColumns = cols.length;
+    cols.forEach((col, colIndex) => {
+      col.forEach((cls) => {
+        positioned.push({
+          ...cls,
+          // Leave a little margin so they don't touch each other directly
+          width: `calc(${100 / numColumns}% - 4px)`,
+          left: `calc(${(100 / numColumns) * colIndex}% + 2px)`,
+        });
+      });
+    });
+  };
+
+  for (const ev of sorted) {
+    const start = timeToMinutes(ev.start);
+    const end = timeToMinutes(ev.end);
+
+    if (lastEventEnding !== null && start >= lastEventEnding) {
+      packEvents(columns);
+      columns = [];
+      lastEventEnding = null;
+    }
+
+    let placed = false;
+    for (const col of columns) {
+      const lastEventInCol = col[col.length - 1];
+      if (timeToMinutes(lastEventInCol.end) <= start) {
+        col.push(ev);
+        placed = true;
+        break;
+      }
+    }
+    if (!placed) {
+      columns.push([ev]);
+    }
+
+    if (lastEventEnding === null || end > lastEventEnding) {
+      lastEventEnding = end;
+    }
+  }
+
+  if (columns.length > 0) {
+    packEvents(columns);
+  }
+
+  return positioned;
+}
+
 export default function ScheduleModal() {
   const { selectedItem, closeScheduleModal, openScheduleModal } =
     useScheduleModal();
@@ -229,68 +291,68 @@ export default function ScheduleModal() {
                               }`}
                             >
                               {/* Render Events for this day */}
-                              {classes
-                                .filter((cls) => cls.day === day)
-                                .map((cls) => {
-                                  const startDecimal =
-                                    timeToMinutes(cls.start) / 60;
-                                  const endDecimal =
-                                    timeToMinutes(cls.end) / 60;
-                                  const top = (startDecimal - 8) * 60;
-                                  const height =
-                                    (endDecimal - startDecimal) * 60;
+                              {getOverlappingClasses(
+                                classes.filter((cls) => cls.day === day),
+                              ).map((cls) => {
+                                const startDecimal =
+                                  timeToMinutes(cls.start) / 60;
+                                const endDecimal = timeToMinutes(cls.end) / 60;
+                                const top = (startDecimal - 8) * 60;
+                                const height = (endDecimal - startDecimal) * 60;
 
-                                  const title = cls.subject.subject;
+                                const title = cls.subject.subject;
 
-                                  const subtitle =
-                                    selectedItem.type === "room"
-                                      ? cls.professor.name
-                                      : cls.room.name.toUpperCase();
+                                const subtitle =
+                                  selectedItem.type === "room"
+                                    ? cls.professor.name
+                                    : cls.room.name.toUpperCase();
 
-                                  return (
-                                    <button
-                                      type="button"
-                                      key={`${cls.day}-${cls.start}-${cls.end}-${cls.room.id}-${cls.professor.id}-${cls.subject.id}`}
-                                      onMouseEnter={() =>
-                                        setHoveredSubjectId(cls.subject.id)
-                                      }
-                                      onMouseLeave={() =>
-                                        setHoveredSubjectId(null)
-                                      }
-                                      onClick={(e) => {
-                                        e.stopPropagation();
-                                        setSelectedClass(cls);
-                                      }}
-                                      aria-label={`${title} by ${subtitle}`}
-                                      className={`absolute text-start left-1 right-1 rounded-md p-1.5 px-2 text-xs leading-tight overflow-hidden transition-all duration-200 z-10 flex flex-col group cursor-pointer border shadow-sm ${
-                                        hoveredSubjectId === cls.subject.id
-                                          ? "bg-blue-100 border-blue-400 dark:bg-blue-500/30 dark:border-blue-400 text-blue-900 dark:text-blue-100 scale-[1.02] z-20 shadow-md"
-                                          : "bg-blue-50 border-blue-200 text-blue-700 dark:bg-blue-500/10 dark:border-blue-500/20 dark:text-blue-300"
-                                      }`}
-                                      style={{
-                                        top: `${top}px`,
-                                        height: `${height - 2}px`,
-                                        marginTop: "1px",
-                                      }}
+                                return (
+                                  <button
+                                    type="button"
+                                    key={`${cls.day}-${cls.start}-${cls.end}-${cls.room.id}-${cls.professor.id}-${cls.subject.id}`}
+                                    onMouseEnter={() =>
+                                      setHoveredSubjectId(cls.subject.id)
+                                    }
+                                    onMouseLeave={() =>
+                                      setHoveredSubjectId(null)
+                                    }
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      setSelectedClass(cls);
+                                    }}
+                                    aria-label={`${title} by ${subtitle}`}
+                                    className={`absolute text-start rounded-md p-1.5 px-2 text-xs leading-tight overflow-hidden transition-all duration-200 z-10 flex flex-col group cursor-pointer border shadow-sm ${
+                                      hoveredSubjectId === cls.subject.id
+                                        ? "bg-blue-100 border-blue-400 dark:bg-blue-500/30 dark:border-blue-400 text-blue-900 dark:text-blue-100 scale-[1.02] z-20 shadow-md"
+                                        : "bg-blue-50 border-blue-200 text-blue-700 dark:bg-blue-500/10 dark:border-blue-500/20 dark:text-blue-300"
+                                    }`}
+                                    style={{
+                                      top: `${top}px`,
+                                      height: `${height - 2}px`,
+                                      width: cls.width,
+                                      left: cls.left,
+                                      marginTop: "1px",
+                                    }}
+                                  >
+                                    <div
+                                      className="font-bold line-clamp-2 uppercase text-[10px]"
+                                      title={title}
                                     >
-                                      <div
-                                        className="font-bold line-clamp-2 uppercase text-[10px]"
-                                        title={title}
-                                      >
-                                        {title}
-                                      </div>
-                                      <div
-                                        className="line-clamp-2 opacity-90 hidden sm:block mt-0.5 text-[10px] font-medium"
-                                        title={subtitle}
-                                      >
-                                        {subtitle}
-                                      </div>
-                                      <div className="opacity-80 mt-auto text-[9px] font-medium hidden group-hover:block transition-all">
-                                        {cls.start} - {cls.end}
-                                      </div>
-                                    </button>
-                                  );
-                                })}
+                                      {title}
+                                    </div>
+                                    <div
+                                      className="line-clamp-2 opacity-90 hidden sm:block mt-0.5 text-[10px] font-medium"
+                                      title={subtitle}
+                                    >
+                                      {subtitle}
+                                    </div>
+                                    <div className="opacity-80 mt-auto text-[9px] font-medium hidden group-hover:block transition-all">
+                                      {cls.start} - {cls.end}
+                                    </div>
+                                  </button>
+                                );
+                              })}
                             </div>
                           ))}
                         </div>
