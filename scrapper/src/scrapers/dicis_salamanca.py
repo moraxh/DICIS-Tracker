@@ -196,10 +196,7 @@ def scraper_dicis_salamanca(url: str) -> list[Course]:
       except Exception as e:
         logging.warning(f"Failed to parse {a['name']}: {e}")
 
-  dicis_rules = [
-      ("cdmanu", "manufactura"),
-      ("computo", "comp. a")
-  ]
+  dicis_rules = [("cdmanu", "manufactura"), ("computo", "comp. a")]
   courses = merge_outlier_rooms(courses, outlier_threshold=5, custom_rules=dicis_rules)
 
   return courses
