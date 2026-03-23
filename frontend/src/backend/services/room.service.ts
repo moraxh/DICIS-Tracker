@@ -23,10 +23,9 @@ export interface RoomWithSchedule {
 export class RoomService {
   static getRoomsWithState(): RoomsWithState {
     const todayDayOfWeek = getTodayOfWeek();
-    const todayClasses = ClassRepository.getClassesByDay(todayDayOfWeek);
+    const hydratedClasses = ClassRepository.getClassesByDay(todayDayOfWeek);
 
     const allRooms = RoomRepository.getAllRooms();
-    const hydratedClasses = ClassRepository.hydrateClasses(todayClasses);
 
     const currentMinutes = getCurrentMinutes();
     const classesNow = hydratedClasses.filter((cls) =>
@@ -113,8 +112,7 @@ export class RoomService {
       return null;
     }
 
-    const classes = ClassRepository.getClassesByRoomId(roomId);
-    const hydratedClasses = ClassRepository.hydrateClasses(classes);
+    const hydratedClasses = ClassRepository.getClassesByRoomId(roomId);
 
     return {
       room: room.data,

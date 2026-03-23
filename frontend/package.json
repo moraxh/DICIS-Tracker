@@ -13,6 +13,7 @@
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
+    "better-sqlite3": "^12.8.0",
     "lucide-react": "^0.577.0",
     "motion": "^12.38.0",
     "next": "16.2.0",
@@ -23,6 +24,7 @@
   "devDependencies": {
     "@biomejs/biome": "2.3.11",
     "@tailwindcss/postcss": "^4",
+    "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -36,9 +38,9 @@
     "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc,css}": [
       "biome check --write --no-errors-on-unmatched"
     ],
-    "../scripts/**/*.py": [
-      "bash -c 'if [ -x ../scripts/.venv/bin/ruff ]; then ../scripts/.venv/bin/ruff check --fix \"$@\"; else echo \"Ruff not found in venv, skipping check\"; fi' _",
-      "bash -c 'if [ -x ../scripts/.venv/bin/ruff ]; then ../scripts/.venv/bin/ruff format \"$@\"; else echo \"Ruff not found in venv, skipping format\"; fi' _"
+    "../scrapper/**/*.py": [
+      "bash -c 'if [ -x ../scrapper/.venv/bin/ruff ]; then ../scrapper/.venv/bin/ruff check --fix \"$@\"; else echo \"Ruff not found in venv, skipping check\"; fi' _",
+      "bash -c 'if [ -x ../scrapper/.venv/bin/ruff ]; then ../scrapper/.venv/bin/ruff format \"$@\"; else echo \"Ruff not found in venv, skipping format\"; fi' _"
     ]
   }
 }

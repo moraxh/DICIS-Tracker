@@ -2,9 +2,9 @@ name: Lint and Format
 
 on:
   pull_request:
-    branches: [ main, master ]
+    branches: [main, master]
   push:
-    branches: [ main, master ]
+    branches: [main, master]
 
 jobs:
   lint:
@@ -36,26 +36,26 @@ jobs:
       - name: Run Biome for Node/Next.js
         run: |
           cd frontend
-          pnpm exec biome check --write ..
+          pnpm exec biome check --write --unsafe ..
         continue-on-error: true
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: "3.10"
 
       - name: Install Ruff
         run: pip install ruff
 
       - name: Run Ruff Linter
         run: |
-          cd scripts
-          ruff check --fix .
+          cd scrapper
+          ruff check --fix --unsafe-fixes .
         continue-on-error: true
 
       - name: Run Ruff Formatter
         run: |
-          cd scripts
+          cd scrapper
           ruff format .
         continue-on-error: true
 

@@ -32,6 +32,9 @@
       "recommended": true,
       "suspicious": {
         "noUnknownAtRules": "off"
+      },
+      "complexity": {
+        "noStaticOnlyClass": "off"
       }
     },
     "domains": {

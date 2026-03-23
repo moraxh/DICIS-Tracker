@@ -26,10 +26,9 @@ export interface ProfessorWithSchedule {
 export class ProfessorService {
   static getProfessorsWithState(): ProfessorsWithState {
     const todayDayOfWeek = getTodayOfWeek();
-    const todayClasses = ClassRepository.getClassesByDay(todayDayOfWeek);
+    const hydratedClasses = ClassRepository.getClassesByDay(todayDayOfWeek);
 
     const allProfessors = ProfessorRepository.getAllProfessors();
-    const hydratedClasses = ClassRepository.hydrateClasses(todayClasses);
 
     const currentMinutes = getCurrentMinutes();
     const classesNow = hydratedClasses.filter((cls) =>
@@ -123,8 +122,7 @@ export class ProfessorService {
       return null;
     }
 
-    const classes = ClassRepository.getClassesByProfessor(professorId);
-    const hydratedClasses = ClassRepository.hydrateClasses(classes);
+    const hydratedClasses = ClassRepository.getClassesByProfessor(professorId);
 
     return {
       professor: professorResult.data,

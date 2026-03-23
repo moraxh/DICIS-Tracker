@@ -10,7 +10,8 @@ indent-width = 2
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "C90"]
-ignore = []
+# E501 = Line too long (lo ignoramos porque los queries SQL largos no se pueden arreglar solos)
+ignore = ["E501"]
 
 [tool.ruff.format]
 quote-style = "double"
