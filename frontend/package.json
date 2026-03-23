@@ -42,5 +42,11 @@
       "bash -c 'if [ -x ../scrapper/.venv/bin/ruff ]; then ../scrapper/.venv/bin/ruff check --fix \"$@\"; else echo \"Ruff not found in venv, skipping check\"; fi' _",
       "bash -c 'if [ -x ../scrapper/.venv/bin/ruff ]; then ../scrapper/.venv/bin/ruff format \"$@\"; else echo \"Ruff not found in venv, skipping format\"; fi' _"
     ]
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "better-sqlite3",
+      "sharp"
+    ]
   }
 }
