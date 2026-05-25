@@ -4,7 +4,7 @@ const VISITS_KEY = "survey_visits";
 const SUBMITTED_KEY = "survey_submitted";
 const DISMISSED_KEY = "survey_dismissed_at";
 
-const VISITS_THRESHOLD = 3;
+const VISITS_THRESHOLD = 2;
 const DISMISS_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000; // 7 dias
 
 export function useSurveyModal() {
