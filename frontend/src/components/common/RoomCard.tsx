@@ -29,6 +29,7 @@ const RoomCard = memo(function RoomCard({
   timeUntilFree,
   timeUntilOccupancy,
   occupiedUntilEnd,
+  currentOccupancy,
   isFavorite,
   onToggleFavorite,
   onClick,
@@ -71,6 +72,11 @@ const RoomCard = memo(function RoomCard({
               <span className="text-sm font-medium text-rose-500 truncate">
                 Ocupado
               </span>
+              {currentOccupancy && (
+                <span className="text-[10px] text-zinc-600 dark:text-zinc-300 truncate font-semibold tracking-tight leading-tight">
+                  {currentOccupancy.subject.subject}
+                </span>
+              )}
               <span className="text-[10px] text-zinc-500 dark:text-zinc-400 truncate font-semibold tracking-tight">
                 {occupiedUntilEnd
                   ? "Resto del día"

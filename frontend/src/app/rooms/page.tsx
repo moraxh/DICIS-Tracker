@@ -3,6 +3,7 @@
 import { DoorOpen } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { getSearchScore, isOutsideSchoolHours } from "@/backend/utils";
+import Dropdown from "@/components/common/Dropdown";
 import EmptyState from "@/components/common/EmptyState";
 import LayoutSection from "@/components/common/LayoutSection";
 import PageHeader from "@/components/common/PageHeader";
@@ -13,12 +14,20 @@ import { useRooms } from "@/context/Rooms/useRooms";
 import { useFavorites } from "@/hooks/useFavorites";
 import { useScheduleModal } from "@/hooks/useScheduleModal";
 
+const DURATION_OPTIONS = [
+  { id: "0", label: "Cualquier tiempo" },
+  { id: "30", label: "30 min o más" },
+  { id: "60", label: "1 hora o más" },
+  { id: "120", label: "2 horas o más" },
+];
+
 export default function RoomsPage() {
   const { roomsWithState, isLoading } = useRooms();
   const { isFavorite, toggleFavorite } = useFavorites();
   const { openScheduleModal } = useScheduleModal();
   const [searchQuery, setSearchQuery] = useState("");
   const [filter, setFilter] = useState<"all" | "available" | "occupied">("all");
+  const [minDuration, setMinDuration] = useState("0");
 
   const [isOutsideHours, setIsOutsideHours] = useState(false);
 
@@ -44,6 +53,17 @@ export default function RoomsPage() {
       rooms = rooms.filter((r) => r.status === "occupied");
     }
 
+    const min = Number.parseInt(minDuration, 10);
+    if (min > 0) {
+      rooms = rooms.filter(
+        (r) =>
+          r.status === "available" &&
+          (r.timeUntilOccupancy === null ||
+            r.timeUntilOccupancy === undefined ||
+            r.timeUntilOccupancy >= min),
+      );
+    }
+
     if (searchQuery) {
       return rooms
         .map((r) => ({
@@ -58,7 +78,7 @@ export default function RoomsPage() {
     }
 
     return rooms.sort((a, b) => a.room.name.localeCompare(b.room.name));
-  }, [roomsWithState, filter, searchQuery]);
+  }, [roomsWithState, filter, searchQuery, minDuration]);
 
   return (
     <LayoutSection className="space-y-6 mt-6 pb-20">
@@ -86,6 +106,13 @@ export default function RoomsPage() {
             onChange={setFilter}
           />
         </div>
+        <Dropdown
+          options={DURATION_OPTIONS}
+          value={minDuration}
+          onChange={setMinDuration}
+          placeholder="Tiempo mínimo libre"
+          className="sm:max-w-xs"
+        />
       </div>
 
       {isLoading ? (

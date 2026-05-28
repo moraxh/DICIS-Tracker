@@ -48,7 +48,7 @@ export default function Header() {
           </h1>
           <p className="text-zinc-600 dark:text-zinc-400 text-sm sm:text-base max-w-xl mb-4 text-balance">
             Esta herramienta te ayuda a encontrar salones vacíos o saber si un
-            profesor está disponible.
+            profesor está sin clases.
           </p>
           <div className="flex flex-wrap items-center gap-3">
             <Badge

@@ -28,12 +28,12 @@ export const metadata: Metadata = {
   ),
   title: "DICIS Tracker",
   description:
-    "Esta herramienta te ayuda a encontrar salones vacíos o saber si un profesor está disponible en tiempo real.",
+    "Esta herramienta te ayuda a encontrar salones vacíos o saber si un profesor está sin clases en tiempo real.",
   manifest: "/manifest.json",
   openGraph: {
     title: "DICIS Tracker",
     description:
-      "Encuentra salones vacíos y profesores disponibles en tiempo real.",
+      "Encuentra salones vacíos y profesores sin clases en tiempo real.",
     siteName: "DICIS Tracker",
     images: [
       {
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "DICIS Tracker",
     description:
-      "Encuentra salones vacíos y profesores disponibles en tiempo real.",
+      "Encuentra salones vacíos y profesores sin clases en tiempo real.",
     images: ["/showcase.png"],
   },
 };

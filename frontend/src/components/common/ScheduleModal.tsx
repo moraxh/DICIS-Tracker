@@ -99,6 +99,7 @@ export default function ScheduleModal() {
   const [selectedClass, setSelectedClass] = useState<ClassWithDetails | null>(
     null,
   );
+  const [view, setView] = useState<"week" | "today">("today");
 
   useEffect(() => {
     const timer = setInterval(() => setCurrentTime(getMexicoCityDate()), 60000);
@@ -216,149 +217,255 @@ export default function ScheduleModal() {
               ) : (
                 <>
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-                    <h3 className="text-sm font-medium text-zinc-900 dark:text-white uppercase tracking-wider">
-                      Horario Semanal
-                    </h3>
-                    <div className="flex items-center gap-4 text-xs">
-                      <div className="flex items-center gap-1.5">
-                        <div className="w-3 h-3 rounded-sm bg-blue-50 dark:bg-blue-500/20 border border-blue-200 dark:border-blue-500/30"></div>
-                        <span className="text-zinc-500 dark:text-zinc-400">
-                          Clase programada
-                        </span>
-                      </div>
+                    <div className="flex items-center gap-2">
+                      <button
+                        type="button"
+                        onClick={() => setView("today")}
+                        className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-colors ${view === "today" ? "bg-zinc-900 dark:bg-white text-white dark:text-zinc-900" : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"}`}
+                      >
+                        Hoy
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setView("week")}
+                        className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-colors ${view === "week" ? "bg-zinc-900 dark:bg-white text-white dark:text-zinc-900" : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"}`}
+                      >
+                        Semana
+                      </button>
                     </div>
+                    {view === "week" && (
+                      <div className="flex items-center gap-4 text-xs">
+                        <div className="flex items-center gap-1.5">
+                          <div className="w-3 h-3 rounded-sm bg-blue-50 dark:bg-blue-500/20 border border-blue-200 dark:border-blue-500/30"></div>
+                          <span className="text-zinc-500 dark:text-zinc-400">
+                            Clase programada
+                          </span>
+                        </div>
+                      </div>
+                    )}
                   </div>
 
-                  <div className="overflow-x-auto pb-2 -mx-2 px-2 sm:mx-0 sm:px-0">
-                    <div className="min-w-[800px] bg-white dark:bg-[#121212] rounded-xl border border-zinc-200 dark:border-white/10 overflow-hidden shadow-sm">
-                      <div className="flex ml-14 border-b border-zinc-200 dark:border-white/10 bg-zinc-50/50 dark:bg-white/[0.02]">
-                        {DAYS.map((day) => (
-                          <div
-                            key={day}
-                            className={`flex-1 text-center py-3 text-sm font-bold border-l border-zinc-200 dark:border-white/10 first:border-l-0 uppercase tracking-tight ${
-                              day === currentDay
-                                ? "text-blue-700 dark:text-blue-300 bg-blue-500/5"
-                                : "text-zinc-600 dark:text-zinc-300"
-                            }`}
-                          >
-                            {DAY_MAP[day]}
-                          </div>
-                        ))}
-                      </div>
+                  {view === "today" &&
+                    (() => {
+                      const todayClasses = classes
+                        .filter((cls) => cls.day === currentDay)
+                        .sort((a, b) => a.start.localeCompare(b.start));
 
-                      <div className="relative flex h-[600px] overflow-hidden">
-                        <div className="w-14 flex flex-col bg-zinc-50/50 dark:bg-white/[0.02] border-r border-zinc-200 dark:border-white/10 shrink-0">
-                          {HOURS.slice(0, -1).map((hour) => (
-                            <div
-                              key={hour}
-                              className="flex-1 relative border-b border-zinc-200 dark:border-white/10 last:border-b-0"
-                            >
-                              <span className="absolute top-1 right-2 text-[10px] font-medium text-zinc-400 dark:text-zinc-500">
-                                {hour}:00
-                              </span>
-                            </div>
-                          ))}
+                      if (todayClasses.length === 0) {
+                        return (
+                          <div className="flex flex-col items-center justify-center py-16 text-center">
+                            <p className="text-sm font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
+                              Sin clases hoy
+                            </p>
+                            <p className="text-xs text-zinc-400 dark:text-zinc-500 mt-1">
+                              {DAY_MAP[currentDay] ?? "Hoy"}
+                            </p>
+                          </div>
+                        );
+                      }
+
+                      const nowMinutes = currentHour * 60 + currentMinute;
+
+                      return (
+                        <div className="space-y-2">
+                          {todayClasses.map((cls) => {
+                            const startMin = timeToMinutes(cls.start);
+                            const endMin = timeToMinutes(cls.end);
+                            const isActive =
+                              nowMinutes >= startMin && nowMinutes < endMin;
+                            const isPast = nowMinutes >= endMin;
+                            const subtitle =
+                              selectedItem?.type === "room"
+                                ? cls.professor.name
+                                : cls.room.name.toUpperCase();
+
+                            return (
+                              <button
+                                type="button"
+                                key={`today-${cls.day}-${cls.start}-${cls.room.id}-${cls.professor.id}`}
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setSelectedClass(cls);
+                                }}
+                                className={`w-full text-left flex items-stretch gap-3 p-3 rounded-xl border transition-colors ${
+                                  isActive
+                                    ? "bg-emerald-50 dark:bg-emerald-500/10 border-emerald-200 dark:border-emerald-500/30"
+                                    : isPast
+                                      ? "bg-zinc-50 dark:bg-white/[0.02] border-zinc-100 dark:border-white/5 opacity-50"
+                                      : "bg-white dark:bg-[#121212] border-zinc-200 dark:border-white/10 hover:border-zinc-300 dark:hover:border-white/20"
+                                }`}
+                              >
+                                <div className="flex flex-col items-center justify-center w-12 shrink-0">
+                                  <span
+                                    className={`text-[10px] font-bold uppercase tracking-wider ${isActive ? "text-emerald-600 dark:text-emerald-400" : "text-zinc-400"}`}
+                                  >
+                                    {cls.start}
+                                  </span>
+                                  <div
+                                    className={`w-px flex-1 my-1 ${isActive ? "bg-emerald-300 dark:bg-emerald-600" : "bg-zinc-200 dark:bg-white/10"}`}
+                                  />
+                                  <span
+                                    className={`text-[10px] font-medium ${isActive ? "text-emerald-500 dark:text-emerald-500" : "text-zinc-400"}`}
+                                  >
+                                    {cls.end}
+                                  </span>
+                                </div>
+                                <div className="flex-1 min-w-0 flex flex-col justify-center">
+                                  <span className="text-xs font-bold text-zinc-900 dark:text-white uppercase tracking-tight line-clamp-2">
+                                    {cls.subject.subject}
+                                  </span>
+                                  <span className="text-[10px] text-zinc-500 dark:text-zinc-400 truncate mt-0.5">
+                                    {subtitle}
+                                  </span>
+                                </div>
+                                {isActive && (
+                                  <div className="flex items-center shrink-0">
+                                    <span className="text-[9px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-500/20 px-1.5 py-0.5 rounded-md">
+                                      Ahora
+                                    </span>
+                                  </div>
+                                )}
+                              </button>
+                            );
+                          })}
                         </div>
+                      );
+                    })()}
 
-                        {/* Grid Lines & Events */}
-                        <div className="flex-1 relative flex">
-                          {/* Horizontal Lines */}
-                          <div className="absolute inset-0 flex flex-col pointer-events-none">
-                            {HOURS.slice(0, -1).map((hour) => (
-                              <div
-                                key={hour}
-                                className="flex-1 border-b border-zinc-100 dark:border-white/5 last:border-b-0"
-                              ></div>
-                            ))}
-                          </div>
-
-                          {/* Current Time Line */}
-                          {isCurrentTimeVisible && (
-                            <div
-                              className="absolute left-0 right-0 h-[2px] bg-red-500 z-30 pointer-events-none"
-                              style={{ top: `${currentTimeTop}px` }}
-                            >
-                              <div className="absolute left-0 -top-1 w-2.5 h-2.5 bg-red-500 rounded-full shadow-[0_0_8px_rgba(239,68,68,0.8)]"></div>
-                            </div>
-                          )}
-
-                          {/* Vertical Lines (Days) */}
+                  {view === "week" && (
+                    <div className="overflow-x-auto pb-2 -mx-2 px-2 sm:mx-0 sm:px-0">
+                      <div className="min-w-[800px] bg-white dark:bg-[#121212] rounded-xl border border-zinc-200 dark:border-white/10 overflow-hidden shadow-sm">
+                        <div className="flex ml-14 border-b border-zinc-200 dark:border-white/10 bg-zinc-50/50 dark:bg-white/[0.02]">
                           {DAYS.map((day) => (
                             <div
                               key={day}
-                              className={`flex-1 relative border-l border-zinc-100 dark:border-white/5 first:border-l-0 ${
-                                day === currentDay ? "bg-blue-500/[0.03]" : ""
+                              className={`flex-1 text-center py-3 text-sm font-bold border-l border-zinc-200 dark:border-white/10 first:border-l-0 uppercase tracking-tight ${
+                                day === currentDay
+                                  ? "text-blue-700 dark:text-blue-300 bg-blue-500/5"
+                                  : "text-zinc-600 dark:text-zinc-300"
                               }`}
                             >
-                              {/* Render Events for this day */}
-                              {getOverlappingClasses(
-                                classes.filter((cls) => cls.day === day),
-                              ).map((cls) => {
-                                const startDecimal =
-                                  timeToMinutes(cls.start) / 60;
-                                const endDecimal = timeToMinutes(cls.end) / 60;
-                                const top = (startDecimal - 8) * 60;
-                                const height = (endDecimal - startDecimal) * 60;
-
-                                const title = cls.subject.subject;
-
-                                const subtitle =
-                                  selectedItem.type === "room"
-                                    ? cls.professor.name
-                                    : cls.room.name.toUpperCase();
-
-                                return (
-                                  <button
-                                    type="button"
-                                    key={`${cls.day}-${cls.start}-${cls.end}-${cls.room.id}-${cls.professor.id}-${cls.subject.id}`}
-                                    onMouseEnter={() =>
-                                      setHoveredSubjectId(cls.subject.id)
-                                    }
-                                    onMouseLeave={() =>
-                                      setHoveredSubjectId(null)
-                                    }
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                      setSelectedClass(cls);
-                                    }}
-                                    aria-label={`${title} by ${subtitle}`}
-                                    className={`absolute text-start rounded-md p-1.5 px-2 text-xs leading-tight overflow-hidden transition-all duration-200 z-10 flex flex-col group cursor-pointer border shadow-sm ${
-                                      hoveredSubjectId === cls.subject.id
-                                        ? "bg-blue-100 border-blue-400 dark:bg-blue-500/30 dark:border-blue-400 text-blue-900 dark:text-blue-100 scale-[1.02] z-20 shadow-md"
-                                        : "bg-blue-50 border-blue-200 text-blue-700 dark:bg-blue-500/10 dark:border-blue-500/20 dark:text-blue-300"
-                                    }`}
-                                    style={{
-                                      top: `${top}px`,
-                                      height: `${height - 2}px`,
-                                      width: cls.width,
-                                      left: cls.left,
-                                      marginTop: "1px",
-                                    }}
-                                  >
-                                    <div
-                                      className="font-bold line-clamp-2 uppercase text-[10px]"
-                                      title={title}
-                                    >
-                                      {title}
-                                    </div>
-                                    <div
-                                      className="line-clamp-2 opacity-90 hidden sm:block mt-0.5 text-[10px] font-medium"
-                                      title={subtitle}
-                                    >
-                                      {subtitle}
-                                    </div>
-                                    <div className="opacity-80 mt-auto text-[9px] font-medium hidden group-hover:block transition-all">
-                                      {cls.start} - {cls.end}
-                                    </div>
-                                  </button>
-                                );
-                              })}
+                              {DAY_MAP[day]}
                             </div>
                           ))}
                         </div>
+
+                        <div className="relative flex h-[600px] overflow-hidden">
+                          <div className="w-14 flex flex-col bg-zinc-50/50 dark:bg-white/[0.02] border-r border-zinc-200 dark:border-white/10 shrink-0">
+                            {HOURS.slice(0, -1).map((hour) => (
+                              <div
+                                key={hour}
+                                className="flex-1 relative border-b border-zinc-200 dark:border-white/10 last:border-b-0"
+                              >
+                                <span className="absolute top-1 right-2 text-[10px] font-medium text-zinc-400 dark:text-zinc-500">
+                                  {hour}:00
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+
+                          {/* Grid Lines & Events */}
+                          <div className="flex-1 relative flex">
+                            {/* Horizontal Lines */}
+                            <div className="absolute inset-0 flex flex-col pointer-events-none">
+                              {HOURS.slice(0, -1).map((hour) => (
+                                <div
+                                  key={hour}
+                                  className="flex-1 border-b border-zinc-100 dark:border-white/5 last:border-b-0"
+                                ></div>
+                              ))}
+                            </div>
+
+                            {/* Current Time Line */}
+                            {isCurrentTimeVisible && (
+                              <div
+                                className="absolute left-0 right-0 h-[2px] bg-red-500 z-30 pointer-events-none"
+                                style={{ top: `${currentTimeTop}px` }}
+                              >
+                                <div className="absolute left-0 -top-1 w-2.5 h-2.5 bg-red-500 rounded-full shadow-[0_0_8px_rgba(239,68,68,0.8)]"></div>
+                              </div>
+                            )}
+
+                            {/* Vertical Lines (Days) */}
+                            {DAYS.map((day) => (
+                              <div
+                                key={day}
+                                className={`flex-1 relative border-l border-zinc-100 dark:border-white/5 first:border-l-0 ${
+                                  day === currentDay ? "bg-blue-500/[0.03]" : ""
+                                }`}
+                              >
+                                {/* Render Events for this day */}
+                                {getOverlappingClasses(
+                                  classes.filter((cls) => cls.day === day),
+                                ).map((cls) => {
+                                  const startDecimal =
+                                    timeToMinutes(cls.start) / 60;
+                                  const endDecimal =
+                                    timeToMinutes(cls.end) / 60;
+                                  const top = (startDecimal - 8) * 60;
+                                  const height =
+                                    (endDecimal - startDecimal) * 60;
+
+                                  const title = cls.subject.subject;
+
+                                  const subtitle =
+                                    selectedItem.type === "room"
+                                      ? cls.professor.name
+                                      : cls.room.name.toUpperCase();
+
+                                  return (
+                                    <button
+                                      type="button"
+                                      key={`${cls.day}-${cls.start}-${cls.end}-${cls.room.id}-${cls.professor.id}-${cls.subject.id}`}
+                                      onMouseEnter={() =>
+                                        setHoveredSubjectId(cls.subject.id)
+                                      }
+                                      onMouseLeave={() =>
+                                        setHoveredSubjectId(null)
+                                      }
+                                      onClick={(e) => {
+                                        e.stopPropagation();
+                                        setSelectedClass(cls);
+                                      }}
+                                      aria-label={`${title} by ${subtitle}`}
+                                      className={`absolute text-start rounded-md p-1.5 px-2 text-xs leading-tight overflow-hidden transition-all duration-200 z-10 flex flex-col group cursor-pointer border shadow-sm ${
+                                        hoveredSubjectId === cls.subject.id
+                                          ? "bg-blue-100 border-blue-400 dark:bg-blue-500/30 dark:border-blue-400 text-blue-900 dark:text-blue-100 scale-[1.02] z-20 shadow-md"
+                                          : "bg-blue-50 border-blue-200 text-blue-700 dark:bg-blue-500/10 dark:border-blue-500/20 dark:text-blue-300"
+                                      }`}
+                                      style={{
+                                        top: `${top}px`,
+                                        height: `${height - 2}px`,
+                                        width: cls.width,
+                                        left: cls.left,
+                                        marginTop: "1px",
+                                      }}
+                                    >
+                                      <div
+                                        className="font-bold line-clamp-2 uppercase text-[10px]"
+                                        title={title}
+                                      >
+                                        {title}
+                                      </div>
+                                      <div
+                                        className="line-clamp-2 opacity-90 hidden sm:block mt-0.5 text-[10px] font-medium"
+                                        title={subtitle}
+                                      >
+                                        {subtitle}
+                                      </div>
+                                      <div className="opacity-80 mt-auto text-[9px] font-medium hidden group-hover:block transition-all">
+                                        {cls.start} - {cls.end}
+                                      </div>
+                                    </button>
+                                  );
+                                })}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  )}
                 </>
               )}
             </div>

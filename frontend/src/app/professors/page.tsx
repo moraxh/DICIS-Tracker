@@ -82,7 +82,7 @@ export default function ProfessorsPage() {
           <Tabs
             tabs={[
               { id: "all", label: "Todos" },
-              { id: "available", label: "Disponibles" },
+              { id: "available", label: "Sin clases" },
               { id: "occupied", label: "Ocupados" },
             ]}
             activeTab={filter}
