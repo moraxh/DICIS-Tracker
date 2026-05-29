@@ -37,6 +37,12 @@
     "tailwindcss": "^4",
     "typescript": "^5"
   },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "better-sqlite3",
+      "sharp"
+    ]
+  },
   "lint-staged": {
     "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc,css}": [
       "biome check --write --no-errors-on-unmatched"
