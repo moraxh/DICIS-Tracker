@@ -1,54 +1,123 @@
 # Guía de Contribución
 
-¡Hola! Muchas gracias por tu interés en aportar al proyecto. Toda la ayuda es súper bienvenida. Para que tu Pull Request (PR) se revise y apruebe rápidamente, te compartimos los lineamientos principales del proyecto.
+¡Hola! Muchas gracias por tu interés en aportar a DICIS Tracker. Toda ayuda es bienvenida, especialmente si mantiene la app rápida, útil, confiable y gratuita para estudiantes.
 
-## 0. Agregar tu perfil a los Contribuidores
-Si realizaste un PR que ha aportado valor al proyecto (corrección de bugs, mejoras, etc.), ¡nos encantaría darte crédito!
-Simplemente agrega tu perfil a la lista en el archivo de datos:
-* Edita el archivo `frontend/src/data/contributors.json`
-* Agrega tu nombre de usuario de Github a la lista:
-  ```json
-  [
-    "usuario-existente",
-    "tu-usuario-de-github"
-  ]
-  ```
-Esto automáticamente levantará tu foto de perfil desde GitHub y te agregará al pie de página del proyecto. Puedes hacer esto como parte de tu PR de contribución o en uno nuevo después.
+## 0. Agregar tu perfil a los contribuidores
 
-## 1. Alcance del Proyecto
-DICIS-Tracker está diseñado para ser una herramienta de consulta rápida para estudiantes. 
-* **Mantén el enfoque:** Evita proponer funcionalidades que lo conviertan en una herramienta de gestión personal (como paneles de usuario o registro histórico de materias). Por cuestiones de términos legales y enfoque, queremos evitar replicar los sistemas y plataformas oficiales de la universidad.
+Si realizaste un PR que aportó valor al proyecto, nos encantaría darte crédito.
 
-## 2. Rendimiento y Arquitectura
-Dado que gran parte del tráfico proviene de dispositivos móviles, la eficiencia y el uso de batería son críticos.
-* **Procesamiento en el Backend:** La lógica de negocio compleja, los filtros sobre listas grandes, y la validación de solapamientos deben procesarse en la API. El frontend debe mantenerse ligero y dedicarse principalmente a renderizar la información. Evita introducir ciclos de alta complejidad algorítmica en el cliente.
-* **Optimización en el Cliente:** Minimiza las recargas constantes o el uso de temporizadores (`setInterval`) repetitivos en el frontend para actualizar datos, ya que esto degrada la experiencia en celulares y limita el uso del caché.
+Edita `frontend/src/data/contributors.json` y agrega tu usuario de GitHub:
 
-## 3. Manejo de Dependencias
-Al ser una aplicación enfocada en la rapidez, somos rigurosos con el tamaño del proyecto.
-* **Evalúa la necesidad:** Preferimos evitar incluir paquetes o librerías pesadas (como herramientas avanzadas de manejo de estado o virtualización) si la funcionalidad puede resolverse con el stack actual o usando enfoques más livianos. Toda nueva dependencia debe estar fuertemente justificada.
+```json
+[
+  "usuario-existente",
+  "tu-usuario-de-github"
+]
+```
 
-## 4. Diseño y Estilos
-* **Coherencia Visual:** Procura mantener la coherencia con el diseño y la paleta de colores actual. Si deseas proponer un cambio general a la interfaz o implementar nuevos temas visuales, por favor abre un *Issue* primero para discutirlo antes de escribir el código.
+Esto levantará automáticamente tu foto de perfil desde GitHub y te agregará al pie de página del proyecto. Puedes incluirlo en el mismo PR o abrir uno pequeño después.
 
-## 5. Mantenibilidad e Infraestructura
-El propósito a largo plazo del proyecto es mantenerlo **100% gratuito** apoyándonos en tiers gratuitos de plataformas como Vercel y GitHub Actions.
-* **Eficiencia:** Cualquier contribución que mejore los tiempos de carga, reduzca consultas innecesarias, optimice la base de datos o disminuya tiempos de *build* es sumamente valorada.
+## 1. Alcance del proyecto
 
-## 6. Sugerencias para PRs
-* **PRs Atómicos:** Mantén tus PRs enfocados en una sola cosa. Si deseas realizar mejoras de UI/componentes y a la vez modificar lógica profunda de los servicios, es mejor separarlos en PRs distintos. Esto facilita mucho su revisión e integración.
+DICIS Tracker está diseñado como una herramienta de consulta rápida para estudiantes.
 
-¡Gracias de nuevo por tu tiempo y tus aportes! Estamos emocionados de colaborar contigo.
+- **Mantén el enfoque:** evita funcionalidades que lo conviertan en una plataforma de gestión académica, registro personal de materias o historial escolar.
+- **Respeta el contexto legal:** no queremos replicar ni sustituir sistemas oficiales de la universidad.
+- **Cuida el aviso legal:** la app debe seguir comunicando que es una herramienta independiente, informativa y basada en fuentes públicas.
 
-## 7. Formato de Código (Linting automático)
-Para mantener nuestro código limpio y ordenado de forma automática, hemos implementado herramientas de autorresolución de formato tanto para el frontend como para los scripts.
+## 2. Plataforma gratis
 
-**1. Acción Automática (Pre-commit)**
-El proyecto cuenta con un sistema de Git Hooks administrado por **Husky** y **lint-staged**. Esto significa que **cada vez que ejecutes un `git commit`**, el proyecto va a interceptar tus archivos modificados y automáticamente ejecutará:
-* `biome check --write` para archivos de Next.
-* `ruff check --fix` y `ruff format` para archivos de Python. 
+El objetivo a largo plazo es mantener el proyecto **100% gratuito**, apoyándonos en tiers gratuitos como Vercel y GitHub Actions.
 
-Para que esto funcione correctamente en tu entorno local, asegúrate de correr al menos una vez `pnpm install` desde tu subdirectorio **frontend**.
+- Evita servicios pagados o dependencias operativas nuevas sin discusión previa.
+- Mantén el scraping en intervalos prudentes para no saturar fuentes externas.
+- Prefiere datos estáticos/exportados cuando la información no necesita actualizarse en vivo.
+- Optimiza el tamaño del build y el tiempo de ejecución.
+- Reduce consultas innecesarias, trabajo repetido y lógica pesada en el cliente.
 
-**2. Validación en la Nube (GitHub Actions)**
-Si por alguna razón el hook no se ejecutó, el repositorio tiene configurada una acción de GitHub que revisa la sintaxis y el formato del código cada que abres un Pull Request o haces un Push a la rama principal. ¡Asegúrate de que no haya errores marcados en rojo en tu PR para que podamos aprobarlo fácilmente!
+Las contribuciones que mejoren tiempos de carga, reduzcan costos o simplifiquen infraestructura son especialmente valiosas.
+
+## 3. Rendimiento y arquitectura
+
+Gran parte del tráfico viene de dispositivos móviles, así que batería, datos y fluidez importan mucho.
+
+- Procesa filtros complejos, solapamientos y transformaciones grandes antes de llegar al cliente cuando sea posible.
+- Mantén el frontend enfocado en renderizar datos ya preparados.
+- Evita `setInterval` o recargas constantes si el dato puede resolverse por caché, estado local o cálculo puntual.
+- No agregues librerías pesadas si el stack actual puede resolver el caso con claridad.
+
+## 4. Datos y scraper
+
+El scraper existe para transformar información pública en una base local fácil de consultar.
+
+- No aumentes agresivamente la frecuencia de scraping.
+- Si agregas una fuente, documenta su origen en `docs/data_sources/`.
+- Cuida que los datos generados sigan siendo reproducibles.
+- Si cambias `frontend/src/data.db`, asegúrate de regenerar los JSON necesarios con el flujo de build.
+
+## 5. Diseño y experiencia
+
+Mantén la interfaz clara, rápida y coherente con el estilo actual.
+
+- Conserva la experiencia mobile-first.
+- Usa componentes existentes antes de crear patrones nuevos.
+- Evita cambios visuales globales sin abrir primero un issue o discusión.
+- Prioriza escaneo rápido: salones, profesores, horarios y disponibilidad deben encontrarse sin fricción.
+
+## 6. PRs atómicos
+
+Mantén tus PRs enfocados en una sola cosa:
+
+- Un bug fix.
+- Una mejora visual acotada.
+- Una optimización de rendimiento.
+- Una mejora al scraper.
+- Una actualización de datos.
+
+Si deseas modificar UI, lógica de datos y scraper al mismo tiempo, considera separarlo en PRs distintos.
+
+## 7. Formato de código
+
+El proyecto usa Biome para el frontend y Ruff para Python.
+
+Desde `frontend/`:
+
+```bash
+pnpm lint
+pnpm format
+```
+
+Para Python, dentro de `scrapper/` con el virtualenv activo:
+
+```bash
+ruff check --fix .
+ruff format .
+```
+
+El proyecto también cuenta con hooks de Husky y `lint-staged`. Para activarlos localmente, ejecuta al menos una vez:
+
+```bash
+cd frontend
+pnpm install
+```
+
+## 8. Validación antes del PR
+
+Antes de abrir un PR, procura ejecutar:
+
+```bash
+cd frontend
+pnpm build
+pnpm lint
+```
+
+Si tocaste el scraper:
+
+```bash
+cd scrapper
+python src/main.py
+```
+
+Si agregas variables de entorno nuevas, documenta su propósito en el README y no subas valores reales.
+
+¡Gracias por ayudar a que DICIS Tracker siga siendo una herramienta útil para la comunidad estudiantil!
