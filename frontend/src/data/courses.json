@@ -1,0 +1,10 @@
+[
+  { "id": "4", "name": "Ingeniería Eléctrica" },
+  { "id": "5", "name": "Ingeniería Mecánica" },
+  { "id": "2", "name": "Ingeniería en Comunicaciones y Electrónica" },
+  { "id": "7", "name": "Ingeniería en Datos e Ingeniería Artifícial" },
+  { "id": "1", "name": "Ingeniería en Mecatrónica" },
+  { "id": "3", "name": "Ingeniería en Sistemas Computacionales" },
+  { "id": "8", "name": "Licenciatura en Artes Digitales" },
+  { "id": "6", "name": "Licenciatura en Gestión Empresarial" }
+]

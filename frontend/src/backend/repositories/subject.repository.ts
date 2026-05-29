@@ -1,5 +1,6 @@
-import { db } from "@/backend/db";
 import type { Result } from "@/backend/types";
+import coursesData from "@/data/courses.json";
+import subjectsData from "@/data/subjects.json";
 
 export interface SubjectWithDetails {
   id: string;
@@ -13,86 +14,24 @@ export interface SubjectWithDetails {
   roomId: string;
 }
 
+type SubjectRecord = SubjectWithDetails;
+type CourseRecord = { id: string; name: string };
+
+const subjects = subjectsData as SubjectRecord[];
+const courses = coursesData as CourseRecord[];
+
 export class SubjectRepository {
   static getAllSubjectsWithDetails(): SubjectWithDetails[] {
-    const rows = db
-      .prepare(`
-        SELECT
-          c.id,
-          c.subject as name,
-          co.name as courseName,
-          co.id as courseId,
-          p.names || ' ' || p.last_names as professorName,
-          p.honorific,
-          p.id as professorId,
-          r.name as roomName,
-          r.id as roomId
-        FROM class c
-        JOIN course co ON c.course_id = co.id
-        JOIN professor p ON c.professor_id = p.id
-        JOIN room r ON c.room_id = r.id
-        ORDER BY c.subject ASC
-      `)
-      .all() as any[];
-
-    return rows.map((row) => ({
-      id: row.id.toString(),
-      name: row.name,
-      courseName: row.courseName,
-      courseId: row.courseId.toString(),
-      professor: row.professorName.trim(),
-      honorific: row.honorific,
-      professorId: row.professorId.toString(),
-      roomName: row.roomName,
-      roomId: row.roomId.toString(),
-    }));
+    return subjects;
   }
 
   static getAllCourses(): { id: string; name: string }[] {
-    const rows = db
-      .prepare("SELECT id, name FROM course ORDER BY name")
-      .all() as any[];
-    return rows.map((row) => ({ id: row.id.toString(), name: row.name }));
+    return courses;
   }
 
   static getSubjectById(id: string): Result<SubjectWithDetails> {
-    const row = db
-      .prepare(`
-        SELECT
-          c.id,
-          c.subject as name,
-          co.name as courseName,
-          co.id as courseId,
-          p.names || ' ' || p.last_names as professorName,
-          p.honorific,
-          p.id as professorId,
-          r.name as roomName,
-          r.id as roomId
-        FROM class c
-        JOIN course co ON c.course_id = co.id
-        JOIN professor p ON c.professor_id = p.id
-        JOIN room r ON c.room_id = r.id
-        WHERE c.id = ?
-      `)
-      .get(id) as any;
-
-    if (!row) {
-      return { success: false, error: "Subject not found" };
-    }
-
-    return {
-      success: true,
-      data: {
-        id: row.id.toString(),
-        name: row.name,
-        courseName: row.courseName,
-        courseId: row.courseId.toString(),
-        professor: row.professorName.trim(),
-        honorific: row.honorific,
-        professorId: row.professorId.toString(),
-        roomName: row.roomName,
-        roomId: row.roomId.toString(),
-      },
-    };
+    const row = subjects.find((s) => s.id === id);
+    if (!row) return { success: false, error: "Subject not found" };
+    return { success: true, data: row };
   }
 }

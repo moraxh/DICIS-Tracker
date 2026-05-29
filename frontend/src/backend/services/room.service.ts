@@ -6,7 +6,6 @@ import {
   getCurrentMinutes,
   getTodayOfWeek,
   isClassNow,
-  minutesUntilTime,
   timeToMinutes,
 } from "@/backend/utils";
 
@@ -21,13 +20,15 @@ export interface RoomWithSchedule {
 }
 
 export class RoomService {
-  static getRoomsWithState(): RoomsWithState {
-    const todayDayOfWeek = getTodayOfWeek();
-    const hydratedClasses = ClassRepository.getClassesByDay(todayDayOfWeek);
+  static getRoomsWithState(day?: string, time?: string): RoomsWithState {
+    const todayDayOfWeek = day ?? getTodayOfWeek();
+    const hydratedClasses = ClassRepository.getClassesByDay(
+      todayDayOfWeek as ReturnType<typeof getTodayOfWeek>,
+    );
 
     const allRooms = RoomRepository.getAllRooms();
 
-    const currentMinutes = getCurrentMinutes();
+    const currentMinutes = time ? timeToMinutes(time) : getCurrentMinutes();
     const classesNow = hydratedClasses.filter((cls) =>
       isClassNow(cls, currentMinutes),
     );
@@ -75,7 +76,7 @@ export class RoomService {
           }
         }
 
-        timeUntilFree = minutesUntilTime(actualEndClass.end);
+        timeUntilFree = timeToMinutes(actualEndClass.end) - currentMinutes;
 
         // Check if the current block of classes ends at or after 6 PM (18:00)
         if (timeToMinutes(actualEndClass.end) >= timeToMinutes("18:00")) {
@@ -83,7 +84,8 @@ export class RoomService {
         }
       } else if (nextOccupancy) {
         // Room is free - calculate when it becomes occupied
-        timeUntilOccupancy = minutesUntilTime(nextOccupancy.start);
+        timeUntilOccupancy =
+          timeToMinutes(nextOccupancy.start) - currentMinutes;
       }
 
       return {

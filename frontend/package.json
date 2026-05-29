@@ -5,6 +5,7 @@
   "scripts": {
     "prepare": "cd .. && husky",
     "dev": "next dev",
+    "prebuild": "node scripts/export-db.mjs",
     "build": "next build --webpack",
     "start": "next start",
     "lint": "biome check",
@@ -15,7 +16,6 @@
     "@supabase/supabase-js": "^2.106.1",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
-    "better-sqlite3": "^12.10.0",
     "lucide-react": "^0.577.0",
     "motion": "^12.38.0",
     "next": "16.2.0",
@@ -31,6 +31,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "1.0.0",
+    "better-sqlite3": "^12.10.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
     "tailwindcss": "^4",
