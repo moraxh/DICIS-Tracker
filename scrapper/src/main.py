@@ -3,13 +3,13 @@ import logging
 import os
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-from db import save_to_db
+from export import save_to_json
 from scrapers.index import SCRAPER_REGISTRY
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 
-def run_all_scrapers(output_path):
+def run_all_scrapers():
   logging.info("Starting to run all scrapers...")
   with ThreadPoolExecutor(max_workers=5) as executor:
     futures = {}
@@ -23,13 +23,11 @@ def run_all_scrapers(output_path):
       future = executor.submit(scraper_func, scraper_config.url)
       futures[future] = scraper_config
 
-    # Collect results
     results = []
     for future in as_completed(futures):
       target_config = futures[future]
       try:
         result = future.result()
-        # Add source information to each course
         for course in result:
           course.source_campus = target_config.campus
           course.source_division = target_config.division
@@ -45,20 +43,20 @@ if __name__ == "__main__":
   parser = argparse.ArgumentParser()
 
   base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-  default_db_path = os.path.join(base_dir, "frontend", "src", "data.db")
+  default_output = os.path.join(base_dir, "frontend", "src", "data")
 
   parser.add_argument(
     "--output",
     "-o",
-    help="Output sqlite db file path",
-    default=default_db_path,
+    help="Output directory for JSON files",
+    default=default_output,
   )
   args = parser.parse_args()
 
   logging.info("Starting pipeline...")
-  data = run_all_scrapers(args.output)
+  data = run_all_scrapers()
   logging.info(f"Scraped total of {len(data)} courses.")
 
   logging.info(f"Saving data to {args.output}...")
-  save_to_db(data, db_path=args.output)
+  save_to_json(data, output_dir=args.output)
   logging.info("Done!")
