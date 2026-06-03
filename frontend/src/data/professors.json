@@ -604,7 +604,7 @@
   },
   {
     "id": "c4198068e968039cf248087ab740265f9a8d817ac9d379a620ae7dd31dd0a5a2",
-    "fullName": "Geovanni Hernandez Gomez",
+    "fullName": "Geovanni Hern\u00e1ndez G\u00f3mez",
     "honorific": "Dr.",
     "locationId": "1",
     "campus": "Irapuato - Salamanca",
@@ -783,6 +783,15 @@
     "headquarters": "Salamanca"
   },
   {
+    "id": "b793f917720b78d4d261302e98f0d537e9f40e77561d81346cf245f75cd8ad28",
+    "fullName": "J. Merced Lozano Garc\u00eda",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
     "id": "902cc69d81fb0b65b6f3a2518e2a9f766a4752902f42900fc6be2e8c4ec4123e",
     "fullName": "Jacob Gonz\u00e1lez Villag\u00f3mez",
     "honorific": "Dr.",
@@ -840,6 +849,15 @@
     "id": "8ef498b872d0445b5325d61816871f599699c8c18b979d2769a6dfdc09bb738e",
     "fullName": "Jes\u00fas Ignacio Lara P\u00e9rez",
     "honorific": "M.I.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "02b7248a6c5973ebc1313778aa76ed881befd0e3d7abc9c949696e2035fde079",
+    "fullName": "Jes\u00fas Ixbalank Torres Z\u00fa\u00f1iga",
+    "honorific": "Dr.",
     "locationId": "2",
     "campus": "Irapuato - Salamanca",
     "division": "DICIS",
@@ -1198,7 +1216,7 @@
   },
   {
     "id": "6d94967dd24da66ce43f8157160684127664c81e92639044b4be02856c29bba7",
-    "fullName": "Leonardo Mart\u00ednez Jimenez",
+    "fullName": "Leonardo Mart\u00ednez Jim\u00e9nez",
     "honorific": "Dr.",
     "locationId": "1",
     "campus": "Irapuato - Salamanca",

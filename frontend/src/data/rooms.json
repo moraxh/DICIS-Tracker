@@ -152,6 +152,22 @@
     "headquarters": "Yuriria"
   },
   {
+    "id": "dfdc8ee847df349b5082d4c438042ffa731bd302901c12f849be175cdf56250b",
+    "name": "A101",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "d3172b5450dd2df599f06ef116953a4defed0b5f2977dd70728481a25721a94a",
+    "name": "A102",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
     "id": "996ea2fbbde3d0bbf3b2ac70d536bd7c0f4c5b1b4fd0d114c6a5e8c8a7500c41",
     "name": "A103",
     "locationId": "2",
@@ -392,8 +408,88 @@
     "headquarters": "Salamanca"
   },
   {
+    "id": "9698c8b16bfb386f219f2731a6a32fca08098a1500539c243f4815a72a2d7389",
+    "name": "Aula Posgrado",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
     "id": "a815cf37e34409090503fc4d89b0971cbf0d086c63f0ef72140dd15a02049335",
     "name": "B101",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "a2faa028a7a2d1dc92e701a97e5312cc20484ca26bf4decaa7af5aac30a9e8e7",
+    "name": "Bib. 102",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "d2ee6d1b9794d18e69a41925610e44b94eda83867f9e78371eb84f4272017479",
+    "name": "Bib. 104",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "8a4a0db94d0d313e52b5ca1554db29c15b0c769427da131230fbc5edeb38e726",
+    "name": "Bib. 106",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "499e34edbcefacd443fb692669c0a5aebff5d9ae8af54af70f755a901d40f102",
+    "name": "Bib. 107",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "d57099f826ea7dfcbf55b8c640a6ca2d4e3f70ecf8053b107af3a899d4234bd8",
+    "name": "Bib. 110",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "ff85b6cdfdef7a0400da60df778a015abbe172f551aa6d7dac742d065a25d207",
+    "name": "Bib. 111",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "8c9904fabb2743eee402ee2d691eec58656417d3db8a40a67b77b883dfe18105",
+    "name": "Bib. 112",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "cefdb820a3eb3e166b69102adeee30470c74d11fecf1da8a0eba0d2765166725",
+    "name": "Bib. 113",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "8fa101147264a28420258a773155939ad419e235b23551c0eae6e326907ab5c8",
+    "name": "Bib. 114",
     "locationId": "2",
     "campus": "Irapuato - Salamanca",
     "division": "DICIS",
@@ -472,8 +568,24 @@
     "headquarters": "Salamanca"
   },
   {
+    "id": "2e8c3f9fd583f9929552bcb815b21acc0da5cd1d84a844a62eed9ecb48fbd116",
+    "name": "Lab Mat.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
     "id": "4e759f686cd254f2f8a1fef52d21f0d8e3f3462c103d5f87f721c71ed58be1b3",
     "name": "Lab ele",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "56bbe4585ac4fc39c1b2ab7680190919491c5fc3a30883b50c4d795f4dc31679",
+    "name": "Lab. An\u00e1lisis Exp. de Esfuerzos",
     "locationId": "2",
     "campus": "Irapuato - Salamanca",
     "division": "DICIS",
@@ -630,6 +742,14 @@
     "campus": "Irapuato - Salamanca",
     "division": "DICIS",
     "headquarters": "Yuriria"
+  },
+  {
+    "id": "0c442eca04e6b9c81553f7c1bdcf38011c6b41d6d91c07540281056b0f39bae1",
+    "name": "Sala de C\u00f3mputo",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
     "id": "fdcba22fc70adfa0318b0cbef81c88c9e2609a0c58863296477d39b9d5feb7e7",

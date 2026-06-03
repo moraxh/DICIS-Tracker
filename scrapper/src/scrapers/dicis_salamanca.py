@@ -18,6 +18,8 @@ filtered_rooms_names = {
   "Virtual",
   "Teams",
   "Canchas",
+  "En línea",
+  "En linea",
 }
 
 
@@ -35,6 +37,21 @@ def is_valid_room(name):
       return False
 
   return True
+
+
+def normalize_room(name):
+  room = clean(name)
+  normalized = room.casefold()
+
+  if normalized == "aula posgrado" or normalized == "aula de posgrado":
+    return "Aula Posgrado"
+
+  return room
+
+
+def should_skip_subject(name):
+  subject = clean(name).casefold()
+  return "actividad complementaria" in subject
 
 
 def format_professor(name):
@@ -154,10 +171,13 @@ def parse_table(table):
 
   for row in rows:
     subject = clean(row[subject_idx])
-    room = clean(row[room_idx])
+    room = normalize_room(row[room_idx])
     prof_raw = clean(row[prof_idx])
 
     if not subject or not room:
+      continue
+
+    if should_skip_subject(subject):
       continue
 
     # Filter generic 'zones' or invalid rooms out of the actual schema
@@ -183,9 +203,22 @@ def parse_table(table):
 
 
 def scrape_courses(
-  url: str, section_title: str, custom_rules: Iterable[tuple[str, str]] | None = None
+  url: str,
+  section_titles: str | Iterable[str],
+  custom_rules: Iterable[tuple[str, str]] | None = None,
 ):
-  anchors = get_pdf_links(url, section_title)
+  titles = [section_titles] if isinstance(section_titles, str) else list(section_titles)
+  anchors = []
+  seen = set()
+
+  for section_title in titles:
+    for anchor in get_pdf_links(url, section_title):
+      key = (anchor["name"], anchor["href"])
+      if key in seen:
+        continue
+      seen.add(key)
+      anchors.append(anchor)
+
   courses = []
 
   with ThreadPoolExecutor(max_workers=5) as executor:
@@ -212,7 +245,11 @@ def scrape_courses(
 
 def scraper_dicis_salamanca(url: str) -> list[Course]:
   dicis_rules = [("cdmanu", "manufactura"), ("computo", "comp. a")]
-  return scrape_courses(url, "Sede Salamanca Enero", custom_rules=dicis_rules)
+  return scrape_courses(
+    url,
+    ["Sede Salamanca Enero", "Sede Salamanca Mayo"],
+    custom_rules=dicis_rules,
+  )
 
 
 def scraper_dicis_yuriria(url: str) -> list[Course]:
