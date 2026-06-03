@@ -10,7 +10,12 @@ type ClassRecord = {
   end: string;
   subjectId: string;
   subjectName: string;
+  courseId: string;
   courseName: string;
+  locationId: string;
+  campus: string;
+  division: string;
+  headquarters: string;
   professorId: string;
   professorName: string;
   professorHonorific: string;
@@ -36,17 +41,41 @@ function toClassWithDetails(r: ClassRecord): ClassWithDetails {
 }
 
 export class ClassRepository {
-  static getClassesByRoomId(roomId: string): ClassWithDetails[] {
-    return data.filter((r) => r.roomId === roomId).map(toClassWithDetails);
-  }
-
-  static getClassesByDay(day: (typeof DaysOfWeek)[number]): ClassWithDetails[] {
-    return data.filter((r) => r.day === day).map(toClassWithDetails);
-  }
-
-  static getClassesByProfessor(professorId: string): ClassWithDetails[] {
+  static getClassesByRoomId(
+    roomId: string,
+    headquarters?: string,
+  ): ClassWithDetails[] {
     return data
-      .filter((r) => r.professorId === professorId)
+      .filter(
+        (r) =>
+          r.roomId === roomId &&
+          (!headquarters || r.headquarters === headquarters),
+      )
+      .map(toClassWithDetails);
+  }
+
+  static getClassesByDay(
+    day: (typeof DaysOfWeek)[number],
+    headquarters?: string,
+  ): ClassWithDetails[] {
+    return data
+      .filter(
+        (r) =>
+          r.day === day && (!headquarters || r.headquarters === headquarters),
+      )
+      .map(toClassWithDetails);
+  }
+
+  static getClassesByProfessor(
+    professorId: string,
+    headquarters?: string,
+  ): ClassWithDetails[] {
+    return data
+      .filter(
+        (r) =>
+          r.professorId === professorId &&
+          (!headquarters || r.headquarters === headquarters),
+      )
       .map(toClassWithDetails);
   }
 }

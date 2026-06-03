@@ -20,13 +20,18 @@ export interface RoomWithSchedule {
 }
 
 export class RoomService {
-  static getRoomsWithState(day?: string, time?: string): RoomsWithState {
+  static getRoomsWithState(
+    day?: string,
+    time?: string,
+    headquarters?: string,
+  ): RoomsWithState {
     const todayDayOfWeek = day ?? getTodayOfWeek();
     const hydratedClasses = ClassRepository.getClassesByDay(
       todayDayOfWeek as ReturnType<typeof getTodayOfWeek>,
+      headquarters,
     );
 
-    const allRooms = RoomRepository.getAllRooms();
+    const allRooms = RoomRepository.getAllRooms(headquarters);
 
     const currentMinutes = time ? timeToMinutes(time) : getCurrentMinutes();
     const classesNow = hydratedClasses.filter((cls) =>
@@ -107,14 +112,20 @@ export class RoomService {
     };
   }
 
-  static getRoomSchedule(roomId: string): RoomWithSchedule | null {
+  static getRoomSchedule(
+    roomId: string,
+    headquarters?: string,
+  ): RoomWithSchedule | null {
     const room = RoomRepository.getRoomById(roomId);
     if (!room.success) {
       console.error(`Room not found: ${roomId}`);
       return null;
     }
 
-    const hydratedClasses = ClassRepository.getClassesByRoomId(roomId);
+    const hydratedClasses = ClassRepository.getClassesByRoomId(
+      roomId,
+      headquarters,
+    );
 
     return {
       room: room.data,

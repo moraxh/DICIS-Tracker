@@ -2,7 +2,12 @@ import { Professor } from "@/backend/models/professor.model";
 import type { Result } from "@/backend/types";
 import professorsData from "@/data/professors.json";
 
-type ProfessorRecord = { id: string; fullName: string; honorific: string };
+type ProfessorRecord = {
+  id: string;
+  fullName: string;
+  honorific: string;
+  headquarters?: string;
+};
 const data = professorsData as ProfessorRecord[];
 
 export class ProfessorRepository {
@@ -15,7 +20,9 @@ export class ProfessorRepository {
     };
   }
 
-  static getAllProfessors(): Professor[] {
-    return data.map((r) => new Professor(r.id, r.fullName, r.honorific));
+  static getAllProfessors(headquarters?: string): Professor[] {
+    return data
+      .filter((r) => !headquarters || r.headquarters === headquarters)
+      .map((r) => new Professor(r.id, r.fullName, r.honorific));
   }
 }

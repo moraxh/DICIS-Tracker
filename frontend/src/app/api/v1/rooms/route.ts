@@ -8,6 +8,7 @@ export function GET(request: NextRequest) {
     const { searchParams } = request.nextUrl;
     const day = searchParams.get("day") ?? undefined;
     const time = searchParams.get("time") ?? undefined;
+    const headquarters = searchParams.get("headquarters") ?? undefined;
 
     const isCustomQuery = day !== undefined || time !== undefined;
 
@@ -21,7 +22,7 @@ export function GET(request: NextRequest) {
       );
     }
 
-    const response = RoomService.getRoomsWithState(day, time);
+    const response = RoomService.getRoomsWithState(day, time, headquarters);
 
     const cacheSeconds = secondsUntilNextHalfHour();
 

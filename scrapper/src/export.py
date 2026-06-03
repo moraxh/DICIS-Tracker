@@ -30,18 +30,30 @@ def save_to_json(data, output_dir):
       loc_id = len(loc_cache) + 1
       loc_cache[loc_key] = loc_id
 
-    # Course
-    if course.name not in course_cache:
-      course_id = len(course_cache) + 1
-      course_cache[course.name] = {"id": str(course_id), "name": course.name}
+    location = {
+      "locationId": str(loc_cache[loc_key]),
+      "campus": campus_val,
+      "division": div_val,
+      "headquarters": hq_val,
+    }
 
-    course_id = course_cache[course.name]["id"]
+    # Course
+    course_key = (course.name, hq_val)
+    if course_key not in course_cache:
+      course_id = len(course_cache) + 1
+      course_cache[course_key] = {
+        "id": str(course_id),
+        "name": course.name,
+        **location,
+      }
+
+    course_id = course_cache[course_key]["id"]
 
     for cls in course.classes:
       # Room
       r_id = generate_room_id(campus_val, div_val, hq_val, cls.classroom)
       if r_id not in room_cache:
-        room_cache[r_id] = {"id": r_id, "name": cls.classroom}
+        room_cache[r_id] = {"id": r_id, "name": cls.classroom, **location}
 
       # Professor
       p_id = generate_professor_id(campus_val, div_val, hq_val, cls.professor)
@@ -50,6 +62,7 @@ def save_to_json(data, output_dir):
           "id": p_id,
           "fullName": f"{cls.professor.names} {cls.professor.last_names}".strip(),
           "honorific": cls.professor.honorific,
+          **location,
         }
 
       # Class
@@ -65,6 +78,7 @@ def save_to_json(data, output_dir):
           "professorId": p_id,
           "roomName": cls.classroom,
           "roomId": r_id,
+          **location,
         }
 
       # Schedules
@@ -82,6 +96,8 @@ def save_to_json(data, output_dir):
             "professorHonorific": cls.professor.honorific,
             "roomId": r_id,
             "roomName": cls.classroom,
+            "courseId": course_id,
+            **location,
           }
         )
 

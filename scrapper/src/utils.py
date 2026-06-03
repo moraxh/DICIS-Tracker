@@ -31,14 +31,17 @@ def generate_hash(txt):
 
 
 def subject_id(campus, division, headquarters, course_name, subject):
-  base = f"{course_name}|{subject}"
+  base = f"{campus}|{division}|{headquarters}|{course_name}|{subject}"
   return generate_hash(base)
 
 
 def professor_id(campus, division, headquarters, professor):
-  base = f"{professor.honorific}|{professor.names}|{professor.last_names}"
+  base = (
+    f"{campus}|{division}|{headquarters}|"
+    f"{professor.honorific}|{professor.names}|{professor.last_names}"
+  )
   return generate_hash(base)
 
 
 def room_id(campus, division, headquarters, room):
-  return generate_hash(room)
+  return generate_hash(f"{campus}|{division}|{headquarters}|{room}")

@@ -62,6 +62,7 @@ class Division(str, Enum):
 class Headquarters(str, Enum):
   SALAMANCA = "Salamanca"
   IRAPUATO = "Irapuato"
+  YURIRIA = "Yuriria"
 
 
 @dataclass
@@ -73,7 +74,7 @@ class ScraperConfig:
   scraper: Callable[..., list[Course]]
 
 
-from .dicis_salamanca import scraper_dicis_salamanca  # noqa: E402
+from .dicis_salamanca import scraper_dicis_salamanca, scraper_dicis_yuriria  # noqa: E402
 
 SCRAPER_REGISTRY = [
   ScraperConfig(
@@ -82,5 +83,12 @@ SCRAPER_REGISTRY = [
     headquarters=Headquarters.SALAMANCA,
     url="http://www.caecis.ugto.mx/caecis/pages/horarios.aspx",
     scraper=scraper_dicis_salamanca,
+  ),
+  ScraperConfig(
+    campus=Campus.IRAPUATO_SALAMANCA,
+    division=Division.DICIS,
+    headquarters=Headquarters.YURIRIA,
+    url="http://www.caecis.ugto.mx/caecis/pages/horarios.aspx",
+    scraper=scraper_dicis_yuriria,
   )
 ]

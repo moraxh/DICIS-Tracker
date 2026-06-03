@@ -6,9 +6,11 @@ import type {
   RoomsWithState,
   RoomWithSchedule,
 } from "@/backend/services/room.service";
+import { useHeadquarters } from "@/context/Headquarters/useHeadquarters";
 import { RoomsContext } from "./RoomsContext";
 
 export const RoomsProvider = ({ children }: { children: ReactNode }) => {
+  const { selectedHeadquarters } = useHeadquarters();
   const [roomsWithState, setRoomsWithState] = useState<RoomsWithState>({
     freeRooms: [],
     occupiedRooms: [],
@@ -29,7 +31,9 @@ export const RoomsProvider = ({ children }: { children: ReactNode }) => {
   const refresh = useCallback(async () => {
     try {
       setIsLoading(true);
-      const response = await fetch("/api/v1/rooms");
+      const response = await fetch(
+        `/api/v1/rooms?headquarters=${encodeURIComponent(selectedHeadquarters)}`,
+      );
       if (!response.ok) {
         throw new Error("Failed to fetch rooms");
       }
@@ -43,7 +47,7 @@ export const RoomsProvider = ({ children }: { children: ReactNode }) => {
     } finally {
       setIsLoading(false);
     }
-  }, []);
+  }, [selectedHeadquarters]);
 
   const getRoomScheduleById = useCallback(
     async (id: string): Promise<RoomWithSchedule | null> => {
@@ -92,6 +96,8 @@ export const RoomsProvider = ({ children }: { children: ReactNode }) => {
 
   // Cargar datos al montar el componente
   useEffect(() => {
+    scheduleCacheRef.current.clear();
+    pendingScheduleRequestsRef.current.clear();
     refresh();
   }, [refresh]);
 

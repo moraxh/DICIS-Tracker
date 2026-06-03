@@ -2,7 +2,7 @@ import { Room } from "@/backend/models/room.model";
 import type { Result } from "@/backend/types";
 import roomsData from "@/data/rooms.json";
 
-type RoomRecord = { id: string; name: string };
+type RoomRecord = { id: string; name: string; headquarters?: string };
 const data = roomsData as RoomRecord[];
 
 export class RoomRepository {
@@ -12,7 +12,9 @@ export class RoomRepository {
     return { success: true, data: new Room(row.id, row.name) };
   }
 
-  static getAllRooms(): Room[] {
-    return data.map((r) => new Room(r.id, r.name));
+  static getAllRooms(headquarters?: string): Room[] {
+    return data
+      .filter((r) => !headquarters || r.headquarters === headquarters)
+      .map((r) => new Room(r.id, r.name));
   }
 }

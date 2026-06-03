@@ -7,6 +7,10 @@ export interface SubjectWithDetails {
   name: string;
   courseName: string;
   courseId: string;
+  locationId: string;
+  campus: string;
+  division: string;
+  headquarters: string;
   professor: string;
   honorific: string;
   professorId: string;
@@ -15,18 +19,51 @@ export interface SubjectWithDetails {
 }
 
 type SubjectRecord = SubjectWithDetails;
-type CourseRecord = { id: string; name: string };
+type CourseRecord = {
+  id: string;
+  name: string;
+  locationId: string;
+  campus: string;
+  division: string;
+  headquarters: string;
+};
 
 const subjects = subjectsData as SubjectRecord[];
 const courses = coursesData as CourseRecord[];
 
 export class SubjectRepository {
-  static getAllSubjectsWithDetails(): SubjectWithDetails[] {
-    return subjects;
+  static getAllSubjectsWithDetails(
+    headquarters?: string,
+  ): SubjectWithDetails[] {
+    return subjects.filter(
+      (subject) => !headquarters || subject.headquarters === headquarters,
+    );
   }
 
-  static getAllCourses(): { id: string; name: string }[] {
-    return courses;
+  static getAllCourses(headquarters?: string): Array<
+    CourseRecord & {
+      label: string;
+    }
+  > {
+    const filteredCourses = courses.filter(
+      (course) => !headquarters || course.headquarters === headquarters,
+    );
+
+    const duplicateCounts = filteredCourses.reduce<Record<string, number>>(
+      (acc, course) => {
+        acc[course.name] = (acc[course.name] ?? 0) + 1;
+        return acc;
+      },
+      {},
+    );
+
+    return filteredCourses.map((course) => ({
+      ...course,
+      label:
+        duplicateCounts[course.name] > 1
+          ? `${course.name} - ${course.headquarters}`
+          : course.name,
+    }));
   }
 
   static getSubjectById(id: string): Result<SubjectWithDetails> {

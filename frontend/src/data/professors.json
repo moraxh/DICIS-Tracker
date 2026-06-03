@@ -1,872 +1,1991 @@
 [
   {
-    "id": "ded32b5645e51091b26fa79188960a4713591454ab22e9c69726c03ef6d7cd8c",
+    "id": "ba20f0297a5e9642ebffa0b257804d1132f0f6460abf3cc8bddf12d4f8be9fb7",
+    "fullName": "",
+    "honorific": "",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "d7b1347a3d81c8814ffe463db17d1ca249333cf41a15f86e92db3e52f3e01a5a",
+    "fullName": "Abel Hern\u00e1ndez Guerrero",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "b73cc011951bbb1bd45caa08b1f491abef45a0476b5498c1e49f9b335a513e1f",
+    "fullName": "Adri\u00e1n Gonz\u00e1lez Parada",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "aa60987321e9cb56b229ae8f1554daf5e271de451db91ebc8b6af1f1afbc9781",
+    "fullName": "Ad\u00e1n Flores Balderas",
+    "honorific": "M.I.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "b174300cbef2854785501561a7cce18d33c7d718afecd695577bb6fcbb454018",
+    "fullName": "Agust\u00edn Vidal Lesso",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "6047495f53ec8b53572c567cf3b169b8f38da7149897c7982b54f9d05bc83ced",
+    "fullName": "Alan Ortega Gonz\u00e1lez",
+    "honorific": "M.I.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "43c173d02200fb4aaa2de22f01777ec952b8e605977904d445b6a0cbbadd3c60",
+    "fullName": "Alejandro Pizano Mart\u00ednez",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "435cee6603704942de29fc9c4b0bb9cdb446d27e1b7cc0ec56834da9e0a5fa97",
+    "fullName": "Alfredo Z\u00e1rate Flores",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "939e5f05fea64ffa4e3f4f00e290b5b453da055a1b8eb92f6acc86524ee60a6e",
     "fullName": "Alvarado Calderon",
-    "honorific": "Kevin Gregorio"
+    "honorific": "Kevin Gregorio",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "a2e63300f9cf5093cecc0d1ce67982406e0a8a11df52df91ec848ae0aa0af8e9",
-    "fullName": "Gurieva Natalia",
-    "honorific": "Dra."
-  },
-  {
-    "id": "534dedd10aaeaf760d573e93b2367a8762e283c46bf7e85f252da9bc71364061",
-    "fullName": "Shmaliy Yuriy",
-    "honorific": "Dr."
-  },
-  {
-    "id": "ddbe4a4d1ddda156f177b43a45ecc84333ed8f369bf7cdec27412e594faa0453",
-    "fullName": "Shulika Oleksiy",
-    "honorific": "Dr."
-  },
-  {
-    "id": "f72275e895109ada3fa10c16ccb97bb9de962c4ffff8305cad369bed74ca26bb",
-    "fullName": "Abel Hernández Guerrero",
-    "honorific": "Dr."
-  },
-  {
-    "id": "915eefab4d8b3c14b1171b0fcff5063d5b498468bcedae20b9eba13a2a7d1716",
-    "fullName": "Adrián González Parada",
-    "honorific": "Dr."
-  },
-  {
-    "id": "ffe051eeb48d6c5f914fdc7bafce92b21480bdb82964d793d150db4d5b621397",
-    "fullName": "Agustín Vidal Lesso",
-    "honorific": "Dr."
-  },
-  {
-    "id": "6ea3ce799d51535c4b5f407fea07a2ab9c99953496ea287280a1c3f5d683ae0f",
-    "fullName": "Alan Ortega González",
-    "honorific": "M.I."
-  },
-  {
-    "id": "5d049351724ab76bd41c21eb6db78f8160810264392d430a619af14b1e458c53",
-    "fullName": "Alejandro Pizano Martínez",
-    "honorific": "Dr."
-  },
-  {
-    "id": "408d22328494902f6ba514e92771cde64e58492764137ef255f9a7c1cb30045b",
-    "fullName": "Alfredo Zárate Flores",
-    "honorific": "Dr."
-  },
-  {
-    "id": "55f740fe2852490fbfde98d15063e41696c4aeb2718e8415d1dce5a79c1f005b",
+    "id": "2bb22cf77f9b4b05b781bed6e7f9e05e334a0a3bd8884c1fe71eb1d79cab1abd",
     "fullName": "Amanda Enriqueta Violante Gavira",
-    "honorific": "Dra."
+    "honorific": "Dra.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "cd84e1056737280dd99cf00aa197ea72958302a0e6e636b6edd7c3e678041344",
-    "fullName": "Antonio De Jesús Balvantín García",
-    "honorific": "Dr."
+    "id": "0536f64ac0a68f5339a96abe598831e7b38a5fcd4512a7ef703b6e093c972cfc",
+    "fullName": "Ana Dinora Guzm\u00e1n Ch\u00e1vez",
+    "honorific": "Dra.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
   },
   {
-    "id": "effecc22199d8c14c4f9e05de28eb4924872e6d7f4d43af13f978229d29cd867",
+    "id": "b9252411bf7a99a10b18dc651d2babb7645d3bc0a3e37739fb6cdd7bbfbce917",
+    "fullName": "Ana Laura Mart\u00ednez Herrera",
+    "honorific": "M.I.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "8a4904b8e289df29daac1f9eff7e069b8c4e771422ef44a47f1e190798ec4126",
+    "fullName": "Antonio De Jes\u00fas Balvant\u00edn Garc\u00eda",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "b64c6057e3a24a6c57b72e843edeedcdba0dc62c96f8a440a9e8c40ccfc3b94a",
     "fullName": "Araceli Margarita Araiza Ortiz",
-    "honorific": "Mtra."
+    "honorific": "Mtra.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "eda2b9e86c30741e9d880aa2227de8ae00217f47be800cade5c599bb44a6f1bc",
-    "fullName": "Arturo García Pérez",
-    "honorific": "Dr."
+    "id": "54c0cc6335fc657be2713df88393e2d5b3b727e66c17ea4eb7b0b57a7b2907f0",
+    "fullName": "Arturo Garc\u00eda P\u00e9rez",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "ec4f6fb83db994462ac896895826f3540db63f2825b340a379399103b0543be0",
-    "fullName": "Arturo Gutiérrez Ceballos",
-    "honorific": "LAD."
+    "id": "a66bb8c393dc9188ac62ebfe92e8cc822aa965555c9f696e512ab03dc67fc943",
+    "fullName": "Arturo Guti\u00e9rrez Ceballos",
+    "honorific": "LAD.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "dc795dabee42f59c051a5f2a0f1501d3eec9f7689b54cbc73e1950e05ef26ad6",
-    "fullName": "Benjamín Roberto Moreno Ortiz",
-    "honorific": "M.I."
+    "id": "56091720a072ce111a08d1fcfb8efff151bfb4e20d5b8b042255456bbd491282",
+    "fullName": "Benjam\u00edn Roberto Moreno Ortiz",
+    "honorific": "M.I.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "982167996dd78853904eeec7e1896a24fb91e815de92d09fc5fc810eb430c2a0",
-    "fullName": "Brenda Gómez Villanueva",
-    "honorific": "LDG."
+    "id": "232ed7b975a0b5638bc3ade7174a74494bc33f4b90b6417c26dbeca148f76782",
+    "fullName": "Bertha S\u00e1mano Orozco",
+    "honorific": "M.E.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
   },
   {
-    "id": "a96342910cab2738e24f5d3f8286ce6993b5f91accac4b72ef052ffb6e7e2e8a",
-    "fullName": "Bárbara González Rolón",
-    "honorific": "Dra."
+    "id": "93d54a76b2e1d34569485e2dd855f19d6f171aa60c5946c6771f2d64aa516f25",
+    "fullName": "Bianchetti Marco",
+    "honorific": "Dr.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
   },
   {
-    "id": "9d150325ccf9434eb956d215c661a1e9d7b49b491076ad3e6e179e37fb8c203a",
+    "id": "f3bd178b3735072e663d0ebbacb2fbd2db89ccc601ff71ae347894d262195cf4",
+    "fullName": "Brenda G\u00f3mez Villanueva",
+    "honorific": "LDG.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "b9be621454ec351d2535d73e46343118d4a3eb555dcbe2fb13ab8116cd0eeaf9",
+    "fullName": "B\u00e1rbara Gonz\u00e1lez Rol\u00f3n",
+    "honorific": "Dra.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "0472d5eb4d5a473a530fecf3df2aae5a7dac10e55220824fd0a5ee9808a2f3c1",
+    "fullName": "Carlos Hugo Garc\u00eda Capul\u00edn",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "b851860be358df38f800ecfcbdbd0f724597c87d12413898688b7a0d0c300bc1",
     "fullName": "Carlos Montero Tavera",
-    "honorific": "Dr."
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "70e3e8ac3c97ea576e34e07ed703675f86ec649badabc01dca25e86f2d2bd2d1",
-    "fullName": "Carlos Hugo García Capulín",
-    "honorific": "Dr."
+    "id": "520f7805833a7f17fdc996b5fbd40dbb14f31831a06dc068ef9dc3ac94101638",
+    "fullName": "Carlos Rodr\u00edguez Do\u00f1ate",
+    "honorific": "Dr.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
   },
   {
-    "id": "b22625cc32fdbf0797855e2da3ae971ee94bf74d95fc68beed78c04fb65c6355",
-    "fullName": "Carmen Felipe De Jesús Torres Del",
-    "honorific": "Dr."
+    "id": "e3af984d1fb2027115f509a6ec02b30623e47fb0f25dceadbb74ea00b5f29892",
+    "fullName": "Carmen Felipe De Jes\u00fas Torres Del",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "14005c50fed9c2d0a3dc84d4f887b2ba85a6ecac27ec87b53a326df94b08ab43",
-    "fullName": "Christian Alexis Salcedo Rodríguez",
-    "honorific": "M.I."
+    "id": "a46b597854170c0a6245bdf9b01b2e44e6c61caa0d3b5cf95b3e8a1e0630e8ca",
+    "fullName": "Christian Alexis Salcedo Rodr\u00edguez",
+    "honorific": "M.I.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "fc18935769054dceaaa1c7002455337b8b8b51aeb2e0d7ad580263ad4d1ede45",
-    "fullName": "Clara Azucena Rodríguez Sánchez",
-    "honorific": "M.E.E."
+    "id": "7550c225d2bf320c2aa43de009e7cde963bfe427cf863ee2921be4279ce9bb93",
+    "fullName": "Clara Azucena Rodr\u00edguez S\u00e1nchez",
+    "honorific": "M.E.E.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "a5e02e20fc157761da4d9d2d88c5845e16da0e236092c20eef417a4405d13413",
-    "fullName": "Clara Carmina Granados Vázquez",
-    "honorific": "LAD."
+    "id": "6f081b1dbd373a921dc1ab267a2be23c3cc738157b0d14e0ec64e9127982de56",
+    "fullName": "Clara Carmina Granados V\u00e1zquez",
+    "honorific": "LAD.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "5f850d2c422d231b28bb8c67c3003790fa8b76f6b9d82962473c3bdbadb2a62c",
+    "id": "14e24ffa661b2b804c9d68aeec28217ce6e5763989952caa23395c78a36a0ebc",
+    "fullName": "Claudia Calder\u00f3n \u00c1vila",
+    "honorific": "MAT.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "c74b4c01aa06a6b4a467aeeedd0c04ac02cd0b4e2573a712460158a430420e74",
     "fullName": "Claudia Mendoza Moreno",
-    "honorific": "Mtra."
+    "honorific": "Mtra.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "2315b9bb4a27a0fbdc5b31ef57d675c255ebab3de29f7c8e9baaeff2f634b356",
-    "fullName": "César Eduardo Damián Ascencio",
-    "honorific": "Dr."
+    "id": "71c875fb4975628bf8944ca81f2af85a967771c608cf58c92e5b2bec82eeee31",
+    "fullName": "C\u00e9sar Eduardo Dami\u00e1n Ascencio",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "479d561b237895a73f44ab741e28b9ad3643e2c19d412b0d93b79b1c17938f84",
+    "id": "a1b8027b03c9b0fa89624d826fe671bf7ee125365437e9d335db6683a017cbdf",
     "fullName": "Daniel Alberto Razo Medina",
-    "honorific": "Dr."
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "f5ebaecb382d221fdeb5f3677a3cdf5f0dfd87fd874cddb5414b5df7c8fb5312",
-    "fullName": "Daniel Alejandro Ramos González",
-    "honorific": "M.I."
+    "id": "b48952b868d311580113ab824b5b4889408e94ca9d50db6fb836fbdf56d51344",
+    "fullName": "Daniel Alejandro Ramos Gonz\u00e1lez",
+    "honorific": "M.I.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "3e3d594ee450b20de4327355a3efb4375a2f7a403556a96f5b134b0a3b746ce8",
-    "fullName": "David Camarena Martínez",
-    "honorific": "Dr."
+    "id": "9557f2807e65f089f83fc953c7e4364ecd3d92e9427c18b4e8dff2b5ed78144c",
+    "fullName": "David Aar\u00f3n Rodr\u00edguez Alejandro",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "4b65bbdac2e5a924111c342a1adfbdcd23d7874c456752cd2eb9526f0b5987be",
-    "fullName": "David Aarón Rodríguez Alejandro",
-    "honorific": "Dr."
+    "id": "33cd2f2d04b1498ad49240d90c6cc6bfcedf09b851870679c074a81b7b4b5c90",
+    "fullName": "David Camarena Mart\u00ednez",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "122d8b8d5bc83cf331ff519963de3917cbe3eabe4512a66e570e549df4572339",
-    "fullName": "Diego Alfredo Núñez Altamirano",
-    "honorific": "Dr."
+    "id": "aa62737fc892fdaf1ba7f756853c3f580fe6ca862b65e95393ce64c3cc89ae0b",
+    "fullName": "Diego Alfredo N\u00fa\u00f1ez Altamirano",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "e41f59e2f8386d404af27ad70ffbdeeb5441063d3be2c6dd03d294daef85e0fb",
-    "fullName": "Donato Hernández Fusilier",
-    "honorific": "Dr."
+    "id": "ab1df8ee03388be777be5a95a4e8f04be3ad220156d46bed76ff34a17f28b2ac",
+    "fullName": "Donato Hern\u00e1ndez Fusilier",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "9fd45c3a828bd2c190c97117f85860443e8201be376260facdea190a1b9bb8e1",
-    "fullName": "Donni González Soria",
-    "honorific": "M.I."
+    "id": "2d61cc65803841e65d1fcc7d2d55ed232e13fd7ced135c08b5db36f4de6a43cb",
+    "fullName": "Donni Gonz\u00e1lez Soria",
+    "honorific": "M.I.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "1c3d0aa16dfc2ef7909d64328d1a6ed7eb27440d3caccace7bc025fa27a9de92",
+    "id": "aefda7aa030db64578c9170cf55897db484520194e8306b79cbff9ed0869ab64",
     "fullName": "Dora Luz Almanza Ojeda",
-    "honorific": "Dra."
+    "honorific": "Dra.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "a034ebf277025e4de7a21b91f5c491d51c2f05e73400a1a379aa41b211e4cb98",
-    "fullName": "Edgar Alvarado Méndez",
-    "honorific": "Dr."
+    "id": "13208d89950c8c749f4bacb08edb51ea267dd35bd74f4dca7d76900d9cb8db47",
+    "fullName": "Edgar Alvarado M\u00e9ndez",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "509d3d6300fa9f302cd12faf0a62daeae922bedf4ac1177b15d9a58da5f58495",
+    "id": "c22025196074773fab582e0ed1e6f55c6181505b3ff0a48135beaa499373d58a",
     "fullName": "Edgar Fernando Suarez Zamora",
-    "honorific": "MCB."
+    "honorific": "MCB.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "7cd0796f51e750e0b0eab686d992b938362204fb980ac629b71563ba2d34c36c",
-    "fullName": "Edgar Iván González Rincón",
-    "honorific": "C.P."
+    "id": "09f1edad0371b1813c4f149218fa3473a9b87fc1de312a862065f556de70850c",
+    "fullName": "Edgar Iv\u00e1n Gonz\u00e1lez Rinc\u00f3n",
+    "honorific": "C.P.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "de4c6e2ddb4e53f27b6b8dbb0b58909bb031c9d3f2e0e9b6a0e756a19dc52f53",
-    "fullName": "Edgar Iván Zepeda Arjona",
-    "honorific": "M.I."
+    "id": "d3bdbb3d052e123f69b0568d2c85ba02bb35d633eedeaa1685232929acc6fa11",
+    "fullName": "Edgar Iv\u00e1n Zepeda Arjona",
+    "honorific": "M.I.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "ff3c0a94bb75128c20def2eb26c4be5a8631712ab24dba0d3a007706a53eed5e",
-    "fullName": "Eduardo Jiménez Barcenas",
-    "honorific": "Mtro."
+    "id": "39410fa14aed0514178c4b5ccf8a882cce78762a646f1920e721811735afe2d5",
+    "fullName": "Eduardo Cabal Y\u00e9pez",
+    "honorific": "Dr.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
   },
   {
-    "id": "e95ec5c1de4186b96825ffa5ee20e3acfc7981c193b7a394090f390443d9231b",
+    "id": "61a53c15e295177894a521f1b55fadf983d5a29c606d8091fdfa696a425d48c0",
+    "fullName": "Eduardo Jim\u00e9nez Barcenas",
+    "honorific": "Mtro.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "34107355550282055fd0fcfe724284cb4ae65ccf47adb3036cd30c1c966e4554",
+    "fullName": "Eduardo Miguel Gonz\u00e1lez Garc\u00eda",
+    "honorific": "MAT.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "41baca541368743cf15d763b6b4b55c35648ba4f5a742150cbf8631eec09754d",
     "fullName": "Eduardo Perez Careta",
-    "honorific": "M.I."
+    "honorific": "M.I.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "d5c804d0ad7c1f8a7babdf40e2030da488174010b7e3843d5ddf797be245ebbd",
-    "fullName": "Elisa Araceli Vasquez Ramírez",
-    "honorific": "LIC."
+    "id": "424b3fa27676a2acb3eafe121a686517efaf615247bcc97f5cc0b3a86adb375e",
+    "fullName": "Elisa Araceli Vasquez Ram\u00edrez",
+    "honorific": "LIC.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "0e415d5e1eb428a88e22e728613d35c37411be67a98b0a8420cd37f2eb85e8e4",
-    "fullName": "Elizabeth Martínez Romero",
-    "honorific": "M.I."
+    "id": "965969027cb266f86cafdd7582dc9e3cf11927616ef5286f0d578333f69daee3",
+    "fullName": "Elizabeth Mart\u00ednez Romero",
+    "honorific": "M.I.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "d3a6f5531ed741f8750eac2a849079b5b212add260ebf0be7f4899c75c4cfed6",
+    "id": "66a4829db3d54e44fc02c15085e4eb7038c595aec8857aec724833f75deddf27",
     "fullName": "Eloisa Gallegos Arellano",
-    "honorific": "Dra."
+    "honorific": "Dra.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "dc0f8000a64371a1fc8706265e8e3f5c6aee8d24d4dbf0bd006c452c35cef5c9",
-    "fullName": "Elvira Guadalupe Ramírez Vázquez",
-    "honorific": "LIC."
+    "id": "8b90e2f15b1a888bb6a88a7fbef0a953361f6a329d601a128c66db4105d9daf8",
+    "fullName": "Elvira Guadalupe Ram\u00edrez V\u00e1zquez",
+    "honorific": "LIC.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "9a74f873ecd94894d9d68e39487426b302f5528cd8f8dfb50f238726a11df46a",
-    "fullName": "Elías Rigoberto Ledesma Orozco",
-    "honorific": "Dr."
+    "id": "1b0f9ec029b2d298a28528336004f5592ea7522dba3ddf5c30b9df7f5a2925db",
+    "fullName": "El\u00edas Rigoberto Ledesma Orozco",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "addd1510f6a32623b52d3868c5a3845e9fe490da42c18e38af9b7d104d6546e5",
+    "id": "c4cba2aed51caae42ad0e6486efa2006474381b733e4a6fd018c85d94750848a",
+    "fullName": "Enrique Arnoldo Zamora C\u00e1rdenas",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "96fcbab8c12ca7564569ade275b7e8f5e4aa8750af6d8d9cb6e8e4fd4cd78851",
     "fullName": "Enrique Damian Ramos",
-    "honorific": "M.F."
+    "honorific": "M.F.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "211fb2a32919fcadd3004abf93f12b72cd65e899e40e1f1cc0fa63a09828b006",
-    "fullName": "Enrique Flores Cárdenas",
-    "honorific": "M.I."
-  },
-  {
-    "id": "b4fdebcaa293bce11558397a4186e31e029cd030e1184feab258cbf6c208b6b3",
-    "fullName": "Enrique Arnoldo Zamora Cárdenas",
-    "honorific": "Dr."
-  },
-  {
-    "id": "115048746e0cea24b593fe1350d8c6be1c48e9268d4df967b954fa562b17b661",
+    "id": "985a216dd9f51fea1588cb170c003bed60765de85b954d3ddf084808716a54e8",
     "fullName": "Enrique Daniel Canedo Montoya",
-    "honorific": "Mtro."
+    "honorific": "Mtro.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "6a51248ef6e04901484208627c07a860fb4735210bbe8dce6d2e6633d1b3c407",
-    "fullName": "Eric Noé Hernández Rodríguez",
-    "honorific": "Dr."
+    "id": "f18ed0dcba40bc3f2e3c89f3e29de3b1ecc5df47c06c14d81149ce3b95a995be",
+    "fullName": "Enrique Flores C\u00e1rdenas",
+    "honorific": "M.I.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "d81d4b81eff268aab77ec3893bf1553fc6ff90df68ef29552ab19d75215ce0d7",
-    "fullName": "Ernesto García Sánchez",
-    "honorific": "Dr."
+    "id": "0fdb0776dc7de15fcda008c757f85d7521428c035e8464c25923159b350dfa24",
+    "fullName": "Eric No\u00e9 Hern\u00e1ndez Rodr\u00edguez",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "bb1ac363ba21e2b621ef9614b5943598421b354f68bf92581eeea6db3b4a2165",
-    "fullName": "Estefania Miranda González",
-    "honorific": "LAD."
+    "id": "986a40bb42431a0707b172ccbbf1fd1e1e78cbfaf1edb77f775d1a1a7cb4f291",
+    "fullName": "Ernesto Garc\u00eda S\u00e1nchez",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "0fd3cff391ff1121a5d2c929883d209e0e8b358b8fe06f6d62db9f807f364dbe",
-    "fullName": "Estefania Del Carmen Diosdado Martínez",
-    "honorific": "M.A.N."
+    "id": "8b92f03bcfc89de6505d56a8cd0814c455dff7572f11ac8744e440ff7d77531c",
+    "fullName": "Ernesto Isaac Tlapanco Rios",
+    "honorific": "Dr.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
   },
   {
-    "id": "4297e43a58732fa77de693c14f484a830a90a8895d15ed33aa19584b79276ee5",
-    "fullName": "Felipe De Jesús Trujillo Romero",
-    "honorific": "Dr."
+    "id": "251a8a2fb4e5fa6cfd22699af80c50a0556204c28bc93f65cbb34576b956593b",
+    "fullName": "Estefania Del Carmen Diosdado Mart\u00ednez",
+    "honorific": "M.A.N.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "beedf77e9033c7c97de6b145db5898f32b44c8041d0bc9631d23fbb20c0c4886",
-    "fullName": "Fernando Enrique Correa Tomé",
-    "honorific": "Dr."
+    "id": "ac16112201476e4bb5eb838a0fd0dfade4ab7527d2b431ac8b80b1b6b98f52a3",
+    "fullName": "Estefania Miranda Gonz\u00e1lez",
+    "honorific": "LAD.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "a7b25f04face6a18cda13b0b7f1d87713e751b8087e95179392edbe683e98c95",
+    "id": "4d211edcdebb37279bdeb756c22e718eb49750fa3e22d762f8f7ad3132c09e3e",
+    "fullName": "Everardo Vargas Rodr\u00edguez",
+    "honorific": "Dr.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "333bc351f61d139fbb63c5b8fb38a7ea7bfe5794d8a3c445b25bdb8a012f5764",
+    "fullName": "Felipe De Jes\u00fas Trujillo Romero",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "cff68a250e8d5563aef42d768aaa72c527c2bbeda3203a6c35891013f5bd2e15",
+    "fullName": "Fernando Enrique Correa Tom\u00e9",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "26f031c99843557ddbf386e5b8c4087551f4db84703fdb2ab9d8b221df0025ce",
     "fullName": "Francisco Elizalde Blancas",
-    "honorific": "Dr."
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "3ea0febc041ceea7d3d4ccc704a2c9d5ec301574032e4e94ff48bf708d807362",
-    "fullName": "Francisco Macías López",
-    "honorific": "Mtro."
+    "id": "7ab65ef6071534a19f532f44fe9a7ff64e39754e1121366ee2bfbbbb4432bf9f",
+    "fullName": "Francisco Fidel Mac\u00edas Aguilera",
+    "honorific": "Ing.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "4a59dc54d685666d9db58049f707144e5fd00f651c9256ff1e3c080cc05517d6",
-    "fullName": "Francisco Fidel Macías Aguilera",
-    "honorific": "Ing."
+    "id": "c6ed3cf7ee0053338f73f0a12306a7d13320c430fc57c53ab5e610cb286c7ed8",
+    "fullName": "Francisco Mac\u00edas L\u00f3pez",
+    "honorific": "Mtro.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "4fe87ebdb77ef6bcfa078e7d44ffe8801e54c44cf8bf7b3f2100294f6763b312",
+    "id": "c4198068e968039cf248087ab740265f9a8d817ac9d379a620ae7dd31dd0a5a2",
+    "fullName": "Geovanni Hernandez Gomez",
+    "honorific": "Dr.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "9e4279cfc90bf8c4f5646a5ee288b5bce718a1f270595c6076c84dd78fee79a8",
     "fullName": "Gerardo Miguel Canedo Montoya",
-    "honorific": "LIC."
+    "honorific": "LIC.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "683eb32acbea081571c3df56f6e87ea8b4886f81be1fb0342303aef34668a7a0",
-    "fullName": "Griselda Maki Díaz",
-    "honorific": "Dra."
+    "id": "b749883b6bd0a621dc661b8d19833a710a4ae66f3c92022e265c31f85a9b50e0",
+    "fullName": "Griselda Maki D\u00edaz",
+    "honorific": "Dra.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "b538211e85d3cda01dffb1442e57bbb95789cfb179582fa748a5cfc488e6b5c9",
+    "id": "b5fb4a3e38c40eab1adb6d83d6e21ad43e0c2eb973c13f6a3afecee9241fa8a5",
     "fullName": "Guillermo Negrete Romero",
-    "honorific": "M.I."
+    "honorific": "M.I.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "38fb29bea8498cccdd9f740a33baf5dbff875535a4375dfe49a4ce87b2bb5463",
-    "fullName": "Gustavo Capilla González",
-    "honorific": "Dr."
+    "id": "06f4bbd5aa5d31d599ad54b9c614865b99288e6303b28c8ec021c0dcc3f5fed5",
+    "fullName": "Gurieva Natalia",
+    "honorific": "Dra.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "92873a96d536fe8bc2f6819ae647f6ab6fd79daad9c0ed1c8047f750a1e78154",
-    "fullName": "Gustavo Cerda Villafaña",
-    "honorific": "Dr."
+    "id": "41550acd0f724385361ca94b801c517f57968a14b49c472f94d7820b46be750b",
+    "fullName": "Guryev Igor",
+    "honorific": "Dr.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
   },
   {
-    "id": "099992bf564f5bc5b89b91dd91bfc68f11a6c4ce9b54a4369acb0fc9e8bcd288",
+    "id": "d5d40c1498df32e4b08e1f804b571cc65566cb1127a8f066ecda4fecaab9c1c3",
+    "fullName": "Gustavo Capilla Gonz\u00e1lez",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "23efa2c64ed952be6f2290f2097afec0d5f98925f3af4e003d790b0cd853e9e1",
+    "fullName": "Gustavo Cerda Villafa\u00f1a",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "81d2a913cd0ced46d50a4f81dc76fceed13911be5dd0f0383eab34a8dbb81d07",
     "fullName": "Homero Romero Mancera",
-    "honorific": "Ing."
+    "honorific": "Ing.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "70287892c3dcd6ba1721f25af97f0c4d808707529acf156807d58b2c9c95d304",
-    "fullName": "Héctor Plascencia Mora",
-    "honorific": "Dr."
+    "id": "8e57426d3d0a9deff276b8a429bd59a2ca2cfdad8547915e64dc24d38f212eec",
+    "fullName": "H\u00e9ctor Javier Estrada Garc\u00eda",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "aa3ea2dc0795ac0052f976c5240e4d21420bc764921f62bceb571e5a2c4bd529",
-    "fullName": "Héctor Turrubiates García",
-    "honorific": "Ing."
+    "id": "1a59b87f1623dd536570db2e689f8f9586dca21e10aa9cbec9c38e50f433254e",
+    "fullName": "H\u00e9ctor Plascencia Mora",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "d3c5688baa1bd2205b56584eff06b76b238352e61163cce756f3b693f99f1858",
-    "fullName": "Héctor Javier Estrada García",
-    "honorific": "Dr."
+    "id": "60d25c69828ea8c6faaf6a35e3e7273b36481a54c3a252f25f96353b022b3957",
+    "fullName": "H\u00e9ctor Turrubiates Garc\u00eda",
+    "honorific": "Ing.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "a5a90558e03a6fa216d660d0c4e28c5a2d483ef296595235e8db36c11b23a41b",
-    "fullName": "Ileana Del Rocío Zamora García",
-    "honorific": "Dra."
+    "id": "ba752e3997787cde11ad81ca76401d3dd41397cd50ffeac03f41c3d2fc994483",
+    "fullName": "Ileana Del Roc\u00edo Zamora Garc\u00eda",
+    "honorific": "Dra.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "d9e76d2659fd9b6c15c6f7c73567b3f2a35c0c0181844bd180ad926c55542414",
+    "id": "81b5125edae53461d11383f8756886a64e08445c181f73a7c0d769aa7431baa1",
     "fullName": "Irving Willihado Reyes Buenfil",
-    "honorific": "M.I."
+    "honorific": "M.I.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "c22e7dcf1f7acacf33ff6c8b9f4cefc8de693d111f98425e92365823adb7f347",
-    "fullName": "Israel Martínez Ramírez",
-    "honorific": "Dr."
+    "id": "d35f1d401f9fc086810c4119f1e3a2b12039dacb3833a57b5ac5acc243fadc5e",
+    "fullName": "Israel Alejandro L\u00f3pez Garc\u00eda",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "7318e2e13f394e0da72297abe66997e1d548715893bf9db284ead30871e59bb0",
-    "fullName": "Israel Alejandro López García",
-    "honorific": "Dr."
+    "id": "77160ce56cbe91446f4eb311ec93f0aeb0212074f67bd42ccac92240f9906f66",
+    "fullName": "Israel Mart\u00ednez Ram\u00edrez",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "9fb5f781b9733f44c3fe64ef6cc520439a8c392766a7fd6ead62176ed4d6cedd",
-    "fullName": "Iván Hernández Romano",
-    "honorific": "Dr."
+    "id": "bf49d97fa5a460698043de021dd03031be8829e507881f9724090fe1af7164e7",
+    "fullName": "Iv\u00e1n Abel Hern\u00e1ndez Robles",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "1df5291e07c91e8d4587543349560a251b16b7259288991b202e039b69222820",
-    "fullName": "Iván Razo Rodeo",
-    "honorific": "Ing."
+    "id": "b2c4471f4367611c5f7df1a5678261f4d9ba969ab021d125482a87c5e949fbb6",
+    "fullName": "Iv\u00e1n Hern\u00e1ndez Romano",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "4e1fa339a22f26658289c82470376b8a6d81948a63d1b5056024073252d74845",
-    "fullName": "Iván Abel Hernández Robles",
-    "honorific": "Dr."
+    "id": "6487809b24d7b9142799b9c90a7101fe0a44584c588956c8e1ddf647496e377c",
+    "fullName": "Iv\u00e1n Razo Rodeo",
+    "honorific": "Ing.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "4068fa871ef15a11159be25698da9a1ad6c28c3899ed340c8037e9013e7e950b",
-    "fullName": "J. Jesús Cervantes Sánchez",
-    "honorific": "Dr."
+    "id": "c2417033758bc989bc88bc5e21a85e9cccc2f058b78cc1240a69087e8d7e6e4e",
+    "fullName": "J. Jes\u00fas Cervantes S\u00e1nchez",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "731e094f90219bb09a2ea0ae1566ea0037c8eecf692b00cc936f448dbcb8b4d1",
-    "fullName": "Javier Magaña Hernández",
-    "honorific": "Ing."
+    "id": "902cc69d81fb0b65b6f3a2518e2a9f766a4752902f42900fc6be2e8c4ec4123e",
+    "fullName": "Jacob Gonz\u00e1lez Villag\u00f3mez",
+    "honorific": "Dr.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
   },
   {
-    "id": "5975e4bf9d01ff67af9ab2ea062b0ee9cdf0744e83f5546472b0137e4d7226aa",
-    "fullName": "Jesús Eduardo Castellanos Águila",
-    "honorific": "Dr."
+    "id": "fbf61e9d5fd6c2fec34cc4dfdbc94b6c2b376cfc86de9d13ed491d731a91d62e",
+    "fullName": "Javier Maga\u00f1a Hern\u00e1ndez",
+    "honorific": "Ing.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "202abafe5ae371c93cec9ed7c86e7a5f8a02b35c02a3f9bc43a5a7d07130459d",
-    "fullName": "Jesús Ernesto Rocha Ibarra",
-    "honorific": "Dr."
+    "id": "ddd54c220e8090b1b65f893d31915100e1dc4e14fe47b3c4b1cb95d0ae2bc7bf",
+    "fullName": "Javier Pizano Baeza",
+    "honorific": "M.P.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
   },
   {
-    "id": "09d5663c05e33b3a0a531962a83dd9ec1557a7376076aa49150459e7860097f3",
-    "fullName": "Jesús Gerardo Regalado Villalobos",
-    "honorific": "LAD."
+    "id": "4ce432cdbb95a9b66d5ca40a0bddc7963d844826354750e278fda4e876bd07a4",
+    "fullName": "Jes\u00fas Eduardo Castellanos \u00c1guila",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "6969a07d4e86cc19def985700ec0b62fd377e365ed3c1a2988db18406a673b35",
-    "fullName": "Jesús Ignacio Lara Pérez",
-    "honorific": "M.I."
+    "id": "31074ae04f651c4f5b8df5393e1cfbc921dec2fc37d4b8741288aa977edc6392",
+    "fullName": "Jes\u00fas Ernesto Rocha Ibarra",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "a86e5744abd88d6cf1f757109a160154834e9bc26fab348985d615611ed9c947",
-    "fullName": "Joel Dario Hernández Álvarez",
-    "honorific": "LAD."
+    "id": "2701bb4c7d273f1b9c6cbcbf19adc482207832ffb7adb6d027c188854a544870",
+    "fullName": "Jes\u00fas Gerardo Regalado Villalobos",
+    "honorific": "LAD.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "6ed8944fab66e339b1f00c7ca0368f2ca6d7316bfeee84ab13c8050a4e9e8634",
-    "fullName": "Jonathan De Jesús Estrella Ramírez",
-    "honorific": "M.I."
+    "id": "8ef498b872d0445b5325d61816871f599699c8c18b979d2769a6dfdc09bb738e",
+    "fullName": "Jes\u00fas Ignacio Lara P\u00e9rez",
+    "honorific": "M.I.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "cbf99daa0e39322236c462a4c5f7d23bf4f681515fb1e56dcc2fc6c1567a850f",
-    "fullName": "Jorge Alberto Méndez Sánchez",
-    "honorific": "Mtro."
+    "id": "8fda37e9c8929ff003fb3fa08886d4f3579cd7e15f83a1612aeaec5eb01e1eb6",
+    "fullName": "Joel Dario Hern\u00e1ndez \u00c1lvarez",
+    "honorific": "LAD.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "37fc8d65ceaa6038a587e2d30bfaa62f0d133134a40376384c78cf6a939122cb",
-    "fullName": "José Nolasco Cruz",
-    "honorific": "Dr."
+    "id": "ad172590bc5949efacfd09e9a66af074c7a82fac04740f9762832f032620fedb",
+    "fullName": "Jonathan De Jes\u00fas Estrella Ram\u00edrez",
+    "honorific": "M.I.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "e4fdb8ea1f457db20de66a3366d1f9212bfc858f289e3ff143a5777d07b24fa0",
-    "fullName": "José Ruíz Pinales",
-    "honorific": "Dr."
+    "id": "f4847493ec037ab3d8bdbee54ca3103d6c114fafc773f166462236b97e557ffc",
+    "fullName": "Jorge Alberto M\u00e9ndez S\u00e1nchez",
+    "honorific": "Mtro.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "a8b6533ab923fd61956a2e46e4474869a0c65af452a427d8863067930409cd83",
-    "fullName": "José Amparo Andrade Lucio",
-    "honorific": "Dr."
+    "id": "1a5352bc5ab779917d3df3c769c83dcae3dbee0f56dcf6a56b3c48bb89dd56db",
+    "fullName": "Jorge Armando L\u00f3pez Lemus",
+    "honorific": "Dr.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
   },
   {
-    "id": "3a0a52a8bb763a46e8ba28ef6144e43cb7b57e743bc89dc0a821895c34219470",
-    "fullName": "José Armando Pérez Crespo",
-    "honorific": "Dr."
+    "id": "08797386d2fd4c3c810ec3700120690b8ffbd041c54e39e1163475ae20b5774e",
+    "fullName": "Josue Jaime Cuellar",
+    "honorific": "MLAEI.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
   },
   {
-    "id": "8f6771902a6dd9eddac5f73151617c4212c652e723568b1896789c8ac07d1cee",
-    "fullName": "José Juan Alfaro Navarro",
-    "honorific": "Ing."
+    "id": "0bfc43185d095478c3d75ce514e31d502a38ff9f2f2c1f45b7be8bb2533c046f",
+    "fullName": "Jos\u00e9 Amparo Andrade Lucio",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "dfe14dd91f62af8a38b61defb17d291fe6038706e0c568d1ee001c61f0997fe3",
-    "fullName": "José Luis Contreras Hernández",
-    "honorific": "Dr."
+    "id": "c9d5e711212be9ab48cc9582c5e23e1f0bb26ff19d504a59f2bbea71c9f905d4",
+    "fullName": "Jos\u00e9 Armando P\u00e9rez Crespo",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "5329af9a8074d19cee59e9b5fdb0636708995278da2be5f30c6369fa5966dc8f",
-    "fullName": "José Luis Luviano Ortiz",
-    "honorific": "Dr."
+    "id": "73dc94fbd6db9f00a1c97baff158bb576b66ca38351d5abae0f29d936d4dac66",
+    "fullName": "Jos\u00e9 Carmen Morales Castro",
+    "honorific": "MTRO.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
   },
   {
-    "id": "d3499555c82c5844062ab8ba709683c779fd60d2eb847cb887f155ae3c653142",
-    "fullName": "José Manuel Matadamas Hernández",
-    "honorific": "M.I."
+    "id": "ba96d072632be9bf388fd88fab14de20643e43801d2aa05a74fc3ae2c0cbcef6",
+    "fullName": "Jos\u00e9 Juan Alfaro Navarro",
+    "honorific": "Ing.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "e3739bdab2f835b71fe86c772d8d4fa8888941739dbadf090e24ec6853989252",
-    "fullName": "José Manuel Riesco Ávila",
-    "honorific": "Dr."
+    "id": "2c5ce19ad1dc8a0320a3c4a4c46028ae05a0152270e9e28f1878a3f8ee6d869b",
+    "fullName": "Jos\u00e9 Luis Contreras Hern\u00e1ndez",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "ca565035f8e43c757da9f0f2a678e09e601f892d132b9de65252b611f3de8374",
-    "fullName": "José Merced Lozano García",
-    "honorific": "Dr."
+    "id": "dad9727f9ba95c5753f3aedb6eebff954209531aaa45abfa3e0f7dbe6525b232",
+    "fullName": "Jos\u00e9 Luis Luviano Ortiz",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "ca2217ed447b7f01c2aeaa89d573f173875a275225919cdea8e0714c479276ac",
-    "fullName": "José Noé Tapia Ortega",
-    "honorific": "Mtro."
+    "id": "c2f64de0a32595e1e67657a5700641021a03a53dec3147bced492f966cc61290",
+    "fullName": "Jos\u00e9 Manuel Matadamas Hern\u00e1ndez",
+    "honorific": "M.I.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "318892ea6e456ee3f340f43d419eaa11a722e99f90856562896e4aeaefc9609f",
-    "fullName": "José Ramón Aviña Ortiz",
-    "honorific": "M.I."
+    "id": "2bf1169ee9723846914002cc17ec9530bc7474fcffd745b6819c335f612e4736",
+    "fullName": "Jos\u00e9 Manuel Riesco \u00c1vila",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "548f8a870f95381b11e51eb690a504d337e07f7e37e0bf719dd010fecd410017",
-    "fullName": "José Roberto Reyes Ayona",
-    "honorific": "Dr."
+    "id": "c446a806f7dac0457ca8e6d2691f1829b49fe078d956b2835d10f778e9b0edb2",
+    "fullName": "Jos\u00e9 Merced Lozano Garc\u00eda",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "71e8b1ff9017baa61808e01488157c3619ca2cc5f33730d8597f43b3a5f8a137",
-    "fullName": "Juan Carlos Gómez Carranza",
-    "honorific": "Dr."
+    "id": "91be4e66183bb053c280bdac60e23a33e297de6714c25e172166a684d933d2d0",
+    "fullName": "Jos\u00e9 Nolasco Cruz",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "7f7e53dc0d7acc168839de5cfcc0520dcce9c35a1c96f57b2ad8e2b8f27f67b8",
-    "fullName": "Juan Carlos Hernández García",
-    "honorific": "Dr."
+    "id": "cc934c16ebc21b4cbf946802399750a888e8db99189709ede44661e18a709629",
+    "fullName": "Jos\u00e9 No\u00e9 Tapia Ortega",
+    "honorific": "Mtro.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "098c6b77b7889c51a4e984561bccb285ce6bb1e0e2918a05cc8230b76fca9841",
+    "id": "48630ece0485cf6f51b06be7d43086ff3927249dc62aa1fd6ff0abaf228d9ff7",
+    "fullName": "Jos\u00e9 Ram\u00f3n Avi\u00f1a Ortiz",
+    "honorific": "M.I.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "ff313fbf769322a484c76a931e96de776710da09909246f74fb77287e235ee72",
+    "fullName": "Jos\u00e9 Roberto Reyes Ayona",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "59658447299cd115db806ce59bd87158925e1b38eadfc19260d37241ecbb2215",
+    "fullName": "Jos\u00e9 Ru\u00edz Pinales",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "05e5a2d330643cd93dd2c27d23aedcc37b661c103273051c6b2f4d1abc0d685e",
+    "fullName": "Juan Antonio Bautista",
+    "honorific": "Dr.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "c282449a713a3bddfac80010f5760216a7c68d2a3716360b14a2869de79b928c",
+    "fullName": "Juan Antonio Mart\u00ednez Herrera",
+    "honorific": "MTRO.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "b2a1370308906fb6cdfd42d0034bff4129b87c3478d4072ac95d091e97daa394",
+    "fullName": "Juan Carlos G\u00f3mez Carranza",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "f5b5eaa0ec1c90d46594ca95c9cb9f135f0b6679ba4fbfb81e8b775314be18d3",
+    "fullName": "Juan Carlos Hern\u00e1ndez Garc\u00eda",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "fc7bc7131816275ef416ab8ec3c2183e98abb5ceed466cf30861da9c4bdcaa4c",
+    "fullName": "Juan Cristian Ch\u00e1vez Orozco",
+    "honorific": "LIC.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "d01c70a1d62beeb4ce546fece7ce77b7d1f1b4d2fadcd7d0077d70cc438e498e",
     "fullName": "Juan Francisco Reveles Arredondo",
-    "honorific": "Dr."
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "eb54d623a362069dcd650395c75e586639d6af48e23e54a85406354d376f5021",
-    "fullName": "Juan Gabriel Aviña Cervantes",
-    "honorific": "Dr."
+    "id": "5f92a69b07e7fddab14e1be66db6b1745aa9dfee843d8ed7eb13a494d763f8b5",
+    "fullName": "Juan Gabriel Avi\u00f1a Cervantes",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "c64c2a8d7ffa316848c72d6b9a24e3cdbb5c92f88dc323c0bae6f2fcd9b0c030",
-    "fullName": "Juan José Cárdenas Cornejo",
-    "honorific": "M.I."
+    "id": "cade620db24834839dc8367d343b6d6a4b8b76644b42f96ee5648d465686fb6e",
+    "fullName": "Juan Jos\u00e9 C\u00e1rdenas Cornejo",
+    "honorific": "M.I.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "c6327e6ce616ba3b46f8d749752e1ca9cba87598077d6b2a63d6249de730905d",
+    "id": "3f9adbc9eba0c8e7d63a671b43d5c9c4e3cfaa5f662cd6d83dc4ad084f44443b",
+    "fullName": "Juan Jos\u00e9 Paniagua Medina",
+    "honorific": "Mtro.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "fd52f8091b7334d360e56791bec2447568df650996d6742373d5b1917ed4eea5",
     "fullName": "Juan Manuel Belman Flores",
-    "honorific": "Dr."
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "c3ba956d44de74f796e4e57908f5a1cd16409a4a490fa2c0c84d737e2cf1b90e",
-    "fullName": "Juan Manuel López López",
-    "honorific": "Ing."
+    "id": "62ca06a00d314f2fcca3ddfbc62afd3652faab6451453d449675bbfde5365991",
+    "fullName": "Juan Manuel L\u00f3pez Hern\u00e1ndez",
+    "honorific": "Dr.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
   },
   {
-    "id": "5d2047076e7a0e514a446758a6142448fd9e2179d2c11f219a3cc3ef6c007498",
-    "fullName": "Juan Manuel Sierra Hernández",
-    "honorific": "Dr."
+    "id": "6270a36f1273723755333f6e03df716e4512a261fc66f469197e1c32dd42bac2",
+    "fullName": "Juan Manuel L\u00f3pez L\u00f3pez",
+    "honorific": "Ing.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "8db40f9cd60333ed5f91bf50610d97c77b79d9738244c49b3ccc91f76a88551e",
-    "fullName": "Juan Pablo Ignacio Ramírez Paredes",
-    "honorific": "Dr."
+    "id": "5aeb60ba0095337748fa587535ae8c4478d1cdd745479abbe229833724a98008",
+    "fullName": "Juan Manuel Sierra Hern\u00e1ndez",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "5c27aed9e7144aec885971615f817c30951066386ddc663cc5c4d5fe9fb30e25",
+    "id": "d69751155683868786940dcc902e5cdcec16c7f34215613fe508554790988fa1",
+    "fullName": "Juan Pablo Ignacio Ram\u00edrez Paredes",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "30d326ad70919e4ab66fc9784d2903de301bceeb1cc25292a336ece39511e2a8",
     "fullName": "Juanita Del Carmen Mendoza Ornelas",
-    "honorific": "Lic."
+    "honorific": "Lic.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "7fe164056831485e4b32fdfc09f78fb3520b640d2b5352b91ae2e77188ef4bf1",
-    "fullName": "Judith Banda Guzmán",
-    "honorific": "Dra."
+    "id": "b88e6fcc26a1b04ad00e7f6264503c42e8c6c157df72d7d8f5c6d9bb6f36c6f5",
+    "fullName": "Judith Banda Guzm\u00e1n",
+    "honorific": "Dra.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "14cd53c622a99712923a291c886dab7dae130c92620db90ad8780f9145fe8cfc",
-    "fullName": "Julian Moisés Estudillo Ayala",
-    "honorific": "Dr."
+    "id": "36d7cf3ee10a77ee341c2523f65134e7e5b421f188b29ebb5526a5aa57edd722",
+    "fullName": "Julian Mois\u00e9s Estudillo Ayala",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "a774b08ee3dea9e89ee352b2f6b760bdb29cd096d3365d63c83a92ca3ab58cc7",
-    "fullName": "Karina Osornio García",
-    "honorific": "LIC."
+    "id": "e40ec37b2b4607ae0fcbbdc3e8ea4773bb2c20b013d970b708fbaf0cf7667c8f",
+    "fullName": "Karina Osornio Garc\u00eda",
+    "honorific": "LIC.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "7d5d0907ccce039ee50e8908259b4ec0666d96a6985d799392ea6fe13de2076e",
-    "fullName": "Laura Alejandra Ireta Muñoz",
-    "honorific": "Dra."
+    "id": "10d6bf114b17ad466a6285ba32315f0379355a4f2e0633349cf08390e17716d8",
+    "fullName": "La Rosa Mar\u00eda Isabel V\u00e1zquez De",
+    "honorific": "MAELT.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
   },
   {
-    "id": "8743d51e5761cf48fec1fe40ffe54f574da25469ca3eb191fe5a026732007042",
-    "fullName": "Lourdes Paulina Ortega Zúñiga",
-    "honorific": "Lic."
+    "id": "20f76e7e4044d891211670154436cce10af597b17ada28a3191057f8c8030e3a",
+    "fullName": "Laura Alejandra Ireta Mu\u00f1oz",
+    "honorific": "Dra.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "ca59c018657f9d80db6df3f115ffb562fe6e02fb81638857bcd71c70bd8a06e6",
+    "id": "6d94967dd24da66ce43f8157160684127664c81e92639044b4be02856c29bba7",
+    "fullName": "Leonardo Mart\u00ednez Jimenez",
+    "honorific": "Dr.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "3b19ba65f6d006ef191f5bdd2c958529782e835b0cc16651813aca0a5cc871fc",
+    "fullName": "Lourdes Paulina Ortega Z\u00fa\u00f1iga",
+    "honorific": "Lic.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "d224ad6e13731dd58005b15f3285d7d79dfa9d7496461c58d71bfeeb8524b53b",
     "fullName": "Luis Enrique Rocha Soto",
-    "honorific": "M.I."
+    "honorific": "M.I.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "463a875a0569586305f13212ccc07380b94a99a78f56b8bdfd9868208350501c",
-    "fullName": "Luis Jesús Aguilar Jaramillo",
-    "honorific": "LAD."
+    "id": "916007b00500d6dc436d4184c6669b0b7fe1b6a76cfba3a3e317e5de2b94f1a6",
+    "fullName": "Luis Eusebio Cardoso Lozano",
+    "honorific": "Mtro.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
   },
   {
-    "id": "02e7575080ab0d804e142c2dfa7af2d5ace244aa67a4373e67f5c2066aaf0b24",
-    "fullName": "Luis Ramón Merchán Villalba",
-    "honorific": "Dr."
+    "id": "8d3d1f8778cdb13134a73e7a9f758fcdb81fad70fe25002bc6797007ce804fe2",
+    "fullName": "Luis Jes\u00fas Aguilar Jaramillo",
+    "honorific": "LAD.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "ea83b18dcd11b2326c8fe43fe61469ddaab54fe5252ca48be2cd3892378029a3",
-    "fullName": "Luz Estela González García",
-    "honorific": "LIC."
+    "id": "298030af1ca9c04c098d95718e245ce68b99753e2d6b3dfee94dfdda07f226a1",
+    "fullName": "Luis Manuel Ledesma Carrillo",
+    "honorific": "Dr.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
   },
   {
-    "id": "2a05b108808866e62f33ab0c634c5863ebc153b8029f35dc98132ea1a6790979",
-    "fullName": "Ma. Gabriela Arias Velázquez",
-    "honorific": "Mtra."
+    "id": "6700b096ddcf189142065d09a7e824f1c50d727cf8a847916e454805e938ff20",
+    "fullName": "Luis Ram\u00f3n Merch\u00e1n Villalba",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "8f32a63f9d2c7ceba40cf2553bc3a86e24b8c460c84d5383d52f2de4f113ca5b",
-    "fullName": "Ma. Juana Angélica Duarte Lara",
-    "honorific": "Mtra."
+    "id": "ec0ef859df5a25f9a3bb45649e160c6966a78c382705bf86cbf70d3d191d4e05",
+    "fullName": "Luz Estela Gonz\u00e1lez Garc\u00eda",
+    "honorific": "LIC.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "1a8f2a3d904682f4c638e10563debd46b8dd5c1252dc9ab1b2a0bf43178a6f8a",
-    "fullName": "Macarena Martínez Aguayo",
-    "honorific": "MDO."
+    "id": "80d0bbb27a31832def1bf8e6f1495dd93814371cc550d06ef68f4624c0f04684",
+    "fullName": "Ma. Gabriela Arias Vel\u00e1zquez",
+    "honorific": "Mtra.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "142e108cd270016f38e9eee0164c59a4856c7ed8425db9da8995877d50ee2077",
-    "fullName": "Marco Antonio García Montoya",
-    "honorific": "Dr."
+    "id": "5d3cd19f3d56956909edfa894a3f27724779a7ec21829a1f08966278a21f0368",
+    "fullName": "Ma. Juana Ang\u00e9lica Duarte Lara",
+    "honorific": "Mtra.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "a7100bb16ee319efdab382fda78bc54ba17fa6bd0e492dbd1f5423a8b4dfebdc",
-    "fullName": "Marco Antonio Sánchez Jiménez",
-    "honorific": "Dr."
+    "id": "09250b732faac3496926a1412929ebeb4801d7016645d72688b2cbce006ed777",
+    "fullName": "Macarena Mart\u00ednez Aguayo",
+    "honorific": "MDO.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "7114b854a666709a49c1d1d4433fcf2420e3b419c5b438a0626d9441fabb1490",
-    "fullName": "Marco Aurelio Ramírez Silva",
-    "honorific": "Mtro."
+    "id": "0a0919fdf4407e596feb33c8aac30e5c25fb3ec49fc2822e35190e4e0f8c711c",
+    "fullName": "Marcelina Pantoja Flores",
+    "honorific": "MLAEI.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
   },
   {
-    "id": "f2fce658012f4b75d8070cd792496f0c27e9892ee85990ae92e31dca5e61a7f5",
-    "fullName": "Marco Iván Estrada Pintor",
-    "honorific": "Ing."
+    "id": "49d9f4b10fd0c54c503d5124b4ebe85d803b52daa0844fa9ceae9cf2de630804",
+    "fullName": "Marco Antonio Garc\u00eda Montoya",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "3a172687ac5a1b4691265c4847b7fdb8206a5e3c98ed5a555b2af5a04d26332b",
-    "fullName": "Maricela Vázquez Jaime",
-    "honorific": "Ing."
+    "id": "61d450110f11874c02cb795abc9afad7dccdf6f2559f33fcdb4fd2f4c6e3f875",
+    "fullName": "Marco Antonio S\u00e1nchez Jim\u00e9nez",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "56cbb2fab5a7ed8577bbd66d187e10964cadf52b921764d53af8ce104ec4f45a",
-    "fullName": "Mario Alberto García Murillo",
-    "honorific": "Dr."
+    "id": "e426b74660d6021adcf158f098344e6529708c173770f59d29aad1481ffe7490",
+    "fullName": "Marco Aurelio Ram\u00edrez Silva",
+    "honorific": "Mtro.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "3a9cc6b622aee786ea1722992565678165c911e2b00c64960cdb93511f5444e6",
+    "id": "a6d3990b3a5d9b1c4b9528c96e8040113297d3130d1b5af1adc7e0266fc079d3",
+    "fullName": "Marco Iv\u00e1n Estrada Pintor",
+    "honorific": "Ing.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "46a0bf35530ead9ae55503d1190c9dcc765c06b2242a323eccd90b70a1ef4a16",
+    "fullName": "Maricela V\u00e1zquez Jaime",
+    "honorific": "Ing.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "f7ab1d7fbdb4e2b1d149650695394389ecd4f05e764999c5996b0b261ba0cc47",
+    "fullName": "Mario Alberto Garc\u00eda Murillo",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "9d7595964f1c998f025fbd5de1b985b83331767db2bbd6ee1c1175594267d650",
     "fullName": "Mario Alberto Ibarra Manzano",
-    "honorific": "Dr."
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "c6e24977de6cb54d4d2b2f1cc7577cecfad4952f9f2083c4e1181a273e5957c1",
-    "fullName": "María Catalina Rangel León",
-    "honorific": "Mtra."
+    "id": "a6d8ed86976db8ca4a5e5b1138f7f46183f3b00dc3d4220b4abd2341435de711",
+    "fullName": "Mar\u00eda Catalina Rangel Le\u00f3n",
+    "honorific": "Mtra.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "2423721d4a9afae7a383062e96bb0a06d5a844023093739e5b4fabe2365a2a62",
-    "fullName": "María Mercedes León Sánchez",
-    "honorific": "Dra."
+    "id": "a82ca37712ce8c32d1e4c4ae2a6a27de1f064383971003fe024ccf9398513597",
+    "fullName": "Mar\u00eda Fernanda Castillo Acosta",
+    "honorific": "MLAEI.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
   },
   {
-    "id": "029752842537b10b27f744b28d589f516801172eb444f220efd4e1d400b06c84",
-    "fullName": "María Soledad López Pérez",
-    "honorific": "LAD."
+    "id": "24b7ba97fbe6a5ac8e2379d31ba22740165aaaba86858a91a7a6feba416680f4",
+    "fullName": "Mar\u00eda Mercedes Le\u00f3n S\u00e1nchez",
+    "honorific": "Dra.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "97d748cb47ea717308578682f4e4eb8862ae4da1b831f7435d9b70cf4995573f",
-    "fullName": "Mayra Itzel García Flores",
-    "honorific": "LEI."
+    "id": "a4b4a698d312c2895bd1e6d9b2edc34862bfff8523d653798c3d8a9955877290",
+    "fullName": "Mar\u00eda Natividad Dom\u00ednguez D\u00edaz",
+    "honorific": "M.F.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
   },
   {
-    "id": "e205aef85501a461463ea79939e08c95b707b280a9e9373a747f89e20ae134d6",
+    "id": "3a6661067bbaf7c0eb0c28abe514541509826d4d700f388a433b2ac956dbba50",
+    "fullName": "Mar\u00eda Soledad L\u00f3pez P\u00e9rez",
+    "honorific": "LAD.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "35411b48f4bacc9acf4905523df15c1962707cab25ee584dfb7255137f46031a",
+    "fullName": "Mar\u00eda Susana \u00c1vila Garc\u00eda",
+    "honorific": "Dra.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "5053c04a85aa6309d9fe72dc924c99375328328ec76baace69dd89251912f031",
+    "fullName": "Mayra Itzel Garc\u00eda Flores",
+    "honorific": "LEI.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "f913b21b248c4874111c0a7f2621090b71ad3640dc5e5bae789895d7591cb0ba",
+    "fullName": "Miguel Ernesto Guti\u00e9rrez Rivera",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "91f7eb27d335b6739a9432aaf64b76a80e0e12de5ded958050d467f679378dbd",
     "fullName": "Miguel Torres Cisneros",
-    "honorific": "Dr."
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "7b28d1f3f64e5e900cef94b0bf7fc49e2cc4fbaf949e1a7ea87aba81a858aacc",
-    "fullName": "Miguel Ernesto Gutiérrez Rivera",
-    "honorific": "Dr."
+    "id": "51f845a33e7aa2260534f9c0fec762ca2d694653abf0b92a049e37840d19b090",
+    "fullName": "Miguel \u00c1ngel G\u00f3mez Mart\u00ednez",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "46670b1d87807b902355913736901976f6101e429529f683c4ceefe8dc142d99",
-    "fullName": "Miguel Ángel Gómez Martínez",
-    "honorific": "Dr."
+    "id": "3d85cc0489d9d3bdc9ba3932bf7c64b28216c3bd0a5781885b2054b5d0445b87",
+    "fullName": "Miguel \u00c1ngel Ju\u00e1rez Requena",
+    "honorific": "M.I.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "81a9c13face8e703e671fdad7b2acef66b7efd5d58c125ecf9fdabc9f75440b3",
-    "fullName": "Miguel Ángel Juárez Requena",
-    "honorific": "M.I."
+    "id": "8409f7c8191b8dabb743f9438d7769bfa10353d5ddb82077ee68f38065f680e0",
+    "fullName": "Miguel \u00c1ngel V\u00e1zquez Olgu\u00edn",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "805ab73c72edc3bff2341031c0cc3e8b9492f0b7347672847139826e15a41d0f",
-    "fullName": "Miguel Ángel Vázquez Olguín",
-    "honorific": "Dr."
+    "id": "331b3239b11b1c0770e878ca0ce2661e2ec7e64f376bf3b5269169899624d24e",
+    "fullName": "Miriam Gami\u00f1o Conejo",
+    "honorific": "Mtra.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "c1e168974550a41b1a0586bab6db72e2c6653f2d5729dd8a4fc1d85db0d62135",
-    "fullName": "Miriam Gamiño Conejo",
-    "honorific": "Mtra."
+    "id": "652a1c4989a78ff23ef7c3cd9c07f5bfdc84ae38a4b3cefc62c5f911fb99f2e5",
+    "fullName": "Misael L\u00f3pez Ram\u00edrez",
+    "honorific": "Dr.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
   },
   {
-    "id": "a164d8fc4e5c73b983e6811fd47317713dc001503a85336a90755e79fef76552",
-    "fullName": "Nitzia Julieta Ruíz Zapatero",
-    "honorific": "LAD."
+    "id": "38c8f04508a87e622ca7244b2a7a0d75dbac5308115f23b673955da23ff9cab9",
+    "fullName": "M\u00f3nica Trejo Dur\u00e1n",
+    "honorific": "Dra.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
   },
   {
-    "id": "0f3aef164486373a43f10e4cf9dc665a730045017bf26c419355b91d6edb6983",
+    "id": "5a32a3afd01de22ae5f87da5686271e1cc61028d0a91f1759c063786bf33230f",
+    "fullName": "Narda Beatriz Ocampo Jim\u00e9nez",
+    "honorific": "MAT.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "6405d8fb8aee8b36b8d9fbcd4118641638959b8842f66ea2e5b326eb570c0e21",
+    "fullName": "Nitzia Julieta Ru\u00edz Zapatero",
+    "honorific": "LAD.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "c9c656f5c0fbb62c42782144208f3fa8179f1b5d7e0e9e8f26522f53bc8e2318",
     "fullName": "Oscar Almanza Conejo",
-    "honorific": "Dr."
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "1a97772c0b814a0a394fee17bfec87d75c5f599d6091b7b822caeb2a575243c9",
+    "id": "4c97793bc99dc818712edd783350e3c0f2fac4dda188c99e13f9234c3da62821",
     "fullName": "Oscar Gerardo Ibarra Manzano",
-    "honorific": "Dr."
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "aaeed2d47d9275e3d7ac9a484763f1915949db721f0121a5834aaba946fce22b",
-    "fullName": "Osvaldo Rodríguez Villalón",
-    "honorific": "Dr."
+    "id": "2a90ff6b74d05cf59e35a2e1b58c3d4feb6070f402a8b58b780aa75c3a57ad43",
+    "fullName": "Osvaldo Rodr\u00edguez Villal\u00f3n",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "ff4d4161264f688a2e13400e672919c09f3104162f8e5b02bc01da83a06d4aab",
+    "id": "d6d5808e36e843d880c0fba13c329dc078b99b7e92c77e128e209687583cbf52",
+    "fullName": "Patricia Hern\u00e1ndez G\u00f3mez",
+    "honorific": "LIC.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "03601e6bc63e808568e632c433c60a0e8ebfbb78ea2ac4ce1adde5a0a67b3364",
+    "fullName": "Patricia Razo Granados",
+    "honorific": "MDUED.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "00e82065b2b8d79902f74b37d4991b1d9dd2a31137990ce9dcd2efd65c52054d",
     "fullName": "Pedro Herrera Delgado",
-    "honorific": "LAD."
+    "honorific": "LAD.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "aa4c08da623fb8eb99c53271f73150a778ebc7e824adc29a1a9b897e17fe5696",
+    "id": "88d9fe39ed598798e23ffe0a70fbf65fa6a089cb67ede90574e17c3133553a4c",
     "fullName": "Prasad Mukhopadhyay Tirtha",
-    "honorific": "Dr."
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "7e482c43a153f33bca3149b7952a53f958745cc66898da8e8937c349fc3a613b",
-    "fullName": "Rafael Guzmán Cabrera",
-    "honorific": "Dr."
+    "id": "aa901dc5d25e1e9342a91fbf95e4c2a5f94545110bdccc310b64d9c4c8c0dc5b",
+    "fullName": "Rafael Guzm\u00e1n Cabrera",
+    "honorific": "Dr.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
   },
   {
-    "id": "42a1f68bd2fba5e22b9be0c0c74771a04d48622b2ff1e11e2808e460da3fe0e2",
-    "fullName": "Raúl Enrique Sánchez Yañez",
-    "honorific": "Dr."
+    "id": "fe11fb34e82fea2665b340550da664aaae11fd0c581454b768c7dc362bc85785",
+    "fullName": "Rafael Guzm\u00e1n Cabrera",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "5247ff04a2c8665f9e8fb9f925481cbe83ec5d3b7ead7bdd2e35e350763ca7d9",
-    "fullName": "Reynaldo Thompson López",
-    "honorific": "Dr."
+    "id": "63943b9c7c368801100962a519e5600f8dbbaa5e741962ef06e74def4655eb38",
+    "fullName": "Ra\u00fal Enrique S\u00e1nchez Ya\u00f1ez",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "2838691afd32be935ea62172f4b090558edf94cbc461c5aa5c0e58991ad9f478",
-    "fullName": "Ricardo García García",
-    "honorific": "Dr."
+    "id": "45d675c9c74bc4ba17a223b449808baf88f224e4e7b7dbda465002aa859d50c7",
+    "fullName": "Reynaldo Thompson L\u00f3pez",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "7b4b10a2fbe58605cf66f73effc924d97593c41eef43464146e4ae6abfcc082b",
-    "fullName": "Ricardo Martínez Martínez",
-    "honorific": "M.I."
+    "id": "d41f8bba3a24cfea287b0ea9b9c0675521eedc80e98a517914b9c4edeb740383",
+    "fullName": "Ricardo Garc\u00eda Garc\u00eda",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "c72d032cbc5bb89dd37f3bb270ac1b2d4ca64a285582921a905443fd59145464",
+    "id": "c76ef70dc219f601550aa02cff82c2d1b3222561539bb15d010be4198a7114b8",
+    "fullName": "Ricardo Mart\u00ednez Mart\u00ednez",
+    "honorific": "M.I.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "fed61a4313f7a3f76b1a859e8bafeb63e96d98fefcc80b635f8fbe492917fc64",
+    "fullName": "Roberto Baeza Serrato",
+    "honorific": "Dr.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "31ec9e454be8d47c54d181f019c31ab20916cbc355932fb8ceb59fcf6e195033",
     "fullName": "Roberto Rojas Laguna",
-    "honorific": "Dr."
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "d9e7b82af08fd8a9f1a82319a96dae7ebb6bb473bd9e7224ae3dcad2d399099f",
-    "fullName": "Rocío Alfonsina Lizárraga Morales",
-    "honorific": "Dra."
+    "id": "401d120a39fff26239f4180a91e9d1eb76e41ed24a9d06c9ae19d605b22b732e",
+    "fullName": "Roc\u00edo Alfonsina Liz\u00e1rraga Morales",
+    "honorific": "Dra.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
   },
   {
-    "id": "2906a8ae7f81c572be4df5e6d609e535265805b97394a1cd814d600f20aba721",
-    "fullName": "Rogelio Castro Sánchez",
-    "honorific": "Dr."
+    "id": "a65a6766b5eff2f65b344fc5f740cc4fe9338cc8330b1c08f416908583548fbd",
+    "fullName": "Roc\u00edo Alfonsina Liz\u00e1rraga Morales",
+    "honorific": "Dra.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "413862e9f7d34a093b3cc4076e1546a6f88045eb330515cb390278911c09713e",
+    "id": "a2078c8052ba6d9e01046d3b9da49c32ea928bd1f9c0bc0836e03f76c3b5f8ab",
+    "fullName": "Rodolfo Reyes Vieyra",
+    "honorific": "LIC.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "0f92e27d0aa620736add21bc17fb631ab08a809914195355a823a8f6340a31a0",
     "fullName": "Rogelio Armando Zavala Ortega",
-    "honorific": "LAD."
+    "honorific": "LAD.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "8e2e34701e4b5bbd9cea44c644d353191f2700854762a34059fbd0c5fd69eac2",
+    "id": "4e34a3d00aec089ebcd925b2c6c84c5cf4dcd703182f8c1a8c7433094a8dc6be",
+    "fullName": "Rogelio Castro S\u00e1nchez",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "376ab8eddfa978a38de5dddfe19377f8c9488a97fd9d34bacc2b93bd53656e94",
+    "fullName": "Rosalina Romo Molinares",
+    "honorific": "MLAEI.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "fc68d000273b2090c56a05b5fe1f1c9bb87826009968c0789522929ca5e08ba7",
+    "fullName": "Ruth Ivonne Mata Ch\u00e1vez",
+    "honorific": "Dra.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "aadf0f25be412239e8d8038a0e3c71c342a8061b029e1fb6ec47237e5b3d282b",
     "fullName": "Salvador Botello Aceves",
-    "honorific": "Dr."
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "9fe5f2291a1f858239ef9347314e8375bfb51a6a03b6258e53d64c4752dae0fb",
+    "id": "89970de1a7ee33be1f5d7d1486d08e9d6cd10116591e3c140911352fe03ad05a",
     "fullName": "Sandra Leticia Cuevas Torres",
-    "honorific": "Dra."
+    "honorific": "Dra.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "83f346aee0d9e77086038eb358ec05cee6aaeeaa355191a2784747e430be11f6",
-    "fullName": "Sara Danae López Cabrera",
-    "honorific": "Ing."
+    "id": "e92369cc64670ff65fd98d34c40cb8a72f5e708efe21495c56b484bdf24f63bb",
+    "fullName": "Sara Danae L\u00f3pez Cabrera",
+    "honorific": "Ing.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "97201ce399c7f7b34ddda23b6bef54913f9a1b0ef52ff41f9e3d2a67d2ac69e2",
+    "id": "42b4071b3773283089efab5fe0a7677809f30044ce2052e895e335e41aaecd05",
     "fullName": "Sara Janeth Esquivel Soto",
-    "honorific": "Mtra."
+    "honorific": "Mtra.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "2066d68c8d5cda38dc6540c5580e9157fb23391099d9c927d2dbb8fa0397e357",
+    "id": "2d21b7335d3ff92f41c5ca583e7c46a52094083513d6daf1c6356b7b710eef1e",
     "fullName": "Saskia Van Amerongen",
-    "honorific": "Dra."
+    "honorific": "Dra.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "82e6240d2fa7a0670c09e1edc69b821da3d2d9118382d0638beb8f637790ed1f",
+    "id": "3fbb5d606f3fda59982f24b39cde3d74c4abfbe6f2fa6dd7557ac5bbf45881d3",
     "fullName": "Sergio Cano Andrade",
-    "honorific": "Dr."
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "2ce3a03d3e510a84697a2f6e6819e50d9aa461aca5186a9654f8786462ccaaa8",
-    "fullName": "Sergio González Aguilar",
-    "honorific": "Mtro."
+    "id": "8ebd86bae80190e74cdc1f35e962846dc123feb12e1e47723f508dc1c49e51f7",
+    "fullName": "Sergio Ernesto Medina Cu\u00e9llar",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "3c231ad93972adc206fe1345cf1a866acdb1737a2009c5accbde47779b068a3c",
-    "fullName": "Sergio Ernesto Medina Cuéllar",
-    "honorific": "Dr."
+    "id": "e56540e48150f3e280c3304840df27e2ca0c649fc621d7a56a4f97b37c54b2c2",
+    "fullName": "Sergio Gonz\u00e1lez Aguilar",
+    "honorific": "Mtro.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "1487d8b248f0bdcc423e12c221a91fd1b7729de09b5bb51fd7baa95c9370c27f",
-    "fullName": "Sigifredo Marrujo García",
-    "honorific": "Dr."
+    "id": "0be648b566705939ed37fafe388d9a078438b01c07f5c74f8b1e3f572e51b75d",
+    "fullName": "Sergio Iv\u00e1n Ram\u00edrez Zavala",
+    "honorific": "Mtro.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
   },
   {
-    "id": "1edb9104f43b383019cd7f7d6c90460a5e3abfd16ade53cb85d6e35cf101603d",
-    "fullName": "Uriel Haile Hernández Belmonte",
-    "honorific": "Dr."
+    "id": "653670f99fee35d56ba9d3d91d9d05b3ea1e573a96acafbe96f1483452d7aa60",
+    "fullName": "Shmaliy Yuriy",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "6efde5902af7eb0c84aacb93e748ed89e307e590e6e44b679a1ff126442f9105",
-    "fullName": "Valentina Ugarte Ortíz",
-    "honorific": "Mtra."
+    "id": "5bf4a9454ec2a0e30cf714b6601e34b60059699dce0e173c04e2b9071765ee0a",
+    "fullName": "Shulika Oleksiy",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "f868d10b6cfb257800c467e7f331a52c761288769b3da486b095a3cb87457298",
-    "fullName": "Verónica Hernández Ramírez",
-    "honorific": "M.I."
+    "id": "4ee326f215e7aa5a275d2f616f6426800114b2da1c3a4069793b1d29317b6edb",
+    "fullName": "Sigifredo Marrujo Garc\u00eda",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "b1b37515d19124b384c63979fd113213179d6cbedfe86d8ecae29c47c70bdc1d",
-    "fullName": "Vicente Pérez García",
-    "honorific": "Dr."
+    "id": "0a305a14f542611e5f2627869d998db350eaa2cb4443f07546609a0f8c53268a",
+    "fullName": "Silvia Torres Rangel",
+    "honorific": "LART.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
   },
   {
-    "id": "4b7b53068b9acb5534953dbc58a3613f197b96e9cd13034b76b19bb5013250a0",
-    "fullName": "Victor Manuel Vega Gutiérrez",
-    "honorific": "Ing."
+    "id": "811dbbd00fabf523a5060b7262504c392d042dd6f9f362ac3e5fcaccab6d0a72",
+    "fullName": "Tarsicio Ramos Lemus",
+    "honorific": "MTW.",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
   },
   {
-    "id": "45acdada6d70b4d9fa92004abeb12646913d12cd67b25fa4bd016ff43af12ef9",
+    "id": "c8dfc223acfc1b9326524c76deab4d448df74eba75672a72f1fa03550c389bff",
+    "fullName": "Ug Secretar\u00eda Acad\u00e9mica",
+    "honorific": "",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "ce7f1af94e4fdb9e0b5ec68cee86f12ab30170d333f0b87fd2de2facfaf6776b",
+    "fullName": "Uriel Haile Hern\u00e1ndez Belmonte",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "9abe02deb7babaa152a4af8249c543df0eb1c3a548c2f934447d7acf184b482e",
+    "fullName": "Valentina Ugarte Ort\u00edz",
+    "honorific": "Mtra.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "4bb313a7131d30ec258cdaee7608da8ed5950c9829aa6a0c0da9a68af11c6a6f",
+    "fullName": "Ver\u00f3nica Hern\u00e1ndez Ram\u00edrez",
+    "honorific": "M.I.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "af5ff017cd54d6a6fb0cb84142c91e518aae9a7d0fdb2c0bf7d01de434dd3e18",
+    "fullName": "Vicente P\u00e9rez Garc\u00eda",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "66628e39fad302e9d107fa4c9b53c81e7fe2ecfbf92f9e642d073c2a59fa3fcf",
+    "fullName": "Victor Manuel Vega Guti\u00e9rrez",
+    "honorific": "Ing.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "1cf11de66d83c1f7d8262c2fc428b8df47281d371669eddae2883aea2b36460d",
     "fullName": "Victoria Paola Cabrera Madera",
-    "honorific": "M.C."
+    "honorific": "M.C.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "610ddabf33a0aa0fc4cf5e2c45bf558a385a9fd29afb589444469ce98e242bef",
-    "fullName": "Víctor Alfonso Ramírez Elias",
-    "honorific": "Dr."
+    "id": "2140f98fafdee9c538a4bb5fba9ae345ac6e3baee6d076b4afe38168bdca9c60",
+    "fullName": "V\u00edctor Alfonso Ram\u00edrez Elias",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "755bd361061bb47b7f269ab3a368a5bd43ae18692a6fa134c872779b63e666a1",
-    "fullName": "Víctor Hugo Jiménez Arredondo",
-    "honorific": "Dr."
+    "id": "e5302b2a502c6c992c96da8dac91fce18741926c369d462f92d1e0fddf15a114",
+    "fullName": "V\u00edctor Hugo Jim\u00e9nez Arredondo",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "4fd0662b6028f29c1fab06bd8ebf44c70330869a0dadce2cef94509445225f41",
-    "fullName": "Víctor Javier Gutiérrez Martínez",
-    "honorific": "Dr."
+    "id": "3ce4a989707d6085b079475b2eeafbc44b6469a5b150e76b7cc301742c30f23b",
+    "fullName": "V\u00edctor Javier Guti\u00e9rrez Mart\u00ednez",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "522c86d8e6d78dd0bf5cfec597da16e5864529af954910979e4e74edabd7f1db",
-    "fullName": "Víctor Manuel Espinoza Rodríguez",
-    "honorific": "Mtro."
+    "id": "e72588f0a0306832d30056e133389a3ef4d09bdbc96ad352ae64e93d38a88c77",
+    "fullName": "V\u00edctor Manuel Espinoza Rodr\u00edguez",
+    "honorific": "Mtro.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "74846fbc8f7db663b69036fa9ac66278737477e2df87b33ddb2d30f53b60877a",
-    "fullName": "Víctor Manuel Reyes Espino",
-    "honorific": "Dr."
+    "id": "475e5efe66e3c111f568d12761fe5e2f116fd66e7507a4f065ebff02dff5dcf1",
+    "fullName": "V\u00edctor Manuel Reyes Espino",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "df60ab5092eb58d8d394c1bc90855b8d9f9d69466784c3ad56ef83a4dac0ddf5",
-    "fullName": "Xiomara González Ramírez",
-    "honorific": "Dra."
+    "id": "cbabc05fe44a85d3872bef083f1c97c7ec38cfdf4a8b1c08811e7ce483b164b6",
+    "fullName": "Xiomara Gonz\u00e1lez Ram\u00edrez",
+    "honorific": "Dra.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "b1f46a2f357a16d67fc2eb9675cfa8c87f5c9c8b7e99cda52dc3e45c88ffcae4",
+    "id": "508617dcc96afb5726404d764a8bc6cefba71e58d17da1ffd00ca39c55cc19c9",
     "fullName": "Yair Alejandro Andrade Ambriz",
-    "honorific": "Dr."
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "d478f0d1e837f5ec09c092188560c63b27f01bfa947aa4d541c95613b161c6a7",
+    "id": "0f796df00bf6f36413b4ef9ed902e3a4ace001d55b0dca21392ab51790dd2989",
     "fullName": "Yashiro Danahi Cisneros Reyes",
-    "honorific": "Dra."
+    "honorific": "Dra.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   },
   {
-    "id": "82b916717292eedf4d8ea37cfb92a491c7aab31aa4394c25b74485b697806fbd",
-    "fullName": "Ángel Díaz Pacheco",
-    "honorific": "Dr."
+    "id": "bd2a9edcdb5f21e56bdebd8139c0dacda32d14f4f900be66d3aae4aa7325db88",
+    "fullName": "\u00c1ngel D\u00edaz Pacheco",
+    "honorific": "Dr.",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
   }
 ]

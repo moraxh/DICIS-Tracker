@@ -1,6 +1,7 @@
 import logging
 import tempfile
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from typing import Iterable
 from urllib.parse import urljoin
 
 import pdfplumber
@@ -76,20 +77,22 @@ def extract_days(headers):
   return mapping
 
 
-def get_pdf_links(url: str):
+def get_pdf_links(url: str, section_title: str):
   with requests.Session() as session:
     res = session.get(url, timeout=10)
     res.raise_for_status()
 
     soup = BeautifulSoup(res.text, "html.parser")
 
-    title = soup.find(string=lambda t: t and "Sede Salamanca Enero" in t)
+    title = soup.find(string=lambda t: t and section_title in clean(t))
 
     if not title:
-      raise Exception("No se encontró Salamanca")
+      raise Exception(f"No se encontró la sección '{section_title}'")
 
-    container = title.find_parent("td")
-    table = container.find("table")
+    table = title.find_next("table")
+
+    if not table:
+      raise Exception(f"No se encontró la tabla de la sección '{section_title}'")
 
     anchors = []
 
@@ -179,8 +182,8 @@ def parse_table(table):
   return list(grouped.values())
 
 
-def scraper_dicis_salamanca(url: str) -> list[Course]:
-  anchors = get_pdf_links(url)
+def scrape_courses(url: str, section_title: str, custom_rules: Iterable[tuple[str, str]] | None = None):
+  anchors = get_pdf_links(url, section_title)
   courses = []
 
   with ThreadPoolExecutor(max_workers=5) as executor:
@@ -196,7 +199,19 @@ def scraper_dicis_salamanca(url: str) -> list[Course]:
       except Exception as e:
         logging.warning(f"Failed to parse {a['name']}: {e}")
 
-  dicis_rules = [("cdmanu", "manufactura"), ("computo", "comp. a")]
-  courses = merge_outlier_rooms(courses, outlier_threshold=5, custom_rules=dicis_rules)
+  courses = merge_outlier_rooms(
+    courses,
+    outlier_threshold=5,
+    custom_rules=list(custom_rules or []),
+  )
 
   return courses
+
+
+def scraper_dicis_salamanca(url: str) -> list[Course]:
+  dicis_rules = [("cdmanu", "manufactura"), ("computo", "comp. a")]
+  return scrape_courses(url, "Sede Salamanca Enero", custom_rules=dicis_rules)
+
+
+def scraper_dicis_yuriria(url: str) -> list[Course]:
+  return scrape_courses(url, "Sede Yuriria Enero")

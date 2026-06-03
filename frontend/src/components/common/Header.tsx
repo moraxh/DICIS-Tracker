@@ -1,13 +1,20 @@
 "use client";
 
-import { Clock } from "lucide-react";
+import { Building2, Clock, MapPin } from "lucide-react";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
+import { useHeadquarters } from "@/context/Headquarters/useHeadquarters";
 import Badge from "./Badge";
+import Dropdown from "./Dropdown";
 import ThemeToggle from "./ThemeToggle";
 
 export default function Header() {
   const [currentTime, setCurrentTime] = useState<Date | null>(null);
+  const {
+    availableHeadquarters,
+    selectedHeadquarters,
+    setSelectedHeadquarters,
+  } = useHeadquarters();
 
   useEffect(() => {
     console.info(
@@ -50,6 +57,22 @@ export default function Header() {
             Esta herramienta te ayuda a encontrar salones vacíos o saber si un
             profesor está sin clases.
           </p>
+          <div className="mb-4 flex flex-col sm:flex-row gap-3 sm:items-center">
+            <div className="w-full sm:w-[280px]">
+              <Dropdown
+                options={availableHeadquarters.map((headquarters) => ({
+                  id: headquarters,
+                  label: headquarters,
+                }))}
+                value={selectedHeadquarters}
+                onChange={setSelectedHeadquarters}
+                placeholder="Seleccionar sede"
+              />
+            </div>
+            <Badge variant="success" icon={<MapPin className="w-3.5 h-3.5" />}>
+              Sede activa: {selectedHeadquarters}
+            </Badge>
+          </div>
           <div className="flex flex-wrap items-center gap-3">
             <Badge
               variant="neutral"
@@ -67,6 +90,9 @@ export default function Header() {
               className="text-zinc-500 dark:text-zinc-400"
             >
               En tiempo real
+            </Badge>
+            <Badge variant="info" icon={<Building2 className="w-3.5 h-3.5" />}>
+              Todo el sistema filtrado por sede
             </Badge>
 
             {isOutOfHours && (

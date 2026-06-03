@@ -1,9 +1,11 @@
-import { NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import { ProfessorService } from "@/backend/services/professor.service";
 
-export function GET() {
+export function GET(request: NextRequest) {
   try {
-    const response = ProfessorService.getProfessorsWithState();
+    const headquarters =
+      request.nextUrl.searchParams.get("headquarters") ?? undefined;
+    const response = ProfessorService.getProfessorsWithState(headquarters);
 
     const headers: Record<string, string> =
       process.env.NODE_ENV === "development"

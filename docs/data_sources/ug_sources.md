@@ -94,7 +94,7 @@ El issue es para discutir, este doc es lo que sí cuenta.
 - Fuentes:
   - http://www.caecis.ugto.mx/caecis/pages/horarios.aspx
 - Estado: En progreso
-- Notas: Se necesita agregar maestrías y sede de Yuriria
+- Notas: Yuriria usa la misma fuente base pero en un bloque separado; faltan revisar otras ofertas fuera del bloque Enero-Junio
 
 ---
 

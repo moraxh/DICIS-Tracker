@@ -1,10 +1,12 @@
-import { NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import { SubjectRepository } from "@/backend/repositories/subject.repository";
 
-export function GET() {
+export function GET(request: NextRequest) {
   try {
-    const subjects = SubjectRepository.getAllSubjectsWithDetails();
-    const courses = SubjectRepository.getAllCourses();
+    const headquarters =
+      request.nextUrl.searchParams.get("headquarters") ?? undefined;
+    const subjects = SubjectRepository.getAllSubjectsWithDetails(headquarters);
+    const courses = SubjectRepository.getAllCourses(headquarters);
 
     return NextResponse.json(
       { subjects, courses },

@@ -6,9 +6,11 @@ import type {
   ProfessorsWithState,
   ProfessorWithSchedule,
 } from "@/backend/services/professor.service";
+import { useHeadquarters } from "@/context/Headquarters/useHeadquarters";
 import { ProfessorsContext } from "./ProfessorsContext";
 
 export const ProfessorsProvider = ({ children }: { children: ReactNode }) => {
+  const { selectedHeadquarters } = useHeadquarters();
   const [professorsWithState, setProfessorsWithState] =
     useState<ProfessorsWithState>({
       freeProfessors: [],
@@ -32,7 +34,9 @@ export const ProfessorsProvider = ({ children }: { children: ReactNode }) => {
   const refresh = useCallback(async () => {
     try {
       setIsLoading(true);
-      const response = await fetch("/api/v1/professors");
+      const response = await fetch(
+        `/api/v1/professors?headquarters=${encodeURIComponent(selectedHeadquarters)}`,
+      );
       if (!response.ok) {
         throw new Error("Failed to fetch professors");
       }
@@ -50,7 +54,7 @@ export const ProfessorsProvider = ({ children }: { children: ReactNode }) => {
     } finally {
       setIsLoading(false);
     }
-  }, []);
+  }, [selectedHeadquarters]);
 
   const getProfessorScheduleById = useCallback(
     async (id: string): Promise<ProfessorWithSchedule | null> => {
@@ -99,6 +103,8 @@ export const ProfessorsProvider = ({ children }: { children: ReactNode }) => {
 
   // Cargar datos al montar el componente
   useEffect(() => {
+    scheduleCacheRef.current.clear();
+    pendingScheduleRequestsRef.current.clear();
     refresh();
   }, [refresh]);
 

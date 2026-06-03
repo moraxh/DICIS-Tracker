@@ -10,6 +10,7 @@ import NavBar from "@/components/common/NavBar";
 import ScheduleModal from "@/components/common/ScheduleModal";
 import SurveyModal from "@/components/common/SurveyModal";
 import TopBanner from "@/components/common/TopBanner";
+import { HeadquartersProvider } from "@/context/Headquarters/HeadquartersProvider";
 import { ProfessorsProvider } from "@/context/Professor/ProfessorsProvider";
 import { RoomsProvider } from "@/context/Rooms/RoomsProvider";
 import { ThemeProvider } from "@/context/ThemeProvider";
@@ -74,21 +75,23 @@ export default function RootLayout({
         <Analytics />
         <SpeedInsights />
         <ThemeProvider>
-          <RoomsProvider>
-            <ProfessorsProvider>
-              <div className="min-h-screen flex flex-col">
-                <TopBanner />
-                <Header />
-                <main className="max-w-6xl w-full mx-auto px-6 flex-1">
-                  <AnimatePresence mode="wait">{children}</AnimatePresence>
-                </main>
-                <Footer />
-                <NavBar />
-                <ScheduleModal />
-                <SurveyModal />
-              </div>
-            </ProfessorsProvider>
-          </RoomsProvider>
+          <HeadquartersProvider>
+            <RoomsProvider>
+              <ProfessorsProvider>
+                <div className="min-h-screen flex flex-col">
+                  <TopBanner />
+                  <Header />
+                  <main className="max-w-6xl w-full mx-auto px-6 flex-1">
+                    <AnimatePresence mode="wait">{children}</AnimatePresence>
+                  </main>
+                  <Footer />
+                  <NavBar />
+                  <ScheduleModal />
+                  <SurveyModal />
+                </div>
+              </ProfessorsProvider>
+            </RoomsProvider>
+          </HeadquartersProvider>
         </ThemeProvider>
       </body>
     </html>

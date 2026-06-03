@@ -1,6 +1,6 @@
 "use client";
 
-import { BookOpen, DoorOpen, User } from "lucide-react";
+import { BookOpen, DoorOpen, MapPin, User } from "lucide-react";
 import { memo } from "react";
 import type { SubjectWithDetails } from "@/backend/repositories/subject.repository";
 import { openScheduleModal } from "@/hooks/useScheduleModal";
@@ -31,6 +31,12 @@ const SubjectCard = memo(function SubjectCard({
           <h3 className="text-sm font-bold text-zinc-900 dark:text-white leading-snug uppercase tracking-tight line-clamp-2 mt-0.5">
             {subject.name}
           </h3>
+          <div className="mt-2">
+            <span className="inline-flex max-w-full items-center gap-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-500/10 px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-emerald-700 dark:text-emerald-300">
+              <MapPin className="w-3 h-3 shrink-0" />
+              <span className="truncate">{subject.headquarters}</span>
+            </span>
+          </div>
         </div>
       </div>
 

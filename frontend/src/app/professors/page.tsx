@@ -9,11 +9,13 @@ import PageHeader from "@/components/common/PageHeader";
 import ProfessorCard from "@/components/common/ProfessorCard";
 import SearchBar from "@/components/common/SearchBar";
 import Tabs from "@/components/common/Tabs";
+import { useHeadquarters } from "@/context/Headquarters/useHeadquarters";
 import { useProfessors } from "@/context/Professor/useProfessors";
 import { useFavorites } from "@/hooks/useFavorites";
 import { useScheduleModal } from "@/hooks/useScheduleModal";
 
 export default function ProfessorsPage() {
+  const { selectedHeadquarters } = useHeadquarters();
   const { professorsWithState, isLoading } = useProfessors();
   const { isFavorite, toggleFavorite } = useFavorites();
   const { openScheduleModal } = useScheduleModal();
@@ -88,6 +90,14 @@ export default function ProfessorsPage() {
             activeTab={filter}
             onChange={setFilter}
           />
+        </div>
+        <div className="flex flex-wrap items-center gap-2">
+          <div className="inline-flex items-center gap-2 rounded-xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/5 px-3 py-2">
+            <User className="w-4 h-4 text-zinc-500 dark:text-zinc-400" />
+            <span className="text-[11px] font-semibold uppercase tracking-wide text-zinc-600 dark:text-zinc-300">
+              Sede activa: {selectedHeadquarters}
+            </span>
+          </div>
         </div>
       </div>
 

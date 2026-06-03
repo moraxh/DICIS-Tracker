@@ -17,6 +17,7 @@ import PageHeader from "@/components/common/PageHeader";
 import RoomCard from "@/components/common/RoomCard";
 import SearchBar from "@/components/common/SearchBar";
 import Tabs from "@/components/common/Tabs";
+import { useHeadquarters } from "@/context/Headquarters/useHeadquarters";
 import { useRooms } from "@/context/Rooms/useRooms";
 import { useFavorites } from "@/hooks/useFavorites";
 import { useScheduleModal } from "@/hooks/useScheduleModal";
@@ -58,6 +59,7 @@ function getNowDefaults() {
 }
 
 export default function RoomsPage() {
+  const { selectedHeadquarters } = useHeadquarters();
   const { roomsWithState: realtimeRooms, isLoading: realtimeLoading } =
     useRooms();
   const { isFavorite, toggleFavorite } = useFavorites();
@@ -80,21 +82,24 @@ export default function RoomsPage() {
     setIsOutsideHours(isOutsideSchoolHours());
   }, []);
 
-  const fetchCustom = useCallback(async (day: string, time: string) => {
-    setCustomLoading(true);
-    try {
-      const res = await fetch(
-        `/api/v1/rooms?day=${day}&time=${encodeURIComponent(time)}`,
-      );
-      if (!res.ok) throw new Error("fetch failed");
-      const data: RoomsWithState = await res.json();
-      setCustomRooms(data);
-    } catch {
-      setCustomRooms(null);
-    } finally {
-      setCustomLoading(false);
-    }
-  }, []);
+  const fetchCustom = useCallback(
+    async (day: string, time: string) => {
+      setCustomLoading(true);
+      try {
+        const res = await fetch(
+          `/api/v1/rooms?day=${day}&time=${encodeURIComponent(time)}&headquarters=${encodeURIComponent(selectedHeadquarters)}`,
+        );
+        if (!res.ok) throw new Error("fetch failed");
+        const data: RoomsWithState = await res.json();
+        setCustomRooms(data);
+      } catch {
+        setCustomRooms(null);
+      } finally {
+        setCustomLoading(false);
+      }
+    },
+    [selectedHeadquarters],
+  );
 
   useEffect(() => {
     if (!isRealtime) {
@@ -182,6 +187,15 @@ export default function RoomsPage() {
             activeTab={filter}
             onChange={setFilter}
           />
+        </div>
+
+        <div className="flex flex-wrap items-center gap-2">
+          <div className="inline-flex items-center gap-2 rounded-xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/5 px-3 py-2">
+            <DoorOpen className="w-4 h-4 text-zinc-500 dark:text-zinc-400" />
+            <span className="text-[11px] font-semibold uppercase tracking-wide text-zinc-600 dark:text-zinc-300">
+              Sede activa: {selectedHeadquarters}
+            </span>
+          </div>
         </div>
 
         {/* Row 2: time picker + duration — same visual weight */}
