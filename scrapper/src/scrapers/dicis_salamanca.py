@@ -182,7 +182,9 @@ def parse_table(table):
   return list(grouped.values())
 
 
-def scrape_courses(url: str, section_title: str, custom_rules: Iterable[tuple[str, str]] | None = None):
+def scrape_courses(
+  url: str, section_title: str, custom_rules: Iterable[tuple[str, str]] | None = None
+):
   anchors = get_pdf_links(url, section_title)
   courses = []
 

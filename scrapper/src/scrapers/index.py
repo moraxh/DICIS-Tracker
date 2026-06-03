@@ -90,5 +90,5 @@ SCRAPER_REGISTRY = [
     headquarters=Headquarters.YURIRIA,
     url="http://www.caecis.ugto.mx/caecis/pages/horarios.aspx",
     scraper=scraper_dicis_yuriria,
-  )
+  ),
 ]
