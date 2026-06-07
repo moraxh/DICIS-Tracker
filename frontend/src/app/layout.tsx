@@ -8,7 +8,6 @@ import Footer from "@/components/common/Footer";
 import Header from "@/components/common/Header";
 import NavBar from "@/components/common/NavBar";
 import ScheduleModal from "@/components/common/ScheduleModal";
-import SurveyModal from "@/components/common/SurveyModal";
 import TopBanner from "@/components/common/TopBanner";
 import { HeadquartersProvider } from "@/context/Headquarters/HeadquartersProvider";
 import { ProfessorsProvider } from "@/context/Professor/ProfessorsProvider";
@@ -87,7 +86,6 @@ export default function RootLayout({
                   <Footer />
                   <NavBar />
                   <ScheduleModal />
-                  <SurveyModal />
                 </div>
               </ProfessorsProvider>
             </RoomsProvider>
