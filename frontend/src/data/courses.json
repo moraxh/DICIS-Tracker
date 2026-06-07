@@ -1,1 +1,170 @@
-[{"id": "6", "name": "Doctorado en Ciencias de la Ingenier\u00eda", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "17", "name": "Doctorado en Ingenier\u00eda El\u00e9ctrica", "locationId": "2", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Salamanca"}, {"id": "14", "name": "Doctorado en Ingenier\u00eda Mec\u00e1nica", "locationId": "2", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Salamanca"}, {"id": "10", "name": "Ingenier\u00eda El\u00e9ctrica", "locationId": "2", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Salamanca"}, {"id": "13", "name": "Ingenier\u00eda Mec\u00e1nica", "locationId": "2", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Salamanca"}, {"id": "2", "name": "Ingenier\u00eda en Automatizaci\u00f3n Industrial", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "1", "name": "Ingenier\u00eda en Comunicaciones y Electr\u00f3nica", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "12", "name": "Ingenier\u00eda en Comunicaciones y Electr\u00f3nica", "locationId": "2", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Salamanca"}, {"id": "16", "name": "Ingenier\u00eda en Datos e Ingenier\u00eda Artif\u00edcial", "locationId": "2", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Salamanca"}, {"id": "9", "name": "Ingenier\u00eda en Mecatr\u00f3nica", "locationId": "2", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Salamanca"}, {"id": "5", "name": "Ingenier\u00eda en Sistemas Computacionales", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "11", "name": "Ingenier\u00eda en Sistemas Computacionales", "locationId": "2", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Salamanca"}, {"id": "20", "name": "Licenciatura en Artes Digitales", "locationId": "2", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Salamanca"}, {"id": "3", "name": "Licenciatura en Ense\u00f1anza del Ingl\u00e9s", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "4", "name": "Licenciatura en Gesti\u00f3n Empresarial", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "18", "name": "Licenciatura en Gesti\u00f3n Empresarial", "locationId": "2", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Salamanca"}, {"id": "7", "name": "Maestr\u00eda en Administraci\u00f3n de Tenolog\u00edas", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "21", "name": "Maestr\u00eda en Docencia Universitaria para la Educaci\u00f3n Digital", "locationId": "2", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Salamanca"}, {"id": "8", "name": "Maestr\u00eda en Ingenier\u00eda Electr\u00f3nica Aplicada", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "19", "name": "Maestr\u00eda en Ingenier\u00eda El\u00e9ctrica", "locationId": "2", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Salamanca"}, {"id": "15", "name": "Maestr\u00eda en Ingenier\u00eda Mec\u00e1nica", "locationId": "2", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Salamanca"}]
+[
+  {
+    "id": "6",
+    "name": "Doctorado en Ciencias de la Ingenier\u00eda",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "17",
+    "name": "Doctorado en Ingenier\u00eda El\u00e9ctrica",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "14",
+    "name": "Doctorado en Ingenier\u00eda Mec\u00e1nica",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "10",
+    "name": "Ingenier\u00eda El\u00e9ctrica",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "13",
+    "name": "Ingenier\u00eda Mec\u00e1nica",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "2",
+    "name": "Ingenier\u00eda en Automatizaci\u00f3n Industrial",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "1",
+    "name": "Ingenier\u00eda en Comunicaciones y Electr\u00f3nica",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "12",
+    "name": "Ingenier\u00eda en Comunicaciones y Electr\u00f3nica",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "16",
+    "name": "Ingenier\u00eda en Datos e Ingenier\u00eda Artif\u00edcial",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "9",
+    "name": "Ingenier\u00eda en Mecatr\u00f3nica",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "5",
+    "name": "Ingenier\u00eda en Sistemas Computacionales",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "11",
+    "name": "Ingenier\u00eda en Sistemas Computacionales",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "20",
+    "name": "Licenciatura en Artes Digitales",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "3",
+    "name": "Licenciatura en Ense\u00f1anza del Ingl\u00e9s",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "4",
+    "name": "Licenciatura en Gesti\u00f3n Empresarial",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "18",
+    "name": "Licenciatura en Gesti\u00f3n Empresarial",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "7",
+    "name": "Maestr\u00eda en Administraci\u00f3n de Tenolog\u00edas",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "21",
+    "name": "Maestr\u00eda en Docencia Universitaria para la Educaci\u00f3n Digital",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "8",
+    "name": "Maestr\u00eda en Ingenier\u00eda Electr\u00f3nica Aplicada",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "19",
+    "name": "Maestr\u00eda en Ingenier\u00eda El\u00e9ctrica",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  },
+  {
+    "id": "15",
+    "name": "Maestr\u00eda en Ingenier\u00eda Mec\u00e1nica",
+    "locationId": "2",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Salamanca"
+  }
+]
