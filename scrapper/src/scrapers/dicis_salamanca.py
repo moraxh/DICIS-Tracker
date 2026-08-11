@@ -94,22 +94,25 @@ def extract_days(headers):
   return mapping
 
 
-def get_pdf_links(url: str, section_title: str):
+def get_pdf_links(url: str, section_prefix: str):
   with requests.Session() as session:
     res = session.get(url, timeout=10)
     res.raise_for_status()
 
     soup = BeautifulSoup(res.text, "html.parser")
 
-    title = soup.find(string=lambda t: t and section_title in clean(t))
+    # Section titles include the starting month of the current academic term
+    # (e.g. "Sede Salamanca Enero", "Sede Salamanca Agosto"), which changes
+    # every cycle. Match on the prefix only so this keeps working across terms.
+    title = soup.find(string=lambda t: t and clean(t).startswith(section_prefix))
 
     if not title:
-      raise Exception(f"No se encontró la sección '{section_title}'")
+      raise Exception(f"No se encontró la sección '{section_prefix}'")
 
     table = title.find_next("table")
 
     if not table:
-      raise Exception(f"No se encontró la tabla de la sección '{section_title}'")
+      raise Exception(f"No se encontró la tabla de la sección '{section_prefix}'")
 
     anchors = []
 
@@ -247,10 +250,13 @@ def scraper_dicis_salamanca(url: str) -> list[Course]:
   dicis_rules = [("cdmanu", "manufactura"), ("computo", "comp. a")]
   return scrape_courses(
     url,
-    ["Sede Salamanca Enero", "Sede Salamanca Mayo"],
+    # "Sede Salamanca" without a month matches the current-term section
+    # regardless of its starting month (Enero/Agosto/etc). The summer
+    # term is always titled "Mayo", so it's matched explicitly.
+    ["Sede Salamanca", "Sede Salamanca Mayo"],
     custom_rules=dicis_rules,
   )
 
 
 def scraper_dicis_yuriria(url: str) -> list[Course]:
-  return scrape_courses(url, "Sede Yuriria Enero")
+  return scrape_courses(url, "Sede Yuriria")

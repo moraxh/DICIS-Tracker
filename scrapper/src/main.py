@@ -1,6 +1,7 @@
 import argparse
 import logging
 import os
+import sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from export import save_to_json
@@ -56,6 +57,10 @@ if __name__ == "__main__":
   logging.info("Starting pipeline...")
   data = run_all_scrapers()
   logging.info(f"Scraped total of {len(data)} courses.")
+
+  if not data:
+    logging.error("No courses were scraped from any source. Aborting without touching existing data.")
+    sys.exit(1)
 
   logging.info(f"Saving data to {args.output}...")
   save_to_json(data, output_dir=args.output)
