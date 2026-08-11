@@ -16,7 +16,7 @@
   <img src="https://img.shields.io/badge/Next.js-16-06b6d4" alt="Next.js 16" />
   <img src="https://img.shields.io/badge/React-19-06b6d4" alt="React 19" />
   <img src="https://img.shields.io/badge/PWA-offline_ready-06b6d4" alt="PWA" />
-  <img src="https://img.shields.io/badge/data-JSON%20%2B%20SQLite-06b6d4" alt="JSON and SQLite data" />
+  <img src="https://img.shields.io/badge/data-JSON-06b6d4" alt="JSON data" />
   <img src="https://img.shields.io/badge/license-GPL--3.0-06b6d4" alt="GPL-3.0 license" />
   <img src="https://img.shields.io/badge/plataforma-gratis-06b6d4" alt="Plataforma gratis" />
 </p>
@@ -38,9 +38,8 @@ DICIS Tracker no busca ser una plataforma integral de gestión académica, regis
 El propósito principal de la arquitectura es mantener el proyecto **100% gratis**. Actualmente funciona apoyándose en capas gratuitas y en datos preparados estáticamente:
 
 - **Vercel** para desplegar el frontend Next.js.
-- **GitHub Actions** para automatización y validaciones.
-- **SQLite + JSON exportado** para servir datos rápidos desde la app.
-- **Supabase opcional** para funcionalidades ligeras que no son críticas para consultar horarios.
+- **GitHub Actions** para automatización, validaciones y scraping semanal.
+- **JSON estático** generado por el scraper y consumido directamente por la app.
 
 Por eso somos cuidadosos con rendimiento, tamaño de bundle, frecuencia de scraping y consumo de servicios externos. Cualquier PR que reduzca consultas, mejore tiempos de carga, optimice el build o mantenga la app barata de operar es muy bienvenido.
 
@@ -64,14 +63,12 @@ frontend/
   Tailwind CSS 4
   next-pwa
   Motion
-  Supabase client opcional
-  better-sqlite3
   Biome
 
 scrapper/
   Python 3.10+
   Scrapers por fuente
-  SQLite exportable
+  Export directo a JSON
   Ruff
 ```
 
@@ -81,14 +78,10 @@ scrapper/
 Fuentes públicas
         │
         ▼
-Scraper Python
+Scraper Python (scrapper/src/main.py)
         │
         ▼
-frontend/src/data.db
-        │
-        ▼
-scripts/export-db.mjs
-        │
+frontend/src/data/
         ├─ professors.json
         ├─ rooms.json
         ├─ subjects.json
@@ -120,12 +113,10 @@ cd frontend
 pnpm install
 ```
 
-Crea `frontend/.env.local` si necesitas configurar URL pública o Supabase:
+Crea `frontend/.env.local` si necesitas configurar la URL pública:
 
 ```bash
 NEXT_PUBLIC_APP_URL=http://localhost:3000
-NEXT_PUBLIC_SUPABASE_URL=
-NEXT_PUBLIC_SUPABASE_ANON_KEY=
 ```
 
 Ejecuta la app:
@@ -135,14 +126,7 @@ cd frontend
 pnpm dev
 ```
 
-Para regenerar datos desde SQLite:
-
-```bash
-cd frontend
-pnpm build
-```
-
-El `prebuild` ejecuta `scripts/export-db.mjs` y actualiza los JSON usados por la app.
+La app lee directamente los JSON versionados en `frontend/src/data/`. Para actualizarlos con datos frescos, corre el scraper (ver siguiente sección).
 
 ## Scraper
 
@@ -161,7 +145,7 @@ Ejecuta el pipeline:
 python src/main.py
 ```
 
-Por defecto escribe la base en `frontend/src/data.db`.
+Por defecto escribe los JSON en `frontend/src/data/` (`professors.json`, `rooms.json`, `subjects.json`, `courses.json`, `classes.json`). Un workflow de GitHub Actions (`.github/workflows/scraper.yml`) corre el scraper cada domingo y commitea los datos actualizados automáticamente.
 
 ## Scripts
 
@@ -169,7 +153,7 @@ Desde `frontend/`:
 
 ```bash
 pnpm dev      # servidor local de Next.js
-pnpm build    # exporta datos y genera build de producción
+pnpm build    # genera build de producción
 pnpm start    # sirve el build de producción
 pnpm lint     # biome check
 pnpm format   # biome format --write
