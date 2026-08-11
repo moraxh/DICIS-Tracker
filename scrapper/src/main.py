@@ -59,7 +59,9 @@ if __name__ == "__main__":
   logging.info(f"Scraped total of {len(data)} courses.")
 
   if not data:
-    logging.error("No courses were scraped from any source. Aborting without touching existing data.")
+    logging.error(
+      "No courses were scraped from any source. Aborting without touching existing data."
+    )
     sys.exit(1)
 
   logging.info(f"Saving data to {args.output}...")
