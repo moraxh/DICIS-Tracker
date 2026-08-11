@@ -95,3 +95,18 @@
   background: #6b7280;
   background-clip: content-box;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    /* biome-ignore lint/complexity/noImportantStyles: Reduced-motion override. */
+    animation-duration: 0.01ms !important;
+    /* biome-ignore lint/complexity/noImportantStyles: Reduced-motion override. */
+    animation-iteration-count: 1 !important;
+    /* biome-ignore lint/complexity/noImportantStyles: Reduced-motion override. */
+    scroll-behavior: auto !important;
+    /* biome-ignore lint/complexity/noImportantStyles: Reduced-motion override. */
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -6,6 +6,8 @@ import LayoutSection from "@/components/common/LayoutSection";
 import PageHeader from "@/components/common/PageHeader";
 import Tabs from "@/components/common/Tabs";
 import AffluenceRadar from "@/components/pages/home/AffluenceRadar";
+import AdvancedInsights from "@/components/pages/insights/AdvancedInsights";
+import CampusOverview from "@/components/pages/insights/CampusOverview";
 
 type InsightView = "occupancy" | "opportunity";
 
@@ -33,6 +35,8 @@ export default function InsightsPage() {
       </div>
 
       <AffluenceRadar mode={view} />
+      <CampusOverview />
+      <AdvancedInsights />
     </LayoutSection>
   );
 }

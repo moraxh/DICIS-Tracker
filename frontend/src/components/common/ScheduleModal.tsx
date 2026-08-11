@@ -1,6 +1,6 @@
 "use client";
 
-import { Clock, Loader2, MapPin, User, X } from "lucide-react";
+import { CalendarDays, Clock, Loader2, MapPin, User, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 import type { ClassWithDetails } from "@/backend/types";
@@ -169,19 +169,38 @@ export default function ScheduleModal() {
             className="absolute inset-0 bg-black/40 dark:bg-black/60 backdrop-blur-sm"
           />
           <motion.div
+            key={`${selectedItem.type}-${selectedItem.id}`}
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="relative w-full max-w-7xl max-h-[90vh] bg-white dark:bg-[#0A0A0A] rounded-2xl shadow-2xl border border-zinc-200 dark:border-white/10 flex flex-col overflow-hidden"
+            layout
+            transition={{
+              layout: { duration: 0.28, ease: "easeOut" },
+              default: { duration: 0.28, ease: "easeOut" },
+            }}
+            className={`relative w-full ${view === "today" ? "max-w-3xl" : "max-w-7xl"} max-h-[90vh] bg-white dark:bg-[#0A0A0A] rounded-2xl shadow-2xl border border-zinc-200 dark:border-white/10 flex flex-col overflow-hidden`}
           >
-            <div className="flex items-center justify-between p-6 border-b border-zinc-200 dark:border-white/10 shrink-0">
+            <div className="flex items-center justify-between gap-4 p-5 sm:p-6 border-b border-zinc-200 dark:border-white/10 shrink-0">
               <div>
-                <h2 className="text-xl font-bold text-zinc-900 dark:text-white uppercase tracking-tight">
+                <div className="flex items-center gap-2 mb-1.5">
+                  <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-zinc-100 text-zinc-500 dark:bg-white/10 dark:text-zinc-300">
+                    {selectedItem.type === "room" ? (
+                      <MapPin className="h-3.5 w-3.5" />
+                    ) : (
+                      <User className="h-3.5 w-3.5" />
+                    )}
+                  </span>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-zinc-400 dark:text-zinc-500">
+                    Horario de{" "}
+                    {selectedItem.type === "room" ? "aula" : "profesor"}
+                  </span>
+                </div>
+                <h2 className="text-xl font-bold text-zinc-900 dark:text-white uppercase tracking-tight leading-tight">
                   {selectedItem.type === "room"
                     ? selectedItem.name.toUpperCase()
                     : selectedItem.name}
                 </h2>
-                <div className="flex items-center gap-2 mt-1">
+                <div className="flex items-center gap-2 mt-2">
                   <Badge
                     variant="neutral"
                     icon={
@@ -209,26 +228,26 @@ export default function ScheduleModal() {
               </BaseButton>
             </div>
 
-            <div className="p-6 overflow-y-auto bg-zinc-50/50 dark:bg-[#0A0A0A]">
+            <div className="p-4 sm:p-6 overflow-y-auto bg-zinc-50/70 dark:bg-[#0A0A0A]">
               {isLoading ? (
                 <div className="flex justify-center items-center py-20">
                   <Loader2 className="animate-spin w-8 h-8 text-zinc-500" />
                 </div>
               ) : (
                 <>
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-                    <div className="flex items-center gap-2">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">
+                    <div className="inline-flex w-fit items-center gap-1 rounded-xl border border-zinc-200 bg-white p-1 shadow-sm dark:border-white/10 dark:bg-white/[0.03]">
                       <button
                         type="button"
                         onClick={() => setView("today")}
-                        className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-colors ${view === "today" ? "bg-zinc-900 dark:bg-white text-white dark:text-zinc-900" : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"}`}
+                        className={`px-4 py-2 rounded-lg text-[10px] font-bold uppercase tracking-[0.14em] transition-all ${view === "today" ? "bg-zinc-900 text-white shadow-sm dark:bg-white dark:text-zinc-900" : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"}`}
                       >
                         Hoy
                       </button>
                       <button
                         type="button"
                         onClick={() => setView("week")}
-                        className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-colors ${view === "week" ? "bg-zinc-900 dark:bg-white text-white dark:text-zinc-900" : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"}`}
+                        className={`px-4 py-2 rounded-lg text-[10px] font-bold uppercase tracking-[0.14em] transition-all ${view === "week" ? "bg-zinc-900 text-white shadow-sm dark:bg-white dark:text-zinc-900" : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"}`}
                       >
                         Semana
                       </button>
@@ -253,12 +272,16 @@ export default function ScheduleModal() {
 
                       if (todayClasses.length === 0) {
                         return (
-                          <div className="flex flex-col items-center justify-center py-16 text-center">
-                            <p className="text-sm font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
+                          <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-zinc-200 bg-white px-6 py-16 text-center dark:border-white/10 dark:bg-white/[0.02]">
+                            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-zinc-100 text-zinc-400 dark:bg-white/10 dark:text-zinc-500">
+                              <CalendarDays className="h-5 w-5" />
+                            </div>
+                            <p className="text-sm font-bold text-zinc-600 dark:text-zinc-300 uppercase tracking-wider">
                               Sin clases hoy
                             </p>
-                            <p className="text-xs text-zinc-400 dark:text-zinc-500 mt-1">
-                              {DAY_MAP[currentDay] ?? "Hoy"}
+                            <p className="text-xs text-zinc-400 dark:text-zinc-500 mt-1.5">
+                              No hay actividades programadas para{" "}
+                              {DAY_MAP[currentDay] ?? "hoy"}
                             </p>
                           </div>
                         );
@@ -267,97 +290,120 @@ export default function ScheduleModal() {
                       const nowMinutes = currentHour * 60 + currentMinute;
 
                       return (
-                        <div className="space-y-2">
-                          {todayClasses.map((cls) => {
-                            const startMin = timeToMinutes(cls.start);
-                            const endMin = timeToMinutes(cls.end);
-                            const isActive =
-                              nowMinutes >= startMin && nowMinutes < endMin;
-                            const isPast = nowMinutes >= endMin;
-                            const subtitle =
-                              selectedItem?.type === "room"
-                                ? cls.professor.name
-                                : cls.room.name.toUpperCase();
+                        <div className="space-y-3">
+                          <div className="flex items-end justify-between">
+                            <div>
+                              <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-zinc-400 dark:text-zinc-500">
+                                Agenda de hoy
+                              </p>
+                              <h3 className="mt-1 text-lg font-bold capitalize tracking-tight text-zinc-900 dark:text-white">
+                                {DAY_MAP[currentDay]}
+                              </h3>
+                            </div>
+                            <span className="text-[10px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
+                              {todayClasses.length}{" "}
+                              {todayClasses.length === 1 ? "clase" : "clases"}
+                            </span>
+                          </div>
+                          <div>
+                            {todayClasses.map((cls) => {
+                              const startMin = timeToMinutes(cls.start);
+                              const endMin = timeToMinutes(cls.end);
+                              const isActive =
+                                nowMinutes >= startMin && nowMinutes < endMin;
+                              const isPast = nowMinutes >= endMin;
+                              const subtitle =
+                                selectedItem?.type === "room"
+                                  ? cls.professor.name
+                                  : cls.room.name.toUpperCase();
 
-                            return (
-                              <button
-                                type="button"
-                                key={`today-${cls.day}-${cls.start}-${cls.room.id}-${cls.professor.id}`}
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  setSelectedClass(cls);
-                                }}
-                                className={`w-full text-left flex items-stretch gap-3 p-3 rounded-xl border transition-colors ${
-                                  isActive
-                                    ? "bg-emerald-50 dark:bg-emerald-500/10 border-emerald-200 dark:border-emerald-500/30"
-                                    : isPast
-                                      ? "bg-zinc-50 dark:bg-white/[0.02] border-zinc-100 dark:border-white/5 opacity-50"
-                                      : "bg-white dark:bg-[#121212] border-zinc-200 dark:border-white/10 hover:border-zinc-300 dark:hover:border-white/20"
-                                }`}
-                              >
-                                <div className="flex flex-col items-center justify-center w-12 shrink-0">
-                                  <span
-                                    className={`text-[10px] font-bold uppercase tracking-wider ${isActive ? "text-emerald-600 dark:text-emerald-400" : "text-zinc-400"}`}
-                                  >
-                                    {cls.start}
-                                  </span>
-                                  <div
-                                    className={`w-px flex-1 my-1 ${isActive ? "bg-emerald-300 dark:bg-emerald-600" : "bg-zinc-200 dark:bg-white/10"}`}
-                                  />
-                                  <span
-                                    className={`text-[10px] font-medium ${isActive ? "text-emerald-500 dark:text-emerald-500" : "text-zinc-400"}`}
-                                  >
-                                    {cls.end}
-                                  </span>
-                                </div>
-                                <div className="flex-1 min-w-0 flex flex-col justify-center">
-                                  <span className="text-xs font-bold text-zinc-900 dark:text-white uppercase tracking-tight line-clamp-2">
-                                    {cls.subject.subject}
-                                  </span>
-                                  <span className="text-[10px] text-zinc-500 dark:text-zinc-400 truncate mt-0.5">
-                                    {subtitle}
-                                  </span>
-                                </div>
-                                {isActive && (
-                                  <div className="flex items-center shrink-0">
-                                    <span className="text-[9px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-500/20 px-1.5 py-0.5 rounded-md">
-                                      Ahora
+                              return (
+                                <button
+                                  type="button"
+                                  key={`today-${cls.day}-${cls.start}-${cls.room.id}-${cls.professor.id}`}
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    setSelectedClass(cls);
+                                  }}
+                                  className={`group relative w-full text-left flex items-center gap-4 p-4 rounded-2xl border transition-all shadow-sm ${
+                                    isActive
+                                      ? "bg-emerald-50/80 dark:bg-emerald-500/10 border-emerald-200 dark:border-emerald-500/30 shadow-emerald-900/5"
+                                      : isPast
+                                        ? "bg-zinc-50/80 dark:bg-white/[0.02] border-zinc-200/70 dark:border-white/5 opacity-55"
+                                        : "bg-white dark:bg-[#121212] border-zinc-200 dark:border-white/10 hover:-translate-y-0.5 hover:border-zinc-300 dark:hover:border-white/20 hover:shadow-md"
+                                  }`}
+                                >
+                                  <div className="flex w-[3.25rem] shrink-0 flex-col items-center justify-center border-r border-zinc-200 pr-4 dark:border-white/10">
+                                    <span
+                                      className={`text-sm font-bold tracking-tight ${isActive ? "text-emerald-600 dark:text-emerald-400" : "text-zinc-700 dark:text-zinc-200"}`}
+                                    >
+                                      {cls.start}
+                                    </span>
+                                    <span className="mt-1 text-[10px] font-medium text-zinc-400 dark:text-zinc-500">
+                                      hasta {cls.end}
                                     </span>
                                   </div>
-                                )}
-                              </button>
-                            );
-                          })}
+                                  <div className="flex min-w-0 flex-1 flex-col justify-center">
+                                    <span className="text-sm font-bold text-zinc-900 dark:text-white uppercase tracking-tight line-clamp-2">
+                                      {cls.subject.subject}
+                                    </span>
+                                    <span className="mt-2 flex min-w-0 items-center gap-1.5 text-[11px] font-medium text-zinc-500 dark:text-zinc-400">
+                                      {selectedItem?.type === "room" ? (
+                                        <User className="h-3 w-3 shrink-0" />
+                                      ) : (
+                                        <MapPin className="h-3 w-3 shrink-0" />
+                                      )}
+                                      <span className="truncate">
+                                        {subtitle}
+                                      </span>
+                                    </span>
+                                  </div>
+                                  {isActive && (
+                                    <div className="flex shrink-0 items-center">
+                                      <span className="rounded-full bg-emerald-100 px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-400">
+                                        Ahora
+                                      </span>
+                                    </div>
+                                  )}
+                                </button>
+                              );
+                            })}
+                          </div>
                         </div>
                       );
                     })()}
 
                   {view === "week" && (
                     <div className="overflow-x-auto pb-2 -mx-2 px-2 sm:mx-0 sm:px-0">
-                      <div className="min-w-[800px] bg-white dark:bg-[#121212] rounded-xl border border-zinc-200 dark:border-white/10 overflow-hidden shadow-sm">
-                        <div className="flex ml-14 border-b border-zinc-200 dark:border-white/10 bg-zinc-50/50 dark:bg-white/[0.02]">
+                      <div className="min-w-[800px] overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-white/10 dark:bg-[#121212]">
+                        <div className="flex ml-14 border-b border-zinc-200 bg-zinc-50/70 dark:border-white/10 dark:bg-white/[0.03]">
                           {DAYS.map((day) => (
                             <div
                               key={day}
-                              className={`flex-1 text-center py-3 text-sm font-bold border-l border-zinc-200 dark:border-white/10 first:border-l-0 uppercase tracking-tight ${
+                              className={`flex flex-1 flex-col items-center justify-center gap-1 border-l border-zinc-200 py-3.5 text-[10px] font-bold uppercase tracking-[0.12em] first:border-l-0 dark:border-white/10 ${
                                 day === currentDay
-                                  ? "text-blue-700 dark:text-blue-300 bg-blue-500/5"
-                                  : "text-zinc-600 dark:text-zinc-300"
+                                  ? "bg-indigo-50/80 text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300"
+                                  : "text-zinc-500 dark:text-zinc-400"
                               }`}
                             >
                               {DAY_MAP[day]}
+                              {day === currentDay && (
+                                <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-[8px] tracking-widest text-indigo-600 dark:bg-indigo-500/20 dark:text-indigo-300">
+                                  Hoy
+                                </span>
+                              )}
                             </div>
                           ))}
                         </div>
 
-                        <div className="relative flex h-[600px] overflow-hidden">
-                          <div className="w-14 flex flex-col bg-zinc-50/50 dark:bg-white/[0.02] border-r border-zinc-200 dark:border-white/10 shrink-0">
+                        <div className="relative flex h-[600px] overflow-hidden bg-white dark:bg-[#121212]">
+                          <div className="w-14 flex shrink-0 flex-col border-r border-zinc-200 bg-zinc-50/50 dark:border-white/10 dark:bg-white/[0.02]">
                             {HOURS.slice(0, -1).map((hour) => (
                               <div
                                 key={hour}
-                                className="flex-1 relative border-b border-zinc-200 dark:border-white/10 last:border-b-0"
+                                className="relative flex-1 border-b border-zinc-200/80 dark:border-white/10 last:border-b-0"
                               >
-                                <span className="absolute top-1 right-2 text-[10px] font-medium text-zinc-400 dark:text-zinc-500">
+                                <span className="absolute right-2 top-2 text-[9px] font-bold tracking-tight text-zinc-400 dark:text-zinc-500">
                                   {hour}:00
                                 </span>
                               </div>
@@ -371,7 +417,7 @@ export default function ScheduleModal() {
                               {HOURS.slice(0, -1).map((hour) => (
                                 <div
                                   key={hour}
-                                  className="flex-1 border-b border-zinc-100 dark:border-white/5 last:border-b-0"
+                                  className="flex-1 border-b border-zinc-100/80 dark:border-white/5 last:border-b-0"
                                 ></div>
                               ))}
                             </div>
@@ -379,10 +425,10 @@ export default function ScheduleModal() {
                             {/* Current Time Line */}
                             {isCurrentTimeVisible && (
                               <div
-                                className="absolute left-0 right-0 h-[2px] bg-red-500 z-30 pointer-events-none"
+                                className="pointer-events-none absolute left-0 right-0 z-30 h-[2px] bg-rose-500"
                                 style={{ top: `${currentTimeTop}px` }}
                               >
-                                <div className="absolute left-0 -top-1 w-2.5 h-2.5 bg-red-500 rounded-full shadow-[0_0_8px_rgba(239,68,68,0.8)]"></div>
+                                <div className="absolute -top-1 left-0 h-2.5 w-2.5 rounded-full bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.8)]"></div>
                               </div>
                             )}
 
@@ -391,7 +437,9 @@ export default function ScheduleModal() {
                               <div
                                 key={day}
                                 className={`flex-1 relative border-l border-zinc-100 dark:border-white/5 first:border-l-0 ${
-                                  day === currentDay ? "bg-blue-500/[0.03]" : ""
+                                  day === currentDay
+                                    ? "bg-indigo-500/[0.035]"
+                                    : ""
                                 }`}
                               >
                                 {/* Render Events for this day */}
@@ -428,10 +476,10 @@ export default function ScheduleModal() {
                                         setSelectedClass(cls);
                                       }}
                                       aria-label={`${title} by ${subtitle}`}
-                                      className={`absolute text-start rounded-md p-1.5 px-2 text-xs leading-tight overflow-hidden transition-all duration-200 z-10 flex flex-col group cursor-pointer border shadow-sm ${
+                                      className={`group absolute z-10 flex cursor-pointer flex-col overflow-hidden rounded-xl border p-2 text-start text-xs leading-tight shadow-sm transition-all duration-200 ${
                                         hoveredSubjectId === cls.subject.id
-                                          ? "bg-blue-100 border-blue-400 dark:bg-blue-500/30 dark:border-blue-400 text-blue-900 dark:text-blue-100 scale-[1.02] z-20 shadow-md"
-                                          : "bg-blue-50 border-blue-200 text-blue-700 dark:bg-blue-500/10 dark:border-blue-500/20 dark:text-blue-300"
+                                          ? "z-20 scale-[1.02] border-indigo-400 bg-indigo-100 text-indigo-900 shadow-md dark:border-indigo-400 dark:bg-indigo-500/30 dark:text-indigo-100"
+                                          : "border-indigo-200 bg-indigo-50 text-indigo-700 dark:border-indigo-500/20 dark:bg-indigo-500/10 dark:text-indigo-300"
                                       }`}
                                       style={{
                                         top: `${top}px`,
@@ -442,18 +490,18 @@ export default function ScheduleModal() {
                                       }}
                                     >
                                       <div
-                                        className="font-bold line-clamp-2 uppercase text-[10px]"
+                                        className="line-clamp-2 text-[10px] font-bold uppercase"
                                         title={title}
                                       >
                                         {title}
                                       </div>
                                       <div
-                                        className="line-clamp-2 opacity-90 hidden sm:block mt-0.5 text-[10px] font-medium"
+                                        className="mt-1 line-clamp-2 hidden text-[10px] font-medium opacity-90 sm:block"
                                         title={subtitle}
                                       >
                                         {subtitle}
                                       </div>
-                                      <div className="opacity-80 mt-auto text-[9px] font-medium hidden group-hover:block transition-all">
+                                      <div className="mt-auto hidden text-[9px] font-medium opacity-80 transition-all group-hover:block">
                                         {cls.start} - {cls.end}
                                       </div>
                                     </button>

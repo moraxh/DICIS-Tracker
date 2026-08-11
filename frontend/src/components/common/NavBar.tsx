@@ -35,7 +35,7 @@ export default function NavBar() {
                 <motion.div
                   layoutId="activeTabIndicator"
                   className="absolute inset-0 bg-zinc-100 dark:bg-white/10 rounded-lg -z-10"
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  transition={{ duration: 0.28, ease: "easeOut" }}
                 />
               )}
               <Icon className="w-4 h-4" />

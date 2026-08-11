@@ -27,6 +27,8 @@ export default function GlowCard({
       className={`relative overflow-hidden group cursor-pointer h-full ${className}`}
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
+      whileHover={{ y: -2 }}
+      whileTap={{ scale: 0.995 }}
       transition={{ duration: 0.3, delay }}
       {...motionProps}
     >

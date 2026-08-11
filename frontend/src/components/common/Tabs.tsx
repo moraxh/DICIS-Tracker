@@ -48,7 +48,7 @@ export default function Tabs<T extends string>({
               <motion.div
                 layoutId="active-tab"
                 className="absolute inset-0 bg-white dark:bg-white/10 rounded-lg shadow-sm ring-1 ring-zinc-200 dark:ring-white/10 -z-10"
-                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                transition={{ duration: 0.28, ease: "easeOut" }}
               />
             )}
             {Icon && <Icon className="w-3.5 h-3.5" />}
