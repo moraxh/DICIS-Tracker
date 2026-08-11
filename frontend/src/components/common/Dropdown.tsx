@@ -10,6 +10,7 @@ interface DropdownOption {
 }
 
 interface DropdownProps {
+  id?: string;
   options: DropdownOption[];
   value: string;
   onChange: (id: string) => void;
@@ -18,6 +19,7 @@ interface DropdownProps {
 }
 
 export default function Dropdown({
+  id,
   options,
   value,
   onChange,
@@ -42,6 +44,7 @@ export default function Dropdown({
   return (
     <div ref={ref} className={`relative ${className}`}>
       <button
+        id={id}
         type="button"
         onClick={() => setOpen((v) => !v)}
         className="flex items-center gap-2 w-full px-3.5 py-3.5 rounded-2xl bg-zinc-100 dark:bg-white/5 border border-transparent hover:border-zinc-300/60 dark:hover:border-white/10 text-sm font-medium text-zinc-700 dark:text-zinc-300 transition-colors"

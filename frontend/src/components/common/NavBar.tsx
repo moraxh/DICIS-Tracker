@@ -1,6 +1,6 @@
 "use client";
 
-import { BookOpen, DoorOpen, LayoutGrid, Users } from "lucide-react";
+import { BarChart3, BookOpen, DoorOpen, LayoutGrid, Users } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -16,6 +16,7 @@ export default function NavBar() {
           { route: "/rooms", label: "Salones", icon: DoorOpen },
           { route: "/professors", label: "Profesores", icon: Users },
           { route: "/subjects", label: "Materias", icon: BookOpen },
+          { route: "/insights", label: "Insights", icon: BarChart3 },
         ].map((tab) => {
           const isActive = location === tab.route;
           const Icon = tab.icon;

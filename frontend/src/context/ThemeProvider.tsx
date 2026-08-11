@@ -1,48 +1,94 @@
 "use client";
 
-import type { ThemeProviderProps as NextThemesProviderProps } from "next-themes";
-import { ThemeProvider as NextThemesProvider } from "next-themes";
-import type React from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 
-export interface ThemeProviderProps extends NextThemesProviderProps {
-  children: React.ReactNode;
+type Theme = "light" | "dark" | "system";
+
+interface ThemeContextValue {
+  theme: Theme;
+  resolvedTheme: "light" | "dark";
+  systemTheme: "light" | "dark";
+  themes: Theme[];
+  setTheme: (theme: Theme) => void;
 }
 
-/**
- * ThemeProvider that uses next-themes with support for:
- * - Light, dark, and system themes
- * - prefers-color-scheme (respects the operating system preference)
- * - No flickering (anti-flash) when loading the page
- * - Persistence in localStorage
- */
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({
-  children,
-  ...props
-}) => {
-  return (
-    <NextThemesProvider
-      attribute="class"
-      defaultTheme="system"
-      enableSystem={true}
-      enableColorScheme={true}
-      disableTransitionOnChange={false}
-      {...props}
-    >
-      {children}
-    </NextThemesProvider>
-  );
+const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
+
+const applyTheme = (theme: Theme, systemTheme: "light" | "dark") => {
+  const resolvedTheme = theme === "system" ? systemTheme : theme;
+  document.documentElement.classList.toggle("dark", resolvedTheme === "dark");
+  document.documentElement.style.colorScheme = resolvedTheme;
 };
 
-/**
- * Custom hook to retrieve and manage the current theme
- * We re-export `useTheme` from next-themes to maintain compatibility
- *
- * @returns Object containing theme properties and methods
- * @returns {string | undefined} theme - The theme selected by the user ('dark' | 'light' | 'system')
- * @returns {string | undefined} resolvedTheme - The currently applied theme ('dark' | 'light')
- * @returns {Function} setTheme - Function to change the theme
- * @returns {string[]} themes - Available theme options
- * @returns {string | undefined} systemTheme - The system-detected theme ('dark' | 'light')
- */
+export function ThemeProvider({ children }: { children: React.ReactNode }) {
+  const [theme, setThemeState] = useState<Theme>("system");
+  const [systemTheme, setSystemTheme] = useState<"light" | "dark">("light");
 
-export { useTheme } from "next-themes";
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const storedTheme = window.localStorage.getItem("theme") as Theme | null;
+    const nextSystemTheme = mediaQuery.matches ? "dark" : "light";
+    const nextTheme: Theme =
+      storedTheme === "light" ||
+      storedTheme === "dark" ||
+      storedTheme === "system"
+        ? storedTheme
+        : "system";
+
+    setSystemTheme(nextSystemTheme);
+    setThemeState(nextTheme);
+    applyTheme(nextTheme, nextSystemTheme);
+
+    const handleSystemThemeChange = (event: MediaQueryListEvent) => {
+      const next = event.matches ? "dark" : "light";
+      setSystemTheme(next);
+      setThemeState((currentTheme) => {
+        applyTheme(currentTheme, next);
+        return currentTheme;
+      });
+    };
+
+    mediaQuery.addEventListener("change", handleSystemThemeChange);
+    return () =>
+      mediaQuery.removeEventListener("change", handleSystemThemeChange);
+  }, []);
+
+  const setTheme = useCallback(
+    (nextTheme: Theme) => {
+      setThemeState(nextTheme);
+      window.localStorage.setItem("theme", nextTheme);
+      applyTheme(nextTheme, systemTheme);
+    },
+    [systemTheme],
+  );
+
+  const value = useMemo<ThemeContextValue>(
+    () => ({
+      theme,
+      resolvedTheme: theme === "system" ? systemTheme : theme,
+      systemTheme,
+      themes: ["light", "dark", "system"],
+      setTheme,
+    }),
+    [theme, systemTheme, setTheme],
+  );
+
+  return (
+    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+  );
+}
+
+export function useTheme() {
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error("useTheme must be used inside ThemeProvider");
+  }
+  return context;
+}

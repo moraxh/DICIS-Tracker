@@ -1,47 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { flushSync } from "react-dom";
 import { useTheme } from "@/context/ThemeProvider";
-
-const isBrowser = typeof window !== "undefined";
-
-const injectBaseStyles = () => {
-  if (isBrowser) {
-    const styleId = "theme-switch-base-style";
-    if (!document.getElementById(styleId)) {
-      const style = document.createElement("style");
-      style.id = styleId;
-      const isHighResolution =
-        window.innerWidth >= 3000 || window.innerHeight >= 2000;
-
-      style.textContent = `
-        ::view-transition-old(root),
-        ::view-transition-new(root) {
-          animation: none;
-          mix-blend-mode: normal;
-          ${isHighResolution ? "transform: translateZ(0);" : ""}
-        }
-        
-        ${
-          isHighResolution
-            ? `
-        ::view-transition-group(root),
-        ::view-transition-image-pair(root),
-        ::view-transition-old(root),
-        ::view-transition-new(root) {
-          backface-visibility: hidden;
-          perspective: 1000px;
-          transform: translate3d(0, 0, 0);
-        }
-        `
-            : ""
-        }
-      `;
-      document.head.appendChild(style);
-    }
-  }
-};
 
 export interface UseThemeAnimationOptions {
   duration?: number;
@@ -54,66 +15,23 @@ export interface UseThemeAnimationReturn {
   toggleThemeWithAnimation: () => Promise<void>;
   theme: string | undefined;
   resolvedTheme: string | undefined;
-  setTheme: (theme: string) => void;
+  setTheme: (theme: "light" | "dark" | "system") => void;
 }
 
+/**
+ * Uses the native View Transition API when available. CSS transitions are
+ * disabled by the provider while the theme class changes, avoiding a second
+ * animation pass over every component.
+ */
 export const useThemeAnimation = (
   options?: UseThemeAnimationOptions,
 ): UseThemeAnimationReturn => {
-  const {
-    duration: propsDuration = 400,
-    easing = "ease-in-out",
-    pseudoElement = "::view-transition-new(root)",
-  } = options || {};
-
   const { theme, setTheme, resolvedTheme } = useTheme();
   const ref = useRef<HTMLButtonElement>(null);
-
-  const isHighResolution =
-    isBrowser && (window.innerWidth >= 3000 || window.innerHeight >= 2000);
-
-  const duration = isHighResolution
-    ? propsDuration *
-      1.2 /* Slightly slower for high res to not feel skipped, but still around 480ms */
-    : propsDuration;
-
-  useEffect(() => {
-    injectBaseStyles();
-  }, []);
+  const duration = options?.duration ?? 260;
+  const easing = options?.easing ?? "ease-out";
 
   const toggleThemeWithAnimation = async () => {
-    if (
-      !ref.current ||
-      !(document as any).startViewTransition ||
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
-      const themeOrder: Array<"light" | "dark" | "system"> = [
-        "light",
-        "dark",
-        "system",
-      ];
-      const currentIndex = themeOrder.indexOf(
-        theme as "light" | "dark" | "system",
-      );
-      const nextTheme = themeOrder[(currentIndex + 1) % themeOrder.length];
-      setTheme(nextTheme);
-      return;
-    }
-
-    const { top, left, width, height } = ref.current.getBoundingClientRect();
-    const x = left + width / 2;
-    const y = top + height / 2;
-
-    const topLeft = Math.hypot(x, y);
-    const topRight = Math.hypot(window.innerWidth - x, y);
-    const bottomLeft = Math.hypot(x, window.innerHeight - y);
-    const bottomRight = Math.hypot(
-      window.innerWidth - x,
-      window.innerHeight - y,
-    );
-
-    const maxRadius = Math.max(topLeft, topRight, bottomLeft, bottomRight);
-
     const themeOrder: Array<"light" | "dark" | "system"> = [
       "light",
       "dark",
@@ -124,11 +42,36 @@ export const useThemeAnimation = (
     );
     const nextTheme = themeOrder[(currentIndex + 1) % themeOrder.length];
 
-    await (document as any).startViewTransition(() => {
-      flushSync(() => {
-        setTheme(nextTheme);
-      });
-    }).ready;
+    const documentWithViewTransition = document as Document & {
+      startViewTransition?: (callback: () => void) => {
+        ready: Promise<void>;
+      };
+    };
+
+    if (
+      !ref.current ||
+      !documentWithViewTransition.startViewTransition ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      setTheme(nextTheme);
+      return;
+    }
+
+    const { top, left, width, height } = ref.current.getBoundingClientRect();
+    const x = left + width / 2;
+    const y = top + height / 2;
+    const maxRadius = Math.max(
+      Math.hypot(x, y),
+      Math.hypot(window.innerWidth - x, y),
+      Math.hypot(x, window.innerHeight - y),
+      Math.hypot(window.innerWidth - x, window.innerHeight - y),
+    );
+
+    const transition = documentWithViewTransition.startViewTransition(() => {
+      flushSync(() => setTheme(nextTheme));
+    });
+
+    await transition.ready;
 
     document.documentElement.animate(
       {
@@ -140,7 +83,7 @@ export const useThemeAnimation = (
       {
         duration,
         easing,
-        pseudoElement,
+        pseudoElement: "::view-transition-new(root)",
       },
     );
   };

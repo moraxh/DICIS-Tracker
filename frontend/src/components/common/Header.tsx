@@ -1,10 +1,9 @@
 "use client";
 
-import { Building2, Clock, MapPin } from "lucide-react";
+import { Clock, MapPin } from "lucide-react";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { useHeadquarters } from "@/context/Headquarters/useHeadquarters";
-import Badge from "./Badge";
 import Dropdown from "./Dropdown";
 import ThemeToggle from "./ThemeToggle";
 
@@ -42,24 +41,60 @@ export default function Header() {
   const isOutOfHours = outOfHours();
 
   return (
-    <header className="max-w-6xl mx-auto px-6 pt-8 pb-8 w-full">
+    <header className="max-w-6xl mx-auto px-6 pt-7 sm:pt-9 pb-7 sm:pb-9 w-full">
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="flex flex-col sm:flex-row sm:items-end justify-between gap-6"
+        className="flex flex-col gap-7"
       >
-        <div className="flex-1">
-          <h1 className="text-4xl font-semibold tracking-tight text-zinc-900 dark:text-white mb-2">
-            DICIS Tracker
-          </h1>
-          <p className="text-zinc-600 dark:text-zinc-400 text-sm sm:text-base max-w-xl mb-4 text-balance">
-            Esta herramienta te ayuda a encontrar salones vacíos o saber si un
-            profesor está sin clases.
-          </p>
-          <div className="mb-4 flex flex-col sm:flex-row gap-3 sm:items-center">
+        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-6">
+          <div className="flex-1 min-w-0">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-indigo-600 dark:text-indigo-400">
+              DICIS · Consulta rápida
+            </p>
+            <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-zinc-900 dark:text-white">
+              DICIS Tracker
+            </h1>
+            <p className="mt-2 text-sm sm:text-base leading-6 text-zinc-600 dark:text-zinc-400 max-w-lg text-balance">
+              Consulta salones libres y profesores disponibles en tu sede.
+            </p>
+          </div>
+          <div className="flex items-center gap-4 sm:pt-1">
+            <div className="text-left sm:text-right">
+              <div className="text-xl sm:text-2xl font-medium tabular-nums text-zinc-900 dark:text-white tracking-tight">
+                {currentTime
+                  ? currentTime.toLocaleTimeString("es-MX", {
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })
+                  : "--:--"}
+              </div>
+              <div className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 font-medium capitalize">
+                {currentTime
+                  ? currentTime.toLocaleDateString("es-MX", {
+                      weekday: "long",
+                      day: "numeric",
+                      month: "long",
+                    })
+                  : "Cargando..."}
+              </div>
+            </div>
+            <ThemeToggle />
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-end gap-3 sm:gap-4">
             <div className="w-full sm:w-[280px]">
+              <label
+                htmlFor="headquarters-selector"
+                className="mb-1.5 block text-xs font-semibold text-zinc-500 dark:text-zinc-400"
+              >
+                Sede
+              </label>
               <Dropdown
+                id="headquarters-selector"
                 options={availableHeadquarters.map((headquarters) => ({
                   id: headquarters,
                   label: headquarters,
@@ -69,60 +104,34 @@ export default function Header() {
                 placeholder="Seleccionar sede"
               />
             </div>
-            <Badge variant="success" icon={<MapPin className="w-3.5 h-3.5" />}>
-              Sede activa: {selectedHeadquarters}
-            </Badge>
+            <div className="flex items-center gap-2 text-sm font-medium text-emerald-600 dark:text-emerald-400 sm:pb-3">
+              <MapPin className="w-4 h-4" aria-hidden="true" />
+              <span>Sede activa: {selectedHeadquarters}</span>
+            </div>
           </div>
-          <div className="flex flex-wrap items-center gap-3">
-            <Badge
-              variant="neutral"
-              icon={
-                <motion.div
-                  animate={{ opacity: [1, 0.4, 1] }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="w-2 h-2 rounded-full bg-red-500"
-                />
-              }
-              className="text-zinc-500 dark:text-zinc-400"
-            >
-              En tiempo real
-            </Badge>
-            <Badge variant="info" icon={<Building2 className="w-3.5 h-3.5" />}>
-              Todo el sistema filtrado por sede
-            </Badge>
 
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-zinc-200/80 dark:border-white/10 pt-3 text-xs font-medium text-zinc-500 dark:text-zinc-400">
+            <span className="inline-flex items-center gap-2">
+              <motion.span
+                animate={{ opacity: [1, 0.4, 1] }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="h-2 w-2 rounded-full bg-emerald-500"
+                aria-hidden="true"
+              />
+              Datos en tiempo real
+            </span>
+            <span>Resultados filtrados por sede</span>
             {isOutOfHours && (
-              <Badge variant="info" icon={<Clock className="w-3.5 h-3.5" />}>
-                Fuera de horario (Lun-Sáb 8AM-6PM)
-              </Badge>
+              <span className="inline-flex items-center gap-1.5 text-amber-600 dark:text-amber-400">
+                <Clock className="w-3.5 h-3.5" aria-hidden="true" />
+                Fuera de horario · Lun-Sáb, 8:00–18:00
+              </span>
             )}
           </div>
-        </div>
-        <div className="flex items-center gap-6 sm:self-end self-start">
-          <div className="text-right hidden md:block">
-            <div className="text-2xl font-medium text-zinc-900 dark:text-white tracking-tight">
-              {currentTime
-                ? currentTime.toLocaleTimeString("es-MX", {
-                    hour: "2-digit",
-                    minute: "2-digit",
-                  })
-                : "--:--"}
-            </div>
-            <div className="text-sm text-zinc-500 dark:text-zinc-400 font-medium">
-              {currentTime
-                ? currentTime.toLocaleDateString("es-MX", {
-                    weekday: "long",
-                    day: "numeric",
-                    month: "long",
-                  })
-                : "Cargando..."}
-            </div>
-          </div>
-          <ThemeToggle />
         </div>
       </motion.div>
     </header>
