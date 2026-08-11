@@ -18,6 +18,7 @@ import { useEffect, useMemo, useState } from "react";
 import { getMexicoCityDate } from "@/backend/utils";
 import { useHeadquarters } from "@/context/Headquarters/useHeadquarters";
 import classesData from "@/data/classes.json";
+import roomsData from "@/data/rooms.json";
 
 type ClassRecord = {
   day: string;
@@ -34,11 +35,75 @@ type Day = {
   name: string;
 };
 
+type RoomRecord = {
+  id: string;
+  headquarters?: string;
+};
+
 type RadarMode = "occupancy" | "opportunity";
 
 type AffluenceRadarProps = {
   mode?: RadarMode;
 };
+
+type MetricTooltipProps = {
+  label: string;
+  children: React.ReactNode;
+  placement?: "top" | "bottom";
+};
+
+function MetricTooltip({
+  label,
+  children,
+  placement = "bottom",
+}: MetricTooltipProps) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <span className="relative inline-flex">
+      <button
+        type="button"
+        aria-label={`Más información sobre ${label}`}
+        aria-expanded={open}
+        onMouseEnter={() => setOpen(true)}
+        onMouseLeave={() => setOpen(false)}
+        onClick={() => setOpen((value) => !value)}
+        onFocus={() => setOpen(true)}
+        onBlur={() => setOpen(false)}
+        className="flex h-4 w-4 items-center justify-center rounded-full text-zinc-400 transition-colors hover:bg-zinc-100 hover:text-zinc-700 focus-visible:ring-2 focus-visible:ring-emerald-500 dark:hover:bg-white/10 dark:hover:text-zinc-200"
+      >
+        <Info className="h-3 w-3" />
+      </button>
+      <AnimatePresence>
+        {open && (
+          <motion.span
+            role="tooltip"
+            initial={{
+              opacity: 0,
+              y: placement === "bottom" ? -4 : 4,
+              scale: 0.97,
+            }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{
+              opacity: 0,
+              y: placement === "bottom" ? -4 : 4,
+              scale: 0.97,
+            }}
+            transition={{ duration: 0.16, ease: "easeOut" }}
+            className={`absolute left-1/2 z-50 w-64 -translate-x-1/2 rounded-xl border border-zinc-200 bg-white p-3 text-left text-[11px] font-normal normal-case leading-5 tracking-normal text-zinc-600 shadow-xl dark:border-white/10 dark:bg-zinc-900 dark:text-zinc-300 ${
+              placement === "bottom" ? "top-full mt-2" : "bottom-full mb-2"
+            }`}
+          >
+            <span className="mb-1 block font-semibold text-zinc-900 dark:text-white">
+              {label}
+            </span>
+            {children}
+          </motion.span>
+        )}
+      </AnimatePresence>
+    </span>
+  );
+}
 
 const days: Day[] = [
   { id: "MONDAY", short: "Lun", name: "Lunes" },
@@ -137,6 +202,16 @@ export default function AffluenceRadar({
     return Array.from(unique.values());
   }, [selectedHeadquarters]);
 
+  const totalRooms = useMemo(
+    () =>
+      new Set(
+        (roomsData as RoomRecord[])
+          .filter((room) => room.headquarters === selectedHeadquarters)
+          .map((room) => room.id),
+      ).size,
+    [selectedHeadquarters],
+  );
+
   const cells = useMemo(() => {
     const values = days.flatMap((day) =>
       slots.map((slot) => {
@@ -188,6 +263,30 @@ export default function AffluenceRadar({
 
   const activeCell =
     cells.values.find((cell) => cell.key === selectedKey) ?? bestCell;
+  const selectedOccupancy = activeCell
+    ? Math.round((activeCell.rooms / Math.max(totalRooms, 1)) * 100)
+    : 0;
+  const selectedFlow = activeCell
+    ? activeCell.outgoing + activeCell.incoming
+    : 0;
+  const topWindows = useMemo(
+    () =>
+      [...cells.values]
+        .filter((cell) =>
+          mode === "occupancy"
+            ? cell.rooms > 0
+            : cell.outgoing + cell.incoming > 0,
+        )
+        .sort((a, b) => {
+          const aValue =
+            mode === "occupancy" ? a.rooms : a.outgoing + a.incoming;
+          const bValue =
+            mode === "occupancy" ? b.rooms : b.outgoing + b.incoming;
+          return bValue - aValue || b.outgoing - a.outgoing;
+        })
+        .slice(0, 5),
+    [cells.values, mode],
+  );
   const dailySummary = useMemo(
     () =>
       days.map((day) => {
@@ -271,6 +370,10 @@ export default function AffluenceRadar({
               <div className="flex items-center gap-3 text-xs font-semibold text-zinc-600 dark:text-zinc-300">
                 <span className="flex items-center gap-2">
                   <CalendarDays className="h-4 w-4" /> Semana típica
+                  <MetricTooltip label="Semana típica">
+                    Resume los horarios publicados para una semana normal. No
+                    incluye cancelaciones, días festivos ni asistencia real.
+                  </MetricTooltip>
                 </span>
                 {isCurrentVisible && (
                   <span className="flex items-center gap-1.5 text-[10px] font-bold text-emerald-600 dark:text-emerald-400">
@@ -350,7 +453,13 @@ export default function AffluenceRadar({
             <div className="mt-5 border-t border-zinc-200/80 pt-4 dark:border-white/[0.08]">
               <div className="mb-3 flex items-center justify-between px-1">
                 <span className="text-xs font-semibold text-zinc-600 dark:text-zinc-300">
-                  Resumen por día
+                  <span className="flex items-center gap-1.5">
+                    Resumen por día
+                    <MetricTooltip label="Pico del día">
+                      Es el bloque de 30 minutos con el valor más alto de ese
+                      día. La barra permite comparar los días rápidamente.
+                    </MetricTooltip>
+                  </span>
                 </span>
                 <span className="text-[10px] font-medium text-zinc-400">
                   Pico del día
@@ -386,9 +495,22 @@ export default function AffluenceRadar({
             <div className="rounded-2xl bg-zinc-950 p-5 text-white dark:bg-white/[0.06]">
               <div className="mb-5 flex items-center justify-between">
                 <span className="text-xs font-medium text-zinc-400">
-                  {mode === "occupancy"
-                    ? "Mayor ocupación"
-                    : "Mayor salida estimada"}
+                  <span className="flex items-center gap-1.5">
+                    {mode === "occupancy"
+                      ? "Mayor ocupación"
+                      : "Mayor salida estimada"}
+                    <MetricTooltip
+                      label={
+                        mode === "occupancy"
+                          ? "Mayor ocupación"
+                          : "Mayor salida estimada"
+                      }
+                    >
+                      {mode === "occupancy"
+                        ? "Es el momento con más clases funcionando al mismo tiempo. No significa que todos los alumnos hayan asistido."
+                        : "Es el momento en que más grupos terminan clase, una señal de posible movimiento hacia pasillos y cafeterías."}
+                    </MetricTooltip>
+                  </span>
                 </span>
                 <Sparkles className="h-4 w-4 text-emerald-300" />
               </div>
@@ -411,6 +533,10 @@ export default function AffluenceRadar({
             <div className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-white/10 dark:bg-white/[0.03]">
               <div className="mb-4 flex items-center gap-2 text-xs font-semibold text-zinc-500 dark:text-zinc-400">
                 <Clock3 className="h-4 w-4" /> Momento seleccionado
+                <MetricTooltip label="Momento seleccionado">
+                  Son los datos del cuadro que elegiste en el mapa o de la
+                  ventana que seleccionaste en la lista inferior.
+                </MetricTooltip>
               </div>
               {activeCell && (
                 <>
@@ -459,12 +585,107 @@ export default function AffluenceRadar({
           </div>
         </div>
 
+        <div className="relative overflow-hidden rounded-2xl border border-zinc-200 dark:border-white/10">
+          <div className="pointer-events-none absolute -left-16 -top-20 h-52 w-52 rounded-full bg-emerald-400/[0.09] blur-3xl dark:bg-emerald-400/[0.08]" />
+          <div className="pointer-events-none absolute -right-16 -top-20 h-52 w-52 rounded-full bg-cyan-400/[0.08] blur-3xl dark:bg-cyan-400/[0.07]" />
+
+          <div className="relative z-10 grid border-b border-zinc-200 dark:border-white/10 sm:grid-cols-2">
+            <div className="flex items-end justify-between gap-4 px-5 py-4 sm:border-r sm:border-zinc-200 sm:dark:border-white/10">
+              <div>
+                <p className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider text-zinc-400">
+                  Ocupación programada
+                  <MetricTooltip label="Ocupación programada">
+                    Si aparecen 35 de 50 salones, el resultado es 70%. Describe
+                    el horario planeado, no cuánta gente asistió realmente.
+                  </MetricTooltip>
+                </p>
+                <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
+                  {activeCell?.rooms ?? 0} de {totalRooms} salones
+                </p>
+              </div>
+              <span className="text-2xl font-semibold tabular-nums text-zinc-900 dark:text-white">
+                {selectedOccupancy}%
+              </span>
+            </div>
+            <div className="flex items-end justify-between gap-4 border-t border-zinc-200 px-5 py-4 dark:border-white/10 sm:border-t-0">
+              <div>
+                <p className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider text-zinc-400">
+                  Flujo de transición
+                  <MetricTooltip label="Flujo de transición">
+                    Suma los grupos que salen y los que entran. Por ejemplo, 20
+                    que salen + 15 que empiezan equivale a 35 movimientos.
+                  </MetricTooltip>
+                </p>
+                <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
+                  {activeCell?.outgoing ?? 0} salen ·{" "}
+                  {activeCell?.incoming ?? 0} empiezan
+                </p>
+              </div>
+              <span className="text-2xl font-semibold tabular-nums text-zinc-900 dark:text-white">
+                {selectedFlow}
+              </span>
+            </div>
+          </div>
+
+          <div className="relative z-10 px-5 py-4">
+            <div className="mb-2 flex items-baseline justify-between gap-4">
+              <h3 className="flex items-center gap-1.5 text-xs font-semibold text-zinc-700 dark:text-zinc-200">
+                Ventanas destacadas
+                <MetricTooltip label="Ventanas destacadas">
+                  Ordena los cinco bloques más intensos de la semana. Puedes
+                  tocar cualquiera para ver su detalle en la parte superior.
+                </MetricTooltip>
+              </h3>
+              <span className="text-[10px] text-zinc-400">
+                {mode === "occupancy" ? "Ocupación" : "Movimiento"}
+              </span>
+            </div>
+
+            <div className="divide-y divide-zinc-200/80 dark:divide-white/[0.07]">
+              {topWindows.map((cell, index) => {
+                const value =
+                  mode === "occupancy"
+                    ? cell.rooms
+                    : cell.outgoing + cell.incoming;
+                const percentage = Math.round(
+                  (cell.rooms / Math.max(totalRooms, 1)) * 100,
+                );
+                return (
+                  <button
+                    type="button"
+                    key={cell.key}
+                    onClick={() => setSelectedKey(cell.key)}
+                    className="grid w-full grid-cols-[28px_minmax(0,1fr)_auto] items-center gap-3 py-2.5 text-left transition-colors hover:text-emerald-600 dark:hover:text-emerald-400"
+                  >
+                    <span className="text-[10px] tabular-nums text-zinc-400">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-xs font-medium text-zinc-700 dark:text-zinc-200">
+                      {cell.day.name} · {formatRange(cell.slot.minutes)}
+                    </span>
+                    <span className="text-right text-[10px] tabular-nums text-zinc-500 dark:text-zinc-400">
+                      {mode === "occupancy"
+                        ? `${percentage}% · ${cell.rooms} salones`
+                        : `${value} · ${cell.outgoing} salen / ${cell.incoming} entran`}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
         <div className="flex flex-wrap items-center justify-between gap-3 border-t border-zinc-200 pt-4 text-xs text-zinc-400 dark:border-white/10">
           <span>{data.length} registros de horario analizados</span>
           <span className="flex items-center gap-3">
             <span>Promedio: {weeklyAverage} registros por día activo</span>
             <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/20 bg-amber-500/[0.06] px-2.5 py-1 text-[10px] font-semibold text-amber-600 dark:text-amber-400">
               <ShieldCheck className="h-3 w-3" /> Confianza referencial
+              <MetricTooltip label="Confianza referencial" placement="top">
+                Los cálculos usan horarios oficiales, pero no tenemos matrícula
+                por grupo, cancelaciones ni conteos de asistencia. Sirve para
+                comparar patrones, no para predecir personas exactas.
+              </MetricTooltip>
             </span>
           </span>
         </div>
@@ -503,35 +724,37 @@ export default function AffluenceRadar({
                 transition={{ duration: 0.25, ease: "easeInOut" }}
                 className="overflow-hidden"
               >
-                <div className="grid gap-3 border-t border-zinc-200/80 p-3 dark:border-white/[0.08] sm:grid-cols-3">
-                  <div className="rounded-xl border border-emerald-500/15 bg-emerald-500/[0.06] p-3">
-                    <div className="mb-2 flex items-center gap-2 text-emerald-600 dark:text-emerald-400">
+                <div className="grid border-t border-zinc-200/80 dark:border-white/[0.08] sm:grid-cols-3 sm:divide-x sm:divide-zinc-200/80 sm:dark:divide-white/[0.08]">
+                  <div className="px-4 py-3">
+                    <div className="mb-2 flex items-center gap-2 text-zinc-700 dark:text-zinc-300">
                       <DoorOpen className="h-4 w-4" />
                       <span className="text-[11px] font-bold uppercase tracking-wide">
                         Ocupación
                       </span>
                     </div>
                     <p className="text-[11px] leading-5 text-zinc-500 dark:text-zinc-400">
-                      Una clase cuenta mientras está activa. Los salones se
-                      cuentan una sola vez, aunque existan registros repetidos.
+                      Una clase cuenta mientras está activa. El porcentaje
+                      divide salones ocupados únicos entre todos los salones de
+                      la sede.
                     </p>
                   </div>
 
-                  <div className="rounded-xl border border-cyan-500/15 bg-cyan-500/[0.06] p-3">
-                    <div className="mb-2 flex items-center gap-2 text-cyan-600 dark:text-cyan-400">
+                  <div className="border-t border-zinc-200/80 px-4 py-3 dark:border-white/[0.08] sm:border-t-0">
+                    <div className="mb-2 flex items-center gap-2 text-zinc-700 dark:text-zinc-300">
                       <LogOut className="h-4 w-4" />
                       <span className="text-[11px] font-bold uppercase tracking-wide">
                         Oportunidad
                       </span>
                     </div>
                     <p className="text-[11px] leading-5 text-zinc-500 dark:text-zinc-400">
-                      Compara grupos que terminan contra grupos que empiezan en
-                      cada bloque de 30 minutos.
+                      El flujo suma grupos que terminan y grupos que empiezan en
+                      cada bloque de 30 minutos; ambos valores permanecen
+                      visibles.
                     </p>
                   </div>
 
-                  <div className="rounded-xl border border-amber-500/15 bg-amber-500/[0.06] p-3">
-                    <div className="mb-2 flex items-center gap-2 text-amber-600 dark:text-amber-400">
+                  <div className="border-t border-zinc-200/80 px-4 py-3 dark:border-white/[0.08] sm:border-t-0">
+                    <div className="mb-2 flex items-center gap-2 text-zinc-700 dark:text-zinc-300">
                       <ShieldCheck className="h-4 w-4" />
                       <span className="text-[11px] font-bold uppercase tracking-wide">
                         Precisión
