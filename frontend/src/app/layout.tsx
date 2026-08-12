@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -67,6 +68,22 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <Script id="theme-init" strategy="beforeInteractive">
+          {`(() => {
+            try {
+              const storedTheme = localStorage.getItem("theme");
+              const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark"
+                : "light";
+              const theme = storedTheme === "light" || storedTheme === "dark"
+                ? storedTheme
+                : systemTheme;
+              const root = document.documentElement;
+              root.classList.toggle("dark", theme === "dark");
+              root.style.colorScheme = theme;
+            } catch {}
+          })()`}
+        </Script>
         <link rel="preconnect" href="https://avatars.githubusercontent.com" />
         <link rel="preconnect" href="https://github.com" />
       </head>
