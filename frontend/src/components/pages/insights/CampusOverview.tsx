@@ -166,8 +166,8 @@ export default function CampusOverview() {
 
   return (
     <section className="space-y-4">
-      <div className="grid gap-4 lg:grid-cols-[minmax(0,1.2fr)_minmax(280px,0.8fr)]">
-        <div className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-white/10 dark:bg-white/[0.03]">
+      <div className="grid min-w-0 gap-4 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
+        <div className="min-w-0 rounded-2xl border border-zinc-200 bg-white p-5 dark:border-white/10 dark:bg-white/[0.03]">
           <div className="mb-5 flex items-start justify-between gap-4">
             <div>
               <div className="flex items-center gap-2 text-xs font-semibold text-zinc-700 dark:text-zinc-200">
@@ -185,12 +185,12 @@ export default function CampusOverview() {
             <TrendingUp className="h-4 w-4 text-zinc-400" />
           </div>
 
-          <div className="overflow-x-auto">
+          <div className="min-w-0 overflow-hidden">
             <svg
               viewBox="0 0 600 160"
               role="img"
               aria-label="Ritmo promedio de ocupación durante el día"
-              className="h-44 min-w-[560px] w-full"
+              className="h-44 w-full"
             >
               {[28, 80, 132].map((y) => (
                 <line
@@ -242,7 +242,7 @@ export default function CampusOverview() {
           </div>
         </div>
 
-        <div className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-white/10 dark:bg-white/[0.03]">
+        <div className="min-w-0 rounded-2xl border border-zinc-200 bg-white p-5 dark:border-white/10 dark:bg-white/[0.03]">
           <div className="mb-5 flex items-start justify-between gap-4">
             <div>
               <div className="flex items-center gap-2 text-xs font-semibold text-zinc-700 dark:text-zinc-200">
