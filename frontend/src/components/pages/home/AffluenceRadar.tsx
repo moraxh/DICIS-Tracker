@@ -108,8 +108,24 @@ export default function AffluenceRadar({
   const [now, setNow] = useState(() => getMexicoCityDate());
 
   useEffect(() => {
-    const interval = setInterval(() => setNow(getMexicoCityDate()), 30_000);
-    return () => clearInterval(interval);
+    let timeout: ReturnType<typeof setTimeout>;
+
+    const scheduleNextSlot = () => {
+      const current = getMexicoCityDate();
+      const secondsUntilNextSlot =
+        (30 - (current.getMinutes() % 30)) * 60 - current.getSeconds();
+
+      timeout = setTimeout(
+        () => {
+          setNow(getMexicoCityDate());
+          scheduleNextSlot();
+        },
+        Math.max(secondsUntilNextSlot * 1000 + 100, 1000),
+      );
+    };
+
+    scheduleNextSlot();
+    return () => clearTimeout(timeout);
   }, []);
 
   const currentDay = [
