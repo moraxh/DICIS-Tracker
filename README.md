@@ -163,6 +163,10 @@ pnpm format   # biome format --write
 
 Nos encantaría ver tus Pull Requests. Antes de meterle mano al código, lee la [Guía de Contribución](CONTRIBUTING.md) para mantener el proyecto alineado con su visión: una herramienta rápida, clara y gratuita para estudiantes.
 
+## Contacto
+
+¿Encontraste un error o tienes una sugerencia? Escribe a [contact@moraxh.dev](mailto:contact@moraxh.dev).
+
 ## Contribuidores
 
 ¡Gracias a todas las personas que han aportado para mantener este proyecto!

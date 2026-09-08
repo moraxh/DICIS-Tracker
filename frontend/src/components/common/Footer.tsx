@@ -48,6 +48,22 @@ export default function Footer() {
             ))}
           </div>
         </div>
+
+        <div className="flex flex-col items-center sm:items-start gap-3">
+          <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+            Contacto
+          </h3>
+          <p className="text-xs text-zinc-500 dark:text-zinc-400 text-center sm:text-left leading-relaxed">
+            ¿Encontraste un error o tienes una sugerencia?
+            <br />
+            <a
+              href="mailto:contact@moraxh.dev"
+              className="text-zinc-700 dark:text-zinc-300 hover:underline"
+            >
+              contact@moraxh.dev
+            </a>
+          </p>
+        </div>
       </div>
     </footer>
   );

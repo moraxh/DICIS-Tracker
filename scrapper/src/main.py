@@ -25,6 +25,7 @@ def run_all_scrapers():
       futures[future] = scraper_config
 
     results = []
+    failures = []
     for future in as_completed(futures):
       target_config = futures[future]
       try:
@@ -36,8 +37,11 @@ def run_all_scrapers():
         results.extend(result)
         logging.info(f"Completed scraper for {target_config.url}")
       except Exception as e:
-        logging.error(f"Error in scraper for {target_config.url}: {e}")
-  return results
+        logging.error(
+          f"Error in scraper for {target_config.headquarters} ({target_config.url}): {e}"
+        )
+        failures.append(target_config)
+  return results, failures
 
 
 if __name__ == "__main__":
@@ -55,12 +59,20 @@ if __name__ == "__main__":
   args = parser.parse_args()
 
   logging.info("Starting pipeline...")
-  data = run_all_scrapers()
+  data, failures = run_all_scrapers()
   logging.info(f"Scraped total of {len(data)} courses.")
 
   if not data:
     logging.error(
       "No courses were scraped from any source. Aborting without touching existing data."
+    )
+    sys.exit(1)
+
+  if failures:
+    failed_sources = ", ".join(f"{f.headquarters} ({f.division})" for f in failures)
+    logging.error(
+      f"{len(failures)} source(s) failed to scrape: {failed_sources}. "
+      "Aborting without touching existing data to avoid publishing a partial dataset."
     )
     sys.exit(1)
 

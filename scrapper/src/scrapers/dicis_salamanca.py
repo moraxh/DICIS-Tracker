@@ -13,6 +13,21 @@ from utils import clean, safe_parse_time
 
 from .index import Class, Course, Day, Professor, Schedule, TimeRange
 
+MONTH_NAMES = {
+  "enero",
+  "febrero",
+  "marzo",
+  "abril",
+  "mayo",
+  "junio",
+  "julio",
+  "agosto",
+  "septiembre",
+  "octubre",
+  "noviembre",
+  "diciembre",
+}
+
 filtered_rooms_names = {
   "Biblioteca",
   "Virtual",
@@ -94,27 +109,66 @@ def extract_days(headers):
   return mapping
 
 
-def get_pdf_links(url: str, section_prefix: str):
+def discover_sections(url: str):
+  """Find every 'Sede <headquarters> ...' section title on the page.
+
+  Section titles carry a trailing academic-term qualifier that changes every
+  cycle (e.g. "Sede Salamanca Agosto - Diciembre 2026") and, as of the 2026
+  cycle, a headquarters can have more than one such section live at once
+  (undergrad and graduate programs listed separately). Rather than matching
+  fixed prefixes that need updating whenever the site's section naming
+  changes, this scans the whole page for anything starting with "Sede " and
+  returns every match, grouped by headquarters name.
+  """
   with requests.Session() as session:
     res = session.get(url, timeout=10)
     res.raise_for_status()
 
     soup = BeautifulSoup(res.text, "html.parser")
 
-    # Section titles include the starting month of the current academic term
-    # (e.g. "Sede Salamanca Enero", "Sede Salamanca Agosto"), which changes
-    # every cycle. Match on the prefix only so this keeps working across terms.
-    title = soup.find(string=lambda t: t and clean(t).startswith(section_prefix))
+    titles = soup.find_all(string=lambda t: t and clean(t).startswith("Sede "))
 
-    if not title:
-      raise Exception(f"No se encontró la sección '{section_prefix}'")
+    sections = {}
 
+    for title in titles:
+      full_title = clean(title)
+      # Headquarters name is the text right after "Sede " up to the next
+      # qualifier word (a term month or a date range), e.g. "Salamanca" out
+      # of "Sede Salamanca Agosto - Diciembre 2026".
+      rest = full_title[len("Sede ") :]
+      words = rest.split()
+
+      name_words = []
+      for w in words:
+        if w.casefold() in MONTH_NAMES or any(c.isdigit() for c in w) or w == "-":
+          break
+        name_words.append(w)
+
+      headquarters = " ".join(name_words) if name_words else rest
+
+      sections.setdefault(headquarters, []).append(title)
+
+    return sections
+
+
+def get_pdf_links_for_headquarters(url: str, headquarters: str):
+  sections = discover_sections(url)
+
+  matches = [title for name, titles in sections.items() if name == headquarters for title in titles]
+
+  if not matches:
+    available = ", ".join(sorted(sections)) or "(ninguna)"
+    raise Exception(
+      f"No se encontró la sede '{headquarters}' en la página. Sedes disponibles: {available}"
+    )
+
+  anchors = []
+
+  for title in matches:
     table = title.find_next("table")
 
     if not table:
-      raise Exception(f"No se encontró la tabla de la sección '{section_prefix}'")
-
-    anchors = []
+      continue
 
     for a in table.find_all("a", href=True):
       href = a["href"]
@@ -122,7 +176,7 @@ def get_pdf_links(url: str, section_prefix: str):
       if href.lower().endswith(".pdf"):
         anchors.append({"name": a.text.strip(), "href": urljoin(url, href)})
 
-    return anchors
+  return anchors
 
 
 def parse_pdf(url, name):
@@ -207,20 +261,13 @@ def parse_table(table):
 
 def scrape_courses(
   url: str,
-  section_titles: str | Iterable[str],
+  headquarters: str,
   custom_rules: Iterable[tuple[str, str]] | None = None,
 ):
-  titles = [section_titles] if isinstance(section_titles, str) else list(section_titles)
-  anchors = []
-  seen = set()
+  anchors = get_pdf_links_for_headquarters(url, headquarters)
 
-  for section_title in titles:
-    for anchor in get_pdf_links(url, section_title):
-      key = (anchor["name"], anchor["href"])
-      if key in seen:
-        continue
-      seen.add(key)
-      anchors.append(anchor)
+  if not anchors:
+    raise Exception(f"La sede '{headquarters}' no tiene PDFs de horarios listados")
 
   courses = []
 
@@ -248,15 +295,8 @@ def scrape_courses(
 
 def scraper_dicis_salamanca(url: str) -> list[Course]:
   dicis_rules = [("cdmanu", "manufactura"), ("computo", "comp. a")]
-  return scrape_courses(
-    url,
-    # "Sede Salamanca" without a month matches the current-term section
-    # regardless of its starting month (Enero/Agosto/etc). The summer
-    # term is always titled "Mayo", so it's matched explicitly.
-    ["Sede Salamanca", "Sede Salamanca Mayo"],
-    custom_rules=dicis_rules,
-  )
+  return scrape_courses(url, "Salamanca", custom_rules=dicis_rules)
 
 
 def scraper_dicis_yuriria(url: str) -> list[Course]:
-  return scrape_courses(url, "Sede Yuriria")
+  return scrape_courses(url, "Yuriria")
