@@ -1,1 +1,266 @@
-[{"id": "50c69edb4be32c3706a5a54c07bfa3d671c4ba26722759e19dc671f164e45126", "name": "101", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "c37a9971675320081b2ef5b82778dfd357f03fe2edf7c236381ded2fb9fdec00", "name": "201", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "94ce0bc17631f12dccbfedbe3f92518e36661e8cba014e9a3833e651b35126ac", "name": "203", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "5f82f64c6301b4e9cf081c40d4c4195a18bce8bccd61841892d5f1f4b8410a18", "name": "204", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "4b0369514934c758e1d14ae61be3d5212ff0c00b4c71028e73ebd772073f407c", "name": "205", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "4edfc1e9cf016e13995aa8735ac510e2713aebcd94cf9a2698586c055e2f3f82", "name": "207 y Laboratorio", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "0fe715572481280d7dde70a1bdb1f9525859bc0742bdee778fafa64e3f3c4920", "name": "210", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "f64fdb2ba475ba75cf02c91bc181f86b0894aa82ee6495247f6b607f36ec2d89", "name": "211", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "f9309434c2db50fcc8145f39c2c81a16e7f7dd3a57d3849c9e0f50c197661db6", "name": "309", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "fa4210acb573051c10016e96ccbad641612c462b6ca4e4356e314e1df5da69c5", "name": "310", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "a4faa7a3e8201b485bdb5adea0807b53b52471e743278ac34f1884fb47836971", "name": "BSL", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "94c5e914f3bf55c314d5808d75cb223b32f02a9409bf6e2f76cb9d83be4a245c", "name": "Centro de Computo", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "3c765549e3397acd43f12196b4ee9065ad18d0e99c5a30a7dc0764f9268221d7", "name": "Lab Esoectro", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "f1012998fc43c0e3ec6c2c9c10543cd713e2fbd4dd6718036513cc0e3fc775d7", "name": "Laboratorio de Electr\u00f3nica", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "b6159f3dcde390eb5cf848a3842cbca1a1a1900ca85c9d718a992b026d3f4862", "name": "Laboratorio de Espectroscop\u00eda", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "8f04d952beaf6bec8a58e1570f15b13716353c9616e795c3297ce550bde431b1", "name": "Laboratorio de caracterizaci\u00f3n \u00f3ptica de materiales", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "00a69e9fbc947e62c2b16f3f5d2a76e71fbf271705d858e23cd0deb763a49ef9", "name": "Laboratorio de se\u00f1ales digitales", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "3ba26f61dc7f8fb21c4d6f1b74eb206f38f2cf837790a108019dfcefeb7e2b6e", "name": "Labortorio de fibras \u00f3pticas", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "dce9825d6001f824682eb740b73dcd8a8d268a5eeedfcf2c618c148031167050", "name": "SUME", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "f67d1939499f2c061bd6de508fc57b733db5fde837e85ba1d19f6b87a6b77c62", "name": "Sala Audiovisual", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "3ecad9632fce743751df447f2c6727f71aab2ca9a0665c39ac3d5117b8876102", "name": "Y202", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "6f126ba1cf9b52c696e8737e71300f3484eedde8132e7342c3424263dc55e69b", "name": "Y204", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "6507dcbed7c987f90565e7f74a2b8651d86651804a4149fa5d2dc7a05a204221", "name": "Y206", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "d5aa1b3af937e0fbe18c54cd4c299481d5f32b93e81807644a89c15efade6522", "name": "Y207", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "99a3668992baf4fee980874c8484fa0640811a0d65fb87c09941531811e6ac7b", "name": "Y209", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "1d6fec22b80eda8e601abf3297114a447a8a6f7bc1485beea185de5b10b31bfb", "name": "Y301", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "3e1b7cb2a5e259b593ed5a47a2746e5065d58debf6d37d9940b68f9d7202c09e", "name": "Y302", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "66148cdcd10ee2f09d6818ea37737bb5786b5760ccb04c7ff61ea6592f1b8dfd", "name": "Y303", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "9f84c722934d969ce36f2be80958b10a2029ff47e566b675fee896d35c81bd5e", "name": "Y304", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "e3c7f4749eaec4665cad8a4ec3d1b21cf66774136eb6bd2187bc63e35b7e3e78", "name": "Y305", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "d696d255785ec0ae6e3103e5bf7dae6af10e628d4e19579436bbfd79c3b4b0c9", "name": "Y306", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "51f180a53d5b662570a0003d8be5d99d1c2447125efefdb3ec994b92436365ee", "name": "Y307", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}, {"id": "3bf6fbe4a407d9166b176d01cfd6af3f0c1500d9ef7f5fcb1d7b397b77010394", "name": "Y308", "locationId": "1", "campus": "Irapuato - Salamanca", "division": "DICIS", "headquarters": "Yuriria"}]
+[
+  {
+    "id": "50c69edb4be32c3706a5a54c07bfa3d671c4ba26722759e19dc671f164e45126",
+    "name": "101",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "c37a9971675320081b2ef5b82778dfd357f03fe2edf7c236381ded2fb9fdec00",
+    "name": "201",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "94ce0bc17631f12dccbfedbe3f92518e36661e8cba014e9a3833e651b35126ac",
+    "name": "203",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "5f82f64c6301b4e9cf081c40d4c4195a18bce8bccd61841892d5f1f4b8410a18",
+    "name": "204",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "4b0369514934c758e1d14ae61be3d5212ff0c00b4c71028e73ebd772073f407c",
+    "name": "205",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "4edfc1e9cf016e13995aa8735ac510e2713aebcd94cf9a2698586c055e2f3f82",
+    "name": "207 y Laboratorio",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "0fe715572481280d7dde70a1bdb1f9525859bc0742bdee778fafa64e3f3c4920",
+    "name": "210",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "f64fdb2ba475ba75cf02c91bc181f86b0894aa82ee6495247f6b607f36ec2d89",
+    "name": "211",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "f9309434c2db50fcc8145f39c2c81a16e7f7dd3a57d3849c9e0f50c197661db6",
+    "name": "309",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "fa4210acb573051c10016e96ccbad641612c462b6ca4e4356e314e1df5da69c5",
+    "name": "310",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "a4faa7a3e8201b485bdb5adea0807b53b52471e743278ac34f1884fb47836971",
+    "name": "BSL",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "94c5e914f3bf55c314d5808d75cb223b32f02a9409bf6e2f76cb9d83be4a245c",
+    "name": "Centro de Computo",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "3c765549e3397acd43f12196b4ee9065ad18d0e99c5a30a7dc0764f9268221d7",
+    "name": "Lab Esoectro",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "f1012998fc43c0e3ec6c2c9c10543cd713e2fbd4dd6718036513cc0e3fc775d7",
+    "name": "Laboratorio de Electr\u00f3nica",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "b6159f3dcde390eb5cf848a3842cbca1a1a1900ca85c9d718a992b026d3f4862",
+    "name": "Laboratorio de Espectroscop\u00eda",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "8f04d952beaf6bec8a58e1570f15b13716353c9616e795c3297ce550bde431b1",
+    "name": "Laboratorio de caracterizaci\u00f3n \u00f3ptica de materiales",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "00a69e9fbc947e62c2b16f3f5d2a76e71fbf271705d858e23cd0deb763a49ef9",
+    "name": "Laboratorio de se\u00f1ales digitales",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "3ba26f61dc7f8fb21c4d6f1b74eb206f38f2cf837790a108019dfcefeb7e2b6e",
+    "name": "Labortorio de fibras \u00f3pticas",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "dce9825d6001f824682eb740b73dcd8a8d268a5eeedfcf2c618c148031167050",
+    "name": "SUME",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "f67d1939499f2c061bd6de508fc57b733db5fde837e85ba1d19f6b87a6b77c62",
+    "name": "Sala Audiovisual",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "3ecad9632fce743751df447f2c6727f71aab2ca9a0665c39ac3d5117b8876102",
+    "name": "Y202",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "6f126ba1cf9b52c696e8737e71300f3484eedde8132e7342c3424263dc55e69b",
+    "name": "Y204",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "6507dcbed7c987f90565e7f74a2b8651d86651804a4149fa5d2dc7a05a204221",
+    "name": "Y206",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "d5aa1b3af937e0fbe18c54cd4c299481d5f32b93e81807644a89c15efade6522",
+    "name": "Y207",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "99a3668992baf4fee980874c8484fa0640811a0d65fb87c09941531811e6ac7b",
+    "name": "Y209",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "1d6fec22b80eda8e601abf3297114a447a8a6f7bc1485beea185de5b10b31bfb",
+    "name": "Y301",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "3e1b7cb2a5e259b593ed5a47a2746e5065d58debf6d37d9940b68f9d7202c09e",
+    "name": "Y302",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "66148cdcd10ee2f09d6818ea37737bb5786b5760ccb04c7ff61ea6592f1b8dfd",
+    "name": "Y303",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "9f84c722934d969ce36f2be80958b10a2029ff47e566b675fee896d35c81bd5e",
+    "name": "Y304",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "e3c7f4749eaec4665cad8a4ec3d1b21cf66774136eb6bd2187bc63e35b7e3e78",
+    "name": "Y305",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "d696d255785ec0ae6e3103e5bf7dae6af10e628d4e19579436bbfd79c3b4b0c9",
+    "name": "Y306",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "51f180a53d5b662570a0003d8be5d99d1c2447125efefdb3ec994b92436365ee",
+    "name": "Y307",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  },
+  {
+    "id": "3bf6fbe4a407d9166b176d01cfd6af3f0c1500d9ef7f5fcb1d7b397b77010394",
+    "name": "Y308",
+    "locationId": "1",
+    "campus": "Irapuato - Salamanca",
+    "division": "DICIS",
+    "headquarters": "Yuriria"
+  }
+]
